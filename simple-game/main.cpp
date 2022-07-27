@@ -1,4 +1,6 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
+#include "Utilities.h"
 
 int main()
 {
@@ -6,8 +8,11 @@ int main()
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
+    sf::Clock clock;
+
     while (window.isOpen())
     {
+        
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -17,7 +22,11 @@ int main()
 
         window.clear();
         window.draw(shape);
+        DrawLine(0, 0, 100, 40, sf::Color::Red, &window);
         window.display();
+
+        sf::Time elapsed1 = clock.getElapsedTime();
+        std::cout << elapsed1.asSeconds() << std::endl;
     }
 
     return 0;
