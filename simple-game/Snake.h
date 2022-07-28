@@ -3,9 +3,11 @@
 #include <list>
 #include "Map.h"
 #include "Utilities.h"
+#include <iostream>
 
 using std::vector;
 using std::list;
+using std::cout;
 
 enum class Direction { Up, Right, Left, Down };
 
@@ -19,6 +21,8 @@ class Snake
 
 		void move();
 		Direction d{ Direction::Up };
+
+		//void pollKeyBoard();
 
 	private:
 		Map* map;

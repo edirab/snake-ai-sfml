@@ -10,6 +10,11 @@ public:
 
 	int x{ 0 };
 	int y{ 0 };
+
+	bool operator==(const Point& p)
+	{
+		return ( this->x == p.x && this->y == p.y );
+	}
 };
 
 class RandomPoint

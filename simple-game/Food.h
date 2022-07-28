@@ -5,6 +5,8 @@
 class Food
 {
 public:
+	bool eaten = true;
+
 	Point position;
 	sf::Color color = sf::Color::Green;
 private:

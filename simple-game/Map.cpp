@@ -9,8 +9,13 @@ Map::Map(sf::RenderWindow* window, int w, int h) : width(w), height(h), rp(h, w,
 
 void Map::spawn_food()
 {
-	f.position = rp.generate();
+	if ( f.eaten == true )
+	{
+		f.position = rp.generate();
+		f.eaten = false;
+	}
 }
+
 
 void Map::draw_map()
 {

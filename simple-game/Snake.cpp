@@ -42,31 +42,79 @@ void Snake::move()
 	if (this->d == Direction::Up)
 	{
 		Point head{body.begin()->x, body.begin()->y - 1};
-		body.push_front(head);
-		body.pop_back();
-
-		for (int i = 0; i < body.size(); i++)
+		if (head.y < 0)
 		{
+			this->is_alive = false;
+			return;
+		}
 
+		body.push_front(head);
+		
+		if ( map->f.position == head)
+		{
+			cout << "Collect food\n";
+			map->f.eaten = true;
+		}
+		else
+		{
+			body.pop_back();
 		}
 	}
 	else if (this->d == Direction::Right)
 	{
 		Point head{body.begin()->x + 1, body.begin()->y };
+		if (head.x >= map->get_width())
+		{
+			this->is_alive = false;
+			return;
+		}
+
 		body.push_front(head);
-		body.pop_back();
+
+		if ( map->f.position == head)
+		{
+			cout << "Collect food\n";
+			map->f.eaten = true;
+		}
+		else
+		{
+			body.pop_back();
+		}
 	}
 	else if (this->d == Direction::Down)
 	{
 		Point head{body.begin()->x, body.begin()->y + 1};
 		body.push_front(head);
-		body.pop_back();
+
+		if ( map->f.position == head)
+		{
+			cout << "Collect food\n";
+			map->f.eaten = true;
+		}
+		else
+		{
+			body.pop_back();
+		}
 	}
 	else if (this->d == Direction::Left)
 	{
 		Point head{body.begin()->x - 1, body.begin()->y };
 		body.push_front(head);
-		body.pop_back();
+
+		if ( map->f.position == head)
+		{
+			cout << "Collect food\n";
+			map->f.eaten = true;
+		}
+		else
+		{
+			body.pop_back();
+		}
 	}
+
+	//
+
+
+
 	return;
 }
