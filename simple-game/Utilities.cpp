@@ -17,6 +17,21 @@ void DrawLine(float x1, float y1, float x2, float y2, sf::Color color, sf::Rende
     window->draw(points, 2, sf::Lines);
 }
 
+void DrawRectangle(sf::RenderWindow* window, float left, float top, float width, float height, sf::Color color)
+{
+    // Create a rectangle object
+    sf::RectangleShape rectangle(sf::Vector2f(width, height));
+
+    // Set the top left position
+    rectangle.setPosition(left, top);
+
+    // Set the color
+    rectangle.setFillColor(color);
+
+    // Draw it
+    window->draw(rectangle);
+}
+
 RandomPoint::RandomPoint(int n_rows, int n_cols, bool debug)
 {
     if (!debug)
@@ -31,8 +46,8 @@ RandomPoint::RandomPoint(int n_rows, int n_cols, bool debug)
         gen_for_rows = new std::mt19937();
     }
 
-    distr_rows = new std::uniform_int_distribution<>(0, n_rows);
-    distr_cols = new std::uniform_int_distribution<>(0, n_cols);
+    distr_rows = new std::uniform_int_distribution<>(0, n_rows - 1);
+    distr_cols = new std::uniform_int_distribution<>(0, n_cols - 1);
 }
 
 

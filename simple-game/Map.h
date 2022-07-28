@@ -20,12 +20,17 @@ public:
 
 	void draw_grid();
 
+	int get_width() { return width; }
+	int get_height() { return height; }
+	int get_cell_size() { return cell_size; }
+	Point get_food_pos() { return f.position; }
+
 private:
 	sf::RenderWindow* window{ nullptr };
 
 	float cell_size{ 40 }; // cell size in pixels
 	const int width{ 20 }; // map size in cells
-	const int heihgt{ 20 };
+	const int height{ 20 };
 
 	const int n_of_food{ 1 };
 

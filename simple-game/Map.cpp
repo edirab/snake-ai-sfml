@@ -2,7 +2,7 @@
 
 Map::Map(sf::RenderWindow* window) : window(window), rp(20, 20, false) {}
 
-Map::Map(sf::RenderWindow* window, int w, int h) : width(w), heihgt(h), rp(h, w, true)
+Map::Map(sf::RenderWindow* window, int w, int h) : width(w), height(h), rp(h, w, true)
 {
 	
 }
@@ -22,13 +22,15 @@ void Map::draw_map()
 	food_shape.setPosition( sf::Vector2f( f.position.x * cell_size, f.position.y * cell_size ) );
 	food_shape.setFillColor( f.color );
 
+	
+
 	window->draw(food_shape);
 }
 
 void Map::draw_grid()
 {
 	// draw horizontal lines
-	for (int i = 0; i < heihgt + 1; i++)
+	for (int i = 0; i < height + 1; i++)
 	{
 		float y_coord = i * cell_size;
 		DrawLine(	0, 
@@ -46,7 +48,7 @@ void Map::draw_grid()
 		(		x_coord,
 				0,
 				x_coord,
-				cell_size * heihgt,
+				cell_size * height,
 				grid_color, this->window
 		);
 	}
