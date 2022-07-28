@@ -7,6 +7,7 @@ Map::Map(sf::RenderWindow* window, int w, int h) : width(w), height(h), rp(h, w,
 	
 }
 
+
 void Map::spawn_food()
 {
 	if ( f.eaten == true )
@@ -31,6 +32,7 @@ void Map::draw_map()
 
 	window->draw(food_shape);
 }
+
 
 void Map::draw_grid()
 {
@@ -58,4 +60,10 @@ void Map::draw_grid()
 		);
 	}
 	return;
+}
+
+
+void Map::reset()
+{
+	this->spawn_food();
 }

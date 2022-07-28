@@ -18,15 +18,18 @@ class Snake
 		Snake( Map* m, Point starting_position, Direction d);
 
 		void draw(sf::RenderWindow* window);
-
+		
 		void move();
+
+		bool isAlive() { return this->is_alive; }
+		void reset();
+
 		Direction d{ Direction::Up };
 
 		//void pollKeyBoard();
 
 	private:
 		Map* map;
-
 
 		/*
 			vector represents a snake's body in reversed order.

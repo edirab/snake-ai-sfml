@@ -14,16 +14,17 @@ public:
 	Food f;
 	RandomPoint rp;
 
-	void spawn_food();
-
+	/*!
+	* \brief Draws grid (if enabled), spams and draws food
+	*/
 	void draw_map();
-
-	void draw_grid();
 
 	int get_width() { return width; }
 	int get_height() { return height; }
 	int get_cell_size() { return cell_size; }
 	Point get_food_pos() { return f.position; }
+
+	void reset();
 
 private:
 	sf::RenderWindow* window{ nullptr };
@@ -31,10 +32,13 @@ private:
 	float cell_size{ 40 }; // cell size in pixels
 	const int width{ 20 }; // map size in cells
 	const int height{ 20 };
-
 	const int n_of_food{ 1 };
 
 	sf::Color background_color{sf::Color::Black};
 	sf::Color grid_color{sf::Color::White};
+
+	void spawn_food();
+
+	void draw_grid();
 };
 

@@ -8,17 +8,14 @@
 #include "Snake.h"
 #include "tests.h"
 
-//#define sf::Keyboard::isKeyPressed isKeyPressed
 
 void game()
 {
     sf::RenderWindow window(sf::VideoMode(800, 800), "SFML works!");
-    //sf::CircleShape shape(100.f);
-    //shape.setFillColor(sf::Color::Green);
-
     sf::Clock clock;
-    Map m{&window};
-    Snake snake(&m, Point(10, 10), Direction::Up);
+
+    Map map{&window};
+    Snake snake(&map, Point(10, 10), Direction::Up);
 
     while (window.isOpen())
     {
@@ -29,34 +26,25 @@ void game()
                 window.close();
         }
 
-        window.clear();
-        //window.draw(shape);
-        //DrawLine(0, 0, 100, 40, sf::Color::Red, &window);
-
-        m.draw_map();
-        snake.draw(&window);
-        window.display();
-
-        std::this_thread::sleep_for( std::chrono::milliseconds(1000) );
-
-        if (sf::Keyboard::isKeyPressed( sf::Keyboard::Up ) || sf::Keyboard::isKeyPressed(sf::Keyboard::W) )
+        if (snake.isAlive())
         {
-            snake.d = Direction::Up;
-        }
-        else if (sf::Keyboard::isKeyPressed( sf::Keyboard::Right ) || sf::Keyboard::isKeyPressed(sf::Keyboard::D) )
-        {
-            snake.d = Direction::Right;
-        }
-        else if (sf::Keyboard::isKeyPressed( sf::Keyboard::Down ) || sf::Keyboard::isKeyPressed(sf::Keyboard::S) )
-        {
-            snake.d = Direction::Down;
-        }
-        else if (sf::Keyboard::isKeyPressed( sf::Keyboard::Left ) || sf::Keyboard::isKeyPressed(sf::Keyboard::A) )
-        {
-            snake.d = Direction::Left;
-        }
+            window.clear();
 
-        snake.move();
+            map.draw_map();
+            snake.draw(&window);
+            window.display();
+
+            std::this_thread::sleep_for( std::chrono::milliseconds(400) );
+
+            processKeyboard(snake);
+            snake.move();
+        }
+        else
+        {
+            // reset game
+            snake.reset();
+            map.reset();
+        }
 
         sf::Time elapsed1 = clock.getElapsedTime();
         std::cout << elapsed1.asSeconds() << std::endl;

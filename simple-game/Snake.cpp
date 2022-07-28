@@ -39,82 +39,66 @@ void Snake::draw(sf::RenderWindow* window)
 
 void Snake::move()
 {
+	Point head;
+
 	if (this->d == Direction::Up)
 	{
-		Point head{body.begin()->x, body.begin()->y - 1};
+		head.set(body.begin()->x, body.begin()->y - 1);
 		if (head.y < 0)
 		{
 			this->is_alive = false;
 			return;
 		}
-
 		body.push_front(head);
-		
-		if ( map->f.position == head)
-		{
-			cout << "Collect food\n";
-			map->f.eaten = true;
-		}
-		else
-		{
-			body.pop_back();
-		}
 	}
 	else if (this->d == Direction::Right)
 	{
-		Point head{body.begin()->x + 1, body.begin()->y };
+		head.set(body.begin()->x + 1, body.begin()->y );
 		if (head.x >= map->get_width())
 		{
 			this->is_alive = false;
 			return;
 		}
-
 		body.push_front(head);
-
-		if ( map->f.position == head)
-		{
-			cout << "Collect food\n";
-			map->f.eaten = true;
-		}
-		else
-		{
-			body.pop_back();
-		}
 	}
 	else if (this->d == Direction::Down)
 	{
-		Point head{body.begin()->x, body.begin()->y + 1};
+		head.set(body.begin()->x, body.begin()->y + 1);
+		if (head.y >= map->get_height())
+		{
+			this->is_alive = false;
+			return;
+		}
 		body.push_front(head);
-
-		if ( map->f.position == head)
-		{
-			cout << "Collect food\n";
-			map->f.eaten = true;
-		}
-		else
-		{
-			body.pop_back();
-		}
 	}
 	else if (this->d == Direction::Left)
 	{
-		Point head{body.begin()->x - 1, body.begin()->y };
+		head.set(body.begin()->x - 1, body.begin()->y );
+		if (head.x < 0)
+		{
+			this->is_alive = false;
+			return;
+		}
 		body.push_front(head);
-
-		if ( map->f.position == head)
-		{
-			cout << "Collect food\n";
-			map->f.eaten = true;
-		}
-		else
-		{
-			body.pop_back();
-		}
 	}
 
 	//
+	if ( map->f.position == head)
+	{
+		cout << "Collect food\n";
+		map->f.eaten = true;
+	}
+	else
+	{
+		body.pop_back();
+	}
+	return;
+}
 
-
-
+void Snake::reset()
+{
+	is_alive = true;
+	body.clear();
+	body.push_back( Point( map->get_width()/2, map->get_height() / 2 ) );
 	return;
 }

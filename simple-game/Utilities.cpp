@@ -59,3 +59,24 @@ Point RandomPoint::generate()
     };
     return result;
 }
+
+void processKeyboard(Snake &snake)
+{
+	if (sf::Keyboard::isKeyPressed( sf::Keyboard::Up ) || sf::Keyboard::isKeyPressed(sf::Keyboard::W) )
+    {
+        snake.d = Direction::Up;
+    }
+    else if (sf::Keyboard::isKeyPressed( sf::Keyboard::Right ) || sf::Keyboard::isKeyPressed(sf::Keyboard::D) )
+    {
+        snake.d = Direction::Right;
+    }
+    else if (sf::Keyboard::isKeyPressed( sf::Keyboard::Down ) || sf::Keyboard::isKeyPressed(sf::Keyboard::S) )
+    {
+        snake.d = Direction::Down;
+    }
+    else if (sf::Keyboard::isKeyPressed( sf::Keyboard::Left ) || sf::Keyboard::isKeyPressed(sf::Keyboard::A) )
+    {
+        snake.d = Direction::Left;
+    }
+	return;
+}

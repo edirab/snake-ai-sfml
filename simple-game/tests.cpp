@@ -10,7 +10,7 @@ void test_food_spawn()
 
 	for (int i = 0; i < 1000; i++)
 	{
-		m.spawn_food();
+		m.reset();
 		if (m.f.position.x < 0 || m.f.position.x > width - 1)
 		{
 			cout << "x exceeds limits:" << m.f.position.x << " " << m.f.position.y << "\n";
