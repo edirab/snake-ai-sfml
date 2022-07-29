@@ -7,14 +7,18 @@ Map::Map(sf::RenderWindow* window, int w, int h) : width(w), height(h), rp(h, w,
 	
 }
 
+int Map::get_width() { return width; }
+int Map::get_height() { return height; }
+int Map::get_cell_size() { return cell_size; }
+
 
 void Map::spawn_food()
 {
-	if ( f.eaten == true )
-	{
-		f.position = rp.generate();
-		f.eaten = false;
-	}
+	//if ( f.eaten == true )
+	//{
+	//	f.position = rp.generate();
+	//	f.eaten = false;
+	//}
 }
 
 

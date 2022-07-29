@@ -95,10 +95,51 @@ void Snake::move()
 	return;
 }
 
+
+bool Snake::isAlive() 
+{ 
+	return this->is_alive; 
+}
+
+void Snake::set_position( const Point& pos )
+{
+	this->body.clear();
+	body.push_back( pos );
+	return;
+}
+
+
+void Snake::set_diraction( const Direction& dir)
+{
+	this->d = dir;
+	return;
+}
+
 void Snake::reset()
 {
 	is_alive = true;
 	body.clear();
 	body.push_back( Point( map->get_width()/2, map->get_height() / 2 ) );
+	return;
+}
+
+void Snake::processKeyboard()
+{
+	if (sf::Keyboard::isKeyPressed( sf::Keyboard::Up ) || sf::Keyboard::isKeyPressed(sf::Keyboard::W) )
+    {
+        this->d = Direction::Up;
+    }
+    else if (sf::Keyboard::isKeyPressed( sf::Keyboard::Right ) || sf::Keyboard::isKeyPressed(sf::Keyboard::D) )
+    {
+        this->d = Direction::Right;
+    }
+    else if (sf::Keyboard::isKeyPressed( sf::Keyboard::Down ) || sf::Keyboard::isKeyPressed(sf::Keyboard::S) )
+    {
+        this->d = Direction::Down;
+    }
+    else if (sf::Keyboard::isKeyPressed( sf::Keyboard::Left ) || sf::Keyboard::isKeyPressed(sf::Keyboard::A) )
+    {
+        this->d = Direction::Left;
+    }
 	return;
 }

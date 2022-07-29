@@ -1,6 +1,9 @@
 #pragma once
+
 #include <vector>
 #include <list>
+//#include "Snake.h"
+#include "Point.h"
 #include "Map.h"
 #include "Utilities.h"
 #include <iostream>
@@ -11,18 +14,26 @@ using std::cout;
 
 enum class Direction { Up, Right, Left, Down };
 
+class Map;
+
 class Snake
 {
 	public:
-		Snake( Map* m);
-		Snake( Map* m, Point starting_position, Direction d);
+		//Snake() = delete;
+		explicit Snake( Map* m);
+		explicit Snake( Map* m, Point starting_position, Direction d);
 
 		void draw(sf::RenderWindow* window);
 		
 		void move();
 
-		bool isAlive() { return this->is_alive; }
+		bool isAlive();
+
+		void set_position( const Point& pos );
+		void set_diraction( const Direction& dir);
 		void reset();
+
+		void processKeyboard();
 
 		Direction d{ Direction::Up };
 

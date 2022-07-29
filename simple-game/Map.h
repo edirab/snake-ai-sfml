@@ -2,13 +2,15 @@
 #include <SFML/Graphics.hpp>
 //#include "Snake.h"
 #include "Food.h"
+#include "Point.h"
+#include "RamdomPoint.h"
 #include "Utilities.h"
 
 class Map
 {
 public:
-	Map(sf::RenderWindow* window);
-	Map(sf::RenderWindow* window, int w, int h);
+	explicit Map(sf::RenderWindow* window);
+	explicit Map(sf::RenderWindow* window, int w, int h);
 
 	//Snake s;
 	Food f;
@@ -19,10 +21,10 @@ public:
 	*/
 	void draw_map();
 
-	int get_width() { return width; }
-	int get_height() { return height; }
-	int get_cell_size() { return cell_size; }
-	Point get_food_pos() { return f.position; }
+	int get_width();
+	int get_height();
+	int get_cell_size();
+	//Point get_food_pos() { return f.position; }
 
 	void reset();
 

@@ -1,10 +1,12 @@
 #pragma once
-#include "Utilities.h"
-
+#include "Point.h"
 #include <SFML/Graphics.hpp>
+
 class Food
 {
 public:
+	Food();
+
 	bool eaten = true;
 
 	Point position;
