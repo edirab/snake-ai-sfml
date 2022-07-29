@@ -24,9 +24,7 @@ void Game::loop()
 
     while (window->isOpen())
     {
-
-
-        processKeyboard_2(snake);
+        processEvents(snake);
         if (snake.isAlive() )
         {
             if (clock->getElapsedTime().asMilliseconds() > period_ms)
@@ -41,22 +39,17 @@ void Game::loop()
                 window->display();    
                 total_frames++;
                 
-
                 update_score(snake.get_length() - 1);
             }
-            //processKeyboard_2(snake);
-            //std::this_thread::sleep_for( std::chrono::milliseconds(5) );
         }
         else
         {
             // reset game
             snake.reset();
             map.reset();
+            window->setTitle("Score: 0");
         }
-        //sf::Time elapsed1 = clock->getElapsedTime();
-        //std::cout << elapsed1.asSeconds() << std::endl;
     }
-
 	return;
 }
 
@@ -71,7 +64,7 @@ void Game::update_score( int new_score)
     return;
 }
 
-void Game::processKeyboard_2(Snake &s)
+void Game::processEvents(Snake &s)
 {
     sf::Event event;
     while (window->pollEvent(event))
@@ -80,25 +73,37 @@ void Game::processKeyboard_2(Snake &s)
             window->close();
     }
 
-	if (sf::Keyboard::isKeyPressed( sf::Keyboard::Up ) || sf::Keyboard::isKeyPressed(sf::Keyboard::W) )
+	if ((sf::Keyboard::isKeyPressed( sf::Keyboard::Up ) || sf::Keyboard::isKeyPressed(sf::Keyboard::W)) )
     {
-        s.d = Direction::Up;
-        cout << "\tUp pressed\n";
+        if (s.d != Direction::Up)
+        {
+            s.set_diraction(Direction::Up);
+            cout << "\tUp pressed\n";
+        }
     }
     else if (sf::Keyboard::isKeyPressed( sf::Keyboard::Right ) || sf::Keyboard::isKeyPressed(sf::Keyboard::D) )
     {
-        s.d = Direction::Right;
-        cout << "\tRight pressed\n";
+        if (s.d != Direction::Right)
+        {
+            s.set_diraction(Direction::Right);
+            cout << "\tRight pressed\n";
+        }
     }
     else if (sf::Keyboard::isKeyPressed( sf::Keyboard::Down ) || sf::Keyboard::isKeyPressed(sf::Keyboard::S) )
     {
-        s.d = Direction::Down;
-        cout << "\tDown pressed\n";
+        if (s.d != Direction::Down)
+        {
+            s.set_diraction(Direction::Down);
+            cout << "\tDown pressed\n";
+        }
     }
     else if (sf::Keyboard::isKeyPressed( sf::Keyboard::Left ) || sf::Keyboard::isKeyPressed(sf::Keyboard::A) )
     {
-        s.d = Direction::Left;
-        cout << "\tLeft pressed\n";
+        if (s.d != Direction::Left)
+        {
+            s.set_diraction(Direction::Left);
+            cout << "\tLeft pressed\n";
+        }
     }
 	return;
 }

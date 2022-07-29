@@ -29,6 +29,5 @@ private:
 	sf::RenderWindow* window{nullptr};
 	sf::Clock* clock{nullptr};
 
-	void processKeyboard_2(Snake &s);
+	void processEvents(Snake &s);
 };
-

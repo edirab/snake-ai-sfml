@@ -26,6 +26,11 @@ Changes:
 	- process keybord method moved from Snake to Game class
 	- added varaible for adjusting snake's speed
 
+Changes:
+	- minor refactoring
+	- cleanup of diagnostic messages
+	- fixed bug with score after reset
+
 TODO: 
 - upgrade move method: collision detection with walls and with snake itself
 - rework food spawning: chack for snake body parts

@@ -17,15 +17,6 @@ void Snake::draw(sf::RenderWindow* window)
 	int h = map->get_height();
 	int cell_size = map->get_cell_size();
 
-	//for (int i = 0; i < body.size(); i++)
-	//{
-	//	DrawRectangle(window, 
-	//		body[i].x * cell_size, 
-	//		body[i].y * cell_size, 
-	//		cell_size, 
-	//		cell_size, 
-	//		this->body_color);
-	//}
 	for (auto it = body.begin(); it != body.end(); it++)
 	{
 		DrawRectangle(window, 
