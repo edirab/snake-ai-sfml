@@ -14,11 +14,12 @@ int Map::get_cell_size() { return cell_size; }
 
 void Map::spawn_food()
 {
-	//if ( f.eaten == true )
-	//{
-	//	f.position = rp.generate();
-	//	f.eaten = false;
-	//}
+	if ( f.eaten == true )
+	{
+		f.position = rp.generate();
+		f.eaten = false;
+	}
+	return;
 }
 
 

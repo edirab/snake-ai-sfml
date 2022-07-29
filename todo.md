@@ -1,4 +1,3 @@
-- Rename project to Snake-AI-SFML
 
 1. Draw grid
 2. Draw snake
@@ -16,13 +15,26 @@ Changes:
 	- keybord processing
 
 Changes
-- added reset methods to Map and Snake
-- collision detection with walls
-- added set method to Point class
+	- added reset methods to Map and Snake
+	- collision detection with walls
+	- added set method to Point class
+
+Changes:
+	- fixed bug with one snake movement delay
+	- fixed food respawn glitch
+	- added score to window title
+	- process keybord method moved from Snake to Game class
+	- added varaible for adjusting snake's speed
 
 TODO: 
 - upgrade move method: collision detection with walls and with snake itself
-+ enable snake growing
 - rework food spawning: chack for snake body parts
-- add score to the screen
-- add speed parameter, tune delay in main cycle to 60 fps
+- mark snake's head with another color
+- disable move in reverse direction. Need to make a dicision: either to prohibit such
+	behavior or consider it as death
+- Rename project to Snake-AI-SFML
+
+Done:
++ add score to the screen
++ enable snake growing
++ add speed parameter, tune delay in main cycle to 60 fps

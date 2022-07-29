@@ -28,16 +28,15 @@ class Snake
 		void move();
 
 		bool isAlive();
+		int get_length();
 
 		void set_position( const Point& pos );
 		void set_diraction( const Direction& dir);
 		void reset();
 
-		void processKeyboard();
-
 		Direction d{ Direction::Up };
 
-		//void pollKeyBoard();
+		
 
 	private:
 		Map* map;
