@@ -13,8 +13,10 @@ void Game::init()
 
 void Game::loop()
 {
-	Map map{window};
-    Snake snake(&map, Point(10, 10), Direction::Up);
+    MapParams params;
+    Food food{window, params, 5, 5};
+    Snake snake(params, food, Point(10, 10), Direction::Up);
+    Map map{window, params};
 
     float period_ms = 1 / this->moves_per_second * 1000 ;
     cout << period_ms << "\n";
@@ -33,8 +35,12 @@ void Game::loop()
                 clock->restart();
                 window->clear();
 
+                food.spawn();
                 snake.move();
-                map.draw_map();
+
+
+                map.draw();
+                food.draw();
                 snake.draw(window);
                 window->display();    
                 total_frames++;

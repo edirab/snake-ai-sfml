@@ -18,7 +18,7 @@ public:
 	int fps{60};
 	int score{-1};
 
-	float moves_per_second{1}; ///< number of Snake's moves e.i. speed
+	float moves_per_second{2.5}; ///< number of Snake's moves e.i. speed
 
 	void init();
 

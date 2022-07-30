@@ -1,66 +1,56 @@
 #include "Map.h"
 
-Map::Map(sf::RenderWindow* window) : window(window), rp(20, 20, false) {}
 
-Map::Map(sf::RenderWindow* window, int w, int h) : width(w), height(h), rp(h, w, true)
+//Map::Map(sf::RenderWindow* window) : window(window), rp(20, 20, false) {}
+//
+Map::Map(sf::RenderWindow* window, MapParams params) :
+	window(window), params(params)
 {
 	
 }
 
-int Map::get_width() { return width; }
-int Map::get_height() { return height; }
-int Map::get_cell_size() { return cell_size; }
+//Map::Map(sf::RenderWindow* window, Snake* s, int w, int h) : 
+//	width(w), height(h), 
+//	rp(h, w, true),
+//	s(s)
+//{
+//	
+//}
+
+//void Map::init_snake(Snake* s) { this->s = s; return; }
 
 
-void Map::spawn_food()
+
+
+void Map::draw()
 {
-	if ( f.eaten == true )
-	{
-		f.position = rp.generate();
-		f.eaten = false;
-	}
-	return;
-}
-
-
-void Map::draw_map()
-{
-	spawn_food();
+	//spawn_food();
 	draw_grid();
-
-	// draw food
-	sf::RectangleShape food_shape( sf::Vector2f( cell_size, cell_size ) );
-	food_shape.setPosition( sf::Vector2f( f.position.x * cell_size, f.position.y * cell_size ) );
-	food_shape.setFillColor( f.color );
-
-	
-
-	window->draw(food_shape);
 }
 
 
 void Map::draw_grid()
 {
 	// draw horizontal lines
-	for (int i = 0; i < height + 1; i++)
+	for (int i = 0; i < params.height + 1; i++)
 	{
-		float y_coord = i * cell_size;
+		float y_coord = i * params.cell_size;
 		DrawLine(	0, 
 					y_coord,
-					cell_size * width, 
+					params.cell_size * params.width, 
 					y_coord,
 					grid_color, this->window
 				);
 	}
 	// draw vertical lines
-	for (int i = 0; i < width + 1; i++)
+	for (int i = 0; i < params.width + 1; i++)
 	{
-		float x_coord = i * cell_size;
+		float x_coord = i * params.cell_size;
 		DrawLine
 		(		x_coord,
 				0,
 				x_coord,
-				cell_size * height,
+				params.cell_size * params.height,
 				grid_color, this->window
 		);
 	}
@@ -70,5 +60,5 @@ void Map::draw_grid()
 
 void Map::reset()
 {
-	this->spawn_food();
+	//this->spawn_food();
 }

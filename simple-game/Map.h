@@ -1,45 +1,51 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-//#include "Snake.h"
+#include <vector>
+#include <list>
+#include "Utilities.h"
+#include <iostream>
 #include "Food.h"
 #include "Point.h"
 #include "RamdomPoint.h"
-#include "Utilities.h"
+#include "MapParams.h"
+#include <SFML/Graphics.hpp>
+
+using std::cout;
+
+
+
 
 class Map
 {
 public:
-	explicit Map(sf::RenderWindow* window);
-	explicit Map(sf::RenderWindow* window, int w, int h);
+	//explicit Map(sf::RenderWindow* window);
+	explicit Map(sf::RenderWindow* window, MapParams params);
+	//explicit Map(sf::RenderWindow* window, Snake* s, int w, int h);
 
-	//Snake s;
-	Food f;
+	//Snake* s{nullptr};
+	//	Food f;
 	RandomPoint rp;
 
 	/*!
 	* \brief Draws grid (if enabled), spams and draws food
 	*/
-	void draw_map();
+	void draw();
 
-	int get_width();
-	int get_height();
-	int get_cell_size();
+	//void init_snake(Snake* s);
 	//Point get_food_pos() { return f.position; }
 
 	void reset();
 
 private:
 	sf::RenderWindow* window{ nullptr };
+	//Snake* s; //{nullptr};
 
-	float cell_size{ 40 }; // cell size in pixels
-	const int width{ 20 }; // map size in cells
-	const int height{ 20 };
+	MapParams params;
 	const int n_of_food{ 1 };
 
 	sf::Color background_color{sf::Color::Black};
 	sf::Color grid_color{sf::Color::White};
 
-	void spawn_food();
+
 
 	void draw_grid();
 };

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Map.h"
+#include "Snake.h"
 #include <iostream>
 
 using std::cout;

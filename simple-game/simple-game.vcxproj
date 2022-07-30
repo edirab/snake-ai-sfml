@@ -167,6 +167,7 @@
     <ClInclude Include="Food.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="MapParams.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="RamdomPoint.h" />
     <ClInclude Include="Snake.h" />

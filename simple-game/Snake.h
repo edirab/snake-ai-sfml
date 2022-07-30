@@ -2,8 +2,13 @@
 
 #include <vector>
 #include <list>
-//#include "Snake.h"
+#include "Utilities.h"
+#include <iostream>
+
+#include <SFML/Graphics.hpp>
+#include "Food.h"
 #include "Point.h"
+#include "RamdomPoint.h"
 #include "Map.h"
 #include "Utilities.h"
 #include <iostream>
@@ -14,14 +19,15 @@ using std::cout;
 
 enum class Direction { Up, Right, Left, Down };
 
-class Map;
-
 class Snake
 {
 	public:
 		//Snake() = delete;
-		explicit Snake( Map* m);
-		explicit Snake( Map* m, Point starting_position, Direction d);
+		//Snake();
+		explicit Snake(MapParams params, Food& f, Point starting_position, Direction d);
+		//explicit Snake(Food& f, Point starting_position, Direction d);
+
+		void init_map( Map* m);
 
 		void draw(sf::RenderWindow* window);
 		
@@ -36,10 +42,10 @@ class Snake
 
 		Direction d{ Direction::Up };
 
-		
-
 	private:
-		Map* map;
+		MapParams params;
+		Food& food;
+		
 
 		/*
 			vector represents a snake's body in reversed order.

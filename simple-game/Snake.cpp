@@ -1,21 +1,28 @@
 #include "Snake.h"
+//#include "Map.h"
 
-Snake::Snake( Map* m) : map(m)
-{
-	body.push_back(Point{ m->get_height()/2, m->get_width() / 2 });
-}
+//Snake::Snake()
+//{
+//	body.push_back(Point{ 10, 10 });
+//}
 
-Snake::Snake( Map* m, Point starting_position, Direction d) :
-	map(m), d(d)
+Snake::Snake(MapParams params, Food& f, Point starting_position, Direction d) :
+	params(params), food(f), d(d)
 {
 	body.push_back( Point{ starting_position } );
 }
 
+//Snake::Snake(Food& f, Point starting_position, Direction d) :
+//	food(f), d(d)
+//{
+//	body.push_back( Point{ starting_position } );
+//}
+
 void Snake::draw(sf::RenderWindow* window)
 {
-	int w = map->get_width();
-	int h = map->get_height();
-	int cell_size = map->get_cell_size();
+	int w = params.width;
+	int h = params.height;
+	int cell_size = params.cell_size;
 
 	for (auto it = body.begin(); it != body.end(); it++)
 	{
@@ -45,7 +52,7 @@ void Snake::move()
 	else if (this->d == Direction::Right)
 	{
 		head.set(body.begin()->x + 1, body.begin()->y );
-		if (head.x >= map->get_width())
+		if (head.x >= params.width)
 		{
 			this->is_alive = false;
 			return;
@@ -55,7 +62,7 @@ void Snake::move()
 	else if (this->d == Direction::Down)
 	{
 		head.set(body.begin()->x, body.begin()->y + 1);
-		if (head.y >= map->get_height())
+		if (head.y >= params.height)
 		{
 			this->is_alive = false;
 			return;
@@ -74,10 +81,10 @@ void Snake::move()
 	}
 
 	//
-	if ( map->f.position == head)
+	if ( food.position == head)
 	{
 		cout << "Collect food\n";
-		map->f.eaten = true;
+		food.eaten = true;
 	}
 	else
 	{
@@ -115,6 +122,6 @@ void Snake::reset()
 {
 	is_alive = true;
 	body.clear();
-	body.push_back( Point( map->get_width()/2, map->get_height() / 2 ) );
+	body.push_back( Point( params.width/2, params.height / 2 ) );
 	return;
 }
