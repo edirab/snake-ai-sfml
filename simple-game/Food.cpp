@@ -11,7 +11,7 @@ Food::Food()
 Food::Food(sf::RenderWindow* window, MapParams params, int x, int y) : 
 		window(window),
 		params(params),  
-		rp(params.height, params.width, true)
+		rp(params.height, params.width, false)
 {
 	position.x = x;
 	position.y = y;

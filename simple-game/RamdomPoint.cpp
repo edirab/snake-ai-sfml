@@ -15,8 +15,8 @@ RandomPoint::RandomPoint(int n_rows, int n_cols, bool debug)
     }
     else
     {
-        gen_for_cols = new std::mt19937();
-        gen_for_rows = new std::mt19937();
+        gen_for_cols = new std::mt19937(37);
+        gen_for_rows = new std::mt19937(531);
     }
 
     distr_rows = new std::uniform_int_distribution<>(0, n_rows - 1);
