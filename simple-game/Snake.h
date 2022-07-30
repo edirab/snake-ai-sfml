@@ -35,9 +35,10 @@ class Snake
 
 		bool isAlive();
 		int get_length();
+		const list<Point>* get_body() const;
 
 		void set_position( const Point& pos );
-		void set_diraction( const Direction& dir);
+		void set_direction( const Direction& dir);
 		void reset();
 
 		Direction d{ Direction::Up };

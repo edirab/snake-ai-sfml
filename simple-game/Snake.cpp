@@ -122,7 +122,7 @@ void Snake::set_position( const Point& pos )
 }
 
 
-void Snake::set_diraction( const Direction& dir)
+void Snake::set_direction( const Direction& dir)
 {
 	this->d = dir;
 	return;
@@ -134,4 +134,9 @@ void Snake::reset()
 	body.clear();
 	body.push_back( Point( params.width/2, params.height / 2 ) );
 	return;
+}
+
+const list<Point>* Snake::get_body() const
+{
+	return (const list<Point>*) &body;
 }

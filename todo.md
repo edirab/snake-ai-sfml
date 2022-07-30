@@ -32,14 +32,17 @@ Changes:
 	- fixed bug with score after reset
 
 TODO: 
-- upgrade move method: collision detection with walls and with snake itself
-- rework food spawning: chack for snake body parts
-- mark snake's head with another color
-- disable move in reverse direction. Need to make a dicision: either to prohibit such
+- rework randomizing algorith: food items lay on diagonal y = -x.
+	Consider another random distribution (e.i. normal distribution for 2D points)
 	behavior or consider it as death
 - Rename project to Snake-AI-SFML
 
+
 Done:
+X disable move in reverse direction. Need to make a dicision: either to prohibit such
++ rework food spawning: chack for snake body parts
++ mark snake's head with another color
++ upgrade move method: collision detection with walls and with snake itself
 + add score to the screen
 + enable snake growing
 + add speed parameter, tune delay in main cycle to 60 fps

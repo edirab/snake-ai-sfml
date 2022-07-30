@@ -18,11 +18,25 @@ Food::Food(sf::RenderWindow* window, MapParams params, int x, int y) :
 }
 
 
-void Food::spawn()
+void Food::spawn(const list<Point>* body)
 {
+	bool food_pos_valid = false;
 	if ( eaten == true )
 	{
-		position = rp.generate();
+		while(!food_pos_valid)
+		{
+			position = rp.generate();
+			food_pos_valid = true;
+
+			for (auto it = body->begin(); it != body->end(); ++it)
+			{
+				if ( it->x == position.x && it->y == position.y )
+				{
+					cout << "Invalid food pos\n";
+					food_pos_valid = false;
+				}
+			}
+		}
 		eaten = false;
 	}
 	return;

@@ -35,7 +35,7 @@ void Game::loop()
                 clock->restart();
                 window->clear();
 
-                food.spawn();
+                food.spawn( snake.get_body() );
                 snake.move();
 
 
@@ -83,7 +83,7 @@ void Game::processEvents(Snake &s)
     {
         if (s.d != Direction::Up)
         {
-            s.set_diraction(Direction::Up);
+            s.set_direction(Direction::Up);
             cout << "\tUp pressed\n";
         }
     }
@@ -91,7 +91,7 @@ void Game::processEvents(Snake &s)
     {
         if (s.d != Direction::Right)
         {
-            s.set_diraction(Direction::Right);
+            s.set_direction(Direction::Right);
             cout << "\tRight pressed\n";
         }
     }
@@ -99,7 +99,7 @@ void Game::processEvents(Snake &s)
     {
         if (s.d != Direction::Down)
         {
-            s.set_diraction(Direction::Down);
+            s.set_direction(Direction::Down);
             cout << "\tDown pressed\n";
         }
     }
@@ -107,7 +107,7 @@ void Game::processEvents(Snake &s)
     {
         if (s.d != Direction::Left)
         {
-            s.set_diraction(Direction::Left);
+            s.set_direction(Direction::Left);
             cout << "\tLeft pressed\n";
         }
     }
