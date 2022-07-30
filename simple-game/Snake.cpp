@@ -26,13 +26,24 @@ void Snake::draw(sf::RenderWindow* window)
 
 	for (auto it = body.begin(); it != body.end(); it++)
 	{
+		sf::Color c;
+		if (it == body.begin())
+		{
+			c = sf::Color::Yellow;
+		}
+		else
+		{
+			c = this->body_color;
+		}
+
 		DrawRectangle(window, 
 			it->x * cell_size, 
 			it->y * cell_size, 
 			cell_size, 
 			cell_size, 
-			this->body_color);
+			c);
 	}
+	return;
 }
 
 void Snake::move()
@@ -42,46 +53,23 @@ void Snake::move()
 	if (this->d == Direction::Up)
 	{
 		head.set(body.begin()->x, body.begin()->y - 1);
-		if (head.y < 0)
-		{
-			this->is_alive = false;
-			return;
-		}
-		body.push_front(head);
 	}
 	else if (this->d == Direction::Right)
 	{
 		head.set(body.begin()->x + 1, body.begin()->y );
-		if (head.x >= params.width)
-		{
-			this->is_alive = false;
-			return;
-		}
-		body.push_front(head);
 	}
 	else if (this->d == Direction::Down)
 	{
 		head.set(body.begin()->x, body.begin()->y + 1);
-		if (head.y >= params.height)
-		{
-			this->is_alive = false;
-			return;
-		}
-		body.push_front(head);
 	}
 	else if (this->d == Direction::Left)
 	{
 		head.set(body.begin()->x - 1, body.begin()->y );
-		if (head.x < 0)
-		{
-			this->is_alive = false;
-			return;
-		}
-		body.push_front(head);
 	}
+	collision(head);
 
 	//
-	if ( food.position == head)
+	if (is_alive && food.position == head)
 	{
 		cout << "Collect food\n";
 		food.eaten = true;
@@ -89,6 +77,28 @@ void Snake::move()
 	else
 	{
 		body.pop_back();
+	}
+	return;
+}
+
+void Snake::collision(Point& head_new)
+{
+	if (head_new.y < 0 || head_new.y > params.height || head_new.x < 0 || head_new.x > params.width)
+	{
+		this->is_alive = false;
+	}
+	else
+	{
+		// chack for self collision
+		for (auto it = body.begin(); it != body.end(); ++it)
+		{
+			if (*it == head_new)
+			{
+				this->is_alive = false;
+				return;
+			}
+		}
+		this->body.push_front(head_new);
 	}
 	return;
 }

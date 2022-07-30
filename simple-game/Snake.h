@@ -55,4 +55,6 @@ class Snake
 		bool is_alive{true};
 
 		sf::Color body_color = sf::Color::Magenta;
+
+		void collision(Point& head_new);
 };
