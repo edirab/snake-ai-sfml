@@ -35,11 +35,12 @@ void Map::draw_grid()
 	for (int i = 0; i < params.height + 1; i++)
 	{
 		float y_coord = i * params.cell_size;
-		DrawLine(	0, 
+		DrawLine(	this->window,
+					0, 
 					y_coord,
 					params.cell_size * params.width, 
 					y_coord,
-					grid_color, this->window
+					grid_color
 				);
 	}
 	// draw vertical lines
@@ -47,11 +48,12 @@ void Map::draw_grid()
 	{
 		float x_coord = i * params.cell_size;
 		DrawLine
-		(		x_coord,
+		(		this->window,
+				x_coord,
 				0,
 				x_coord,
 				params.cell_size * params.height,
-				grid_color, this->window
+				grid_color
 		);
 	}
 	return;

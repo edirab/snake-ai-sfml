@@ -32,14 +32,16 @@ Changes:
 	- fixed bug with score after reset
 
 TODO: 
-- rework randomizing algorith: food items lay on diagonal y = -x.
-	Consider another random distribution (e.i. normal distribution for 2D points)
-	behavior or consider it as death
 - Rename project to Snake-AI-SFML
 
 
 Done:
+
+X rework randomizing algorith: food items lay on diagonal y = -x. 
+	Consider another random distribution (e.i. normal distribution for 2D points)
++ add some borders to snake's body segments. Draw a line along all bricks
 X disable move in reverse direction. Need to make a dicision: either to prohibit such
+	behavior or consider it as death
 + rework food spawning: chack for snake body parts
 + mark snake's head with another color
 + upgrade move method: collision detection with walls and with snake itself

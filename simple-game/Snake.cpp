@@ -43,6 +43,24 @@ void Snake::draw(sf::RenderWindow* window)
 			cell_size, 
 			c);
 	}
+	
+	if (body.size() > 1)
+	{
+		sf::Color c = sf::Color::Blue;
+		std::vector<sf::Vertex> vertices;
+		auto it = body.begin();
+		for (  ; it != --body.end();   )
+		{
+			vertices.push_back( sf::Vertex( 
+					sf::Vector2f( 
+						it->x * cell_size + cell_size / 2, 
+						it->y * cell_size + cell_size / 2 ), 
+					c )
+			);
+			++it;
+		}
+		window->draw( &vertices[0], vertices.size(), sf::Lines );
+	}
 	return;
 }
 

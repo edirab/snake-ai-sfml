@@ -39,7 +39,7 @@ void Game::loop()
                 snake.move();
 
 
-                map.draw();
+                //map.draw();
                 food.draw();
                 snake.draw(window);
                 window->display();    

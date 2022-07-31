@@ -1,7 +1,7 @@
 #include "Utilities.h"
 
 
-void DrawLine(float x1, float y1, float x2, float y2, sf::Color color, sf::RenderWindow* window)
+void DrawLine(sf::RenderWindow* window, float x1, float y1, float x2, float y2, sf::Color color )
 {
     // Make an array of the two end points (an array is like a list)
     sf::Vertex points[] =
