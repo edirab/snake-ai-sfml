@@ -1,4 +1,8 @@
 #pragma once
+
+/*!
+* \brief Represents a point with integer coordinates on a game grid
+*/
 class Point
 {
 public:

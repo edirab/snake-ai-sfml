@@ -9,7 +9,6 @@
 #include "Food.h"
 #include "Point.h"
 #include "RamdomPoint.h"
-#include "Map.h"
 #include "Utilities.h"
 #include <iostream>
 
@@ -22,37 +21,39 @@ enum class Direction { Up, Right, Left, Down };
 class Snake
 {
 	public:
-		//Snake() = delete;
-		//Snake();
 		explicit Snake(MapParams params, Food& f, Point starting_position, Direction d);
-		//explicit Snake(Food& f, Point starting_position, Direction d);
-
-		void init_map( Map* m);
 
 		void draw(sf::RenderWindow* window);
 		
+		/*!
+		* \brief moves snake one block in a set direction,
+		* checks for food and collisions
+		*/
 		void move();
 
 		bool isAlive();
-		int get_length();
+		int get_length() const;
 		const list<Point>* get_body() const;
 
 		void set_position( const Point& pos );
 		void set_direction( const Direction& dir);
-		void reset();
+		Direction get_direction() const;
 
-		Direction d{ Direction::Up };
+		void reset();
 
 	private:
 		MapParams params;
 		Food& food;
+		Direction d{ Direction::Up };
 		
 
-		/*
-			vector represents a snake's body in reversed order.
-			It's head is at body.size() - 1
+		/*!
+			\brief
+			list represents a snake's body. Easy to add to head and remove
+			from tail
 		*/
 		list<Point> body;
+
 		bool is_alive{true};
 
 		sf::Color body_color = sf::Color::Magenta;

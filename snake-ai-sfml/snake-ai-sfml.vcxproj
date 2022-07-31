@@ -24,6 +24,7 @@
     <ProjectGuid>{4cfd1235-2735-4b3e-a47a-40fcb1981a8a}</ProjectGuid>
     <RootNamespace>simplegame</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>snake-ai-sfml</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

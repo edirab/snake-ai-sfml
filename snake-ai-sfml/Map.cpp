@@ -1,33 +1,13 @@
 #include "Map.h"
 
-
-//Map::Map(sf::RenderWindow* window) : window(window), rp(20, 20, false) {}
-//
 Map::Map(sf::RenderWindow* window, MapParams params) :
 	window(window), params(params)
-{
-	
-}
-
-//Map::Map(sf::RenderWindow* window, Snake* s, int w, int h) : 
-//	width(w), height(h), 
-//	rp(h, w, true),
-//	s(s)
-//{
-//	
-//}
-
-//void Map::init_snake(Snake* s) { this->s = s; return; }
-
-
-
+{ }
 
 void Map::draw()
 {
-	//spawn_food();
 	draw_grid();
 }
-
 
 void Map::draw_grid()
 {
@@ -57,10 +37,4 @@ void Map::draw_grid()
 		);
 	}
 	return;
-}
-
-
-void Map::reset()
-{
-	//this->spawn_food();
 }

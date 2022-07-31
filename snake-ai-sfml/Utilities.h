@@ -1,9 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <random>
-//#include "Snake.h"
-
-//class Snake;
 
 void DrawLine(sf::RenderWindow* window, float x1, float y1, float x2, float y2, sf::Color color );
 

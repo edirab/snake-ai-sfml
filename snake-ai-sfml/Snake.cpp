@@ -1,22 +1,10 @@
 #include "Snake.h"
-//#include "Map.h"
-
-//Snake::Snake()
-//{
-//	body.push_back(Point{ 10, 10 });
-//}
 
 Snake::Snake(MapParams params, Food& f, Point starting_position, Direction d) :
 	params(params), food(f), d(d)
 {
 	body.push_back( Point{ starting_position } );
 }
-
-//Snake::Snake(Food& f, Point starting_position, Direction d) :
-//	food(f), d(d)
-//{
-//	body.push_back( Point{ starting_position } );
-//}
 
 void Snake::draw(sf::RenderWindow* window)
 {
@@ -44,6 +32,7 @@ void Snake::draw(sf::RenderWindow* window)
 			c);
 	}
 	
+	// draw dotted line across body
 	if (body.size() > 1)
 	{
 		sf::Color c = sf::Color::Blue;
@@ -121,13 +110,12 @@ void Snake::collision(Point& head_new)
 	return;
 }
 
-
 bool Snake::isAlive() 
 { 
 	return this->is_alive; 
 }
 
-int Snake::get_length()
+int Snake::get_length() const
 {
 	return this->body.size();
 }
@@ -139,11 +127,15 @@ void Snake::set_position( const Point& pos )
 	return;
 }
 
-
 void Snake::set_direction( const Direction& dir)
 {
 	this->d = dir;
 	return;
+}
+
+Direction Snake::get_direction() const
+{
+	return this->d;
 }
 
 void Snake::reset()

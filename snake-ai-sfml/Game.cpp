@@ -52,7 +52,6 @@ void Game::loop()
         {
             // reset game
             snake.reset();
-            map.reset();
             window->setTitle("Score: 0");
         }
     }
@@ -81,7 +80,7 @@ void Game::processEvents(Snake &s)
 
 	if ((sf::Keyboard::isKeyPressed( sf::Keyboard::Up ) || sf::Keyboard::isKeyPressed(sf::Keyboard::W)) )
     {
-        if (s.d != Direction::Up)
+        if (s.get_direction() != Direction::Up)
         {
             s.set_direction(Direction::Up);
             cout << "\tUp pressed\n";
@@ -89,7 +88,7 @@ void Game::processEvents(Snake &s)
     }
     else if (sf::Keyboard::isKeyPressed( sf::Keyboard::Right ) || sf::Keyboard::isKeyPressed(sf::Keyboard::D) )
     {
-        if (s.d != Direction::Right)
+        if (s.get_direction() != Direction::Right)
         {
             s.set_direction(Direction::Right);
             cout << "\tRight pressed\n";
@@ -97,7 +96,7 @@ void Game::processEvents(Snake &s)
     }
     else if (sf::Keyboard::isKeyPressed( sf::Keyboard::Down ) || sf::Keyboard::isKeyPressed(sf::Keyboard::S) )
     {
-        if (s.d != Direction::Down)
+        if (s.get_direction() != Direction::Down)
         {
             s.set_direction(Direction::Down);
             cout << "\tDown pressed\n";
@@ -105,7 +104,7 @@ void Game::processEvents(Snake &s)
     }
     else if (sf::Keyboard::isKeyPressed( sf::Keyboard::Left ) || sf::Keyboard::isKeyPressed(sf::Keyboard::A) )
     {
-        if (s.d != Direction::Left)
+        if (s.get_direction() != Direction::Left)
         {
             s.set_direction(Direction::Left);
             cout << "\tLeft pressed\n";

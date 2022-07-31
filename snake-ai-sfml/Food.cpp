@@ -44,7 +44,6 @@ void Food::spawn(const list<Point>* body)
 
 void Food::draw()
 {
-	// draw food
 	sf::RectangleShape food_shape( sf::Vector2f( params.cell_size, params.cell_size ) );
 	food_shape.setPosition( sf::Vector2f( position.x * params.cell_size, position.y * params.cell_size ) );
 	food_shape.setFillColor( color );

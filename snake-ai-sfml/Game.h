@@ -18,7 +18,7 @@ public:
 	int fps{60};
 	int score{-1};
 
-	float moves_per_second{4}; ///< number of Snake's moves e.i. speed
+	float moves_per_second{4}; ///< number of Snake's moves per second e.i. speed
 
 	void init();
 
@@ -29,5 +29,10 @@ private:
 	sf::RenderWindow* window{nullptr};
 	sf::Clock* clock{nullptr};
 
+	/*!
+	* Method for processing keyboard events
+	* \param[in] reference to snake object
+	* \param[out] snake's updated direction
+	*/
 	void processEvents(Snake &s);
 };

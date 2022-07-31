@@ -20,9 +20,9 @@ public:
 
 	Point position;
 	sf::Color color = sf::Color::Green;
+
 private:
 	sf::RenderWindow* window{nullptr};
 	MapParams params;
 	RandomPoint rp;
 };
-
