@@ -28,6 +28,7 @@ public:
 private:
 	sf::RenderWindow* window{nullptr};
 	sf::Clock* clock{nullptr};
+	bool is_paused{false};
 
 	/*!
 	* Method for processing keyboard events

@@ -18,6 +18,8 @@ void Game::loop()
     Snake snake(params, food, Point(10, 10), Direction::Up);
     Map map{window, params};
 
+    vector<int> inputs;
+
     float period_ms = 1 / this->moves_per_second * 1000 ;
     cout << period_ms << "\n";
     clock->restart();
@@ -29,9 +31,9 @@ void Game::loop()
         processEvents(snake);
         if (snake.isAlive() )
         {
-            if (clock->getElapsedTime().asMilliseconds() > period_ms)
+            if (!is_paused && clock->getElapsedTime().asMilliseconds() > period_ms)
             {
-                cout << "Total frames: " << total_frames << " " << clock->getElapsedTime().asMilliseconds() << "\n";
+                //cout << "Total frames: " << total_frames << " " << clock->getElapsedTime().asMilliseconds() << "\n";
                 clock->restart();
                 window->clear();
 
@@ -39,13 +41,16 @@ void Game::loop()
                 snake.move();
 
 
-                //map.draw();
+                map.draw();
                 food.draw();
                 snake.draw(window);
                 window->display();    
                 total_frames++;
                 
                 update_score(snake.get_length() - 1);
+
+                snake.get_ai_inputs(inputs);
+                print_ai_inputs(inputs);
             }
         }
         else
@@ -108,6 +113,20 @@ void Game::processEvents(Snake &s)
         {
             s.set_direction(Direction::Left);
             cout << "\tLeft pressed\n";
+        }
+    }
+    else if (sf::Keyboard::isKeyPressed( sf::Keyboard::P) )
+    {
+        if ( is_paused == false )
+        {
+            is_paused = true;
+        }
+    }
+    else if (sf::Keyboard::isKeyPressed( sf::Keyboard::C) )
+    {
+        if ( is_paused == true )
+        {
+            is_paused = false;
         }
     }
 	return;

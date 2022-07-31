@@ -31,9 +31,22 @@ Changes:
 	- cleanup of diagnostic messages
 	- fixed bug with score after reset
 
+Changes:
+	- partially developed an api to get input for AI.
+	Need to add diagonal distance to snake's body
+	- added function for printing net input parameters
+	- partially tested
+
 TODO: 
 - Rename project to Snake-AI-SFML
 
+- Develop an API to get inputs for a neural network:
+	8 rays from snake's head, eacn ray gievs 3 numbers:
+	- distance to wall
+	- distance to food (-1 if not encountered)
+	- distance to snake's body (-1 if not encountered)
+plus additional input for the length
+plus current direction (in case if snake can kill itsef by changind dir to 180*)
 
 Done:
 

@@ -11,10 +11,13 @@
 #include "RamdomPoint.h"
 #include "Utilities.h"
 #include <iostream>
+#include <math.h>
 
 using std::vector;
 using std::list;
 using std::cout;
+using std::abs;
+using std::min;
 
 enum class Direction { Up, Right, Left, Down };
 
@@ -40,6 +43,8 @@ class Snake
 		Direction get_direction() const;
 
 		void reset();
+
+		void get_ai_inputs(vector<int>& inputs);
 
 	private:
 		MapParams params;
