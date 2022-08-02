@@ -5,7 +5,7 @@
 //#include "Map.h"
 //#include "Snake.h"
 #include "Game.h"
-#include "tests.h"
+//#include "tests.h"
 
 
 void game()

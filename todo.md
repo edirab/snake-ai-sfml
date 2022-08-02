@@ -37,7 +37,7 @@ Changes:
 	- added function for printing net input parameters
 	- partially tested
 
-TODO: 
+### TODO: 
 - Rename project to Snake-AI-SFML
 
 - Develop an API to get inputs for a neural network:
@@ -48,7 +48,7 @@ TODO:
 plus additional input for the length
 plus current direction (in case if snake can kill itsef by changind dir to 180*)
 
-Done:
+### Done:
 
 X rework randomizing algorith: food items lay on diagonal y = -x. 
 	Consider another random distribution (e.i. normal distribution for 2D points)
@@ -61,3 +61,20 @@ X disable move in reverse direction. Need to make a dicision: either to prohibit
 + add score to the screen
 + enable snake growing
 + add speed parameter, tune delay in main cycle to 60 fps
+
+
+### Notes:
+	что требуется, радзработать алгоритм обучения с подкреплением.
+	Это один из видов обучения с учителем, где учителем выступает среда.
+
+	Агент действует в среде, среда даёт агенту обратную связь.
+	Агент корректирует своё поведение
+
+	Для QLearning есть часть исследования среды
+
+### Изучение проекта SnakeAI
+
+- в качестве функции активации используется relu = max(0, x)
+- случайные значения берутся в диапазоне от -1 до 1
+- нейросеть представлена таблицей (класс Matrix)
+- crossover - перестановка случайных строк таблиц 

@@ -1,8 +1,15 @@
+# build folders
 x64/
+out/*
+
+# hidden folders
 .vs/
+
+
 *.vcxproj.filters
 *.vcxproj.user
 VS_UNICODE_OUTPUT*
 
+# test projectsS
 forw_decl/
 forward_decl/
