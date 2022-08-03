@@ -43,6 +43,12 @@ Changes:
 	- Added helper function to generate random ints in range
 	- Added unit tests for Matrix class
 
+Changes:
+	- Added and tested methods to Layer class
+	- Finished Snake API
+	- Added mat getter to Matrix class
+	- Unit tests moved to separate test class
+
 ### TODO: 
 - Rename project to Snake-AI-SFML
 

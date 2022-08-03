@@ -156,7 +156,7 @@ const list<Point>* Snake::get_body() const
 void Snake::get_ai_inputs(vector<int>& inputs)
 {
 	inputs.clear();
-	inputs.resize(25);
+	inputs.resize(26);
 
 	Point head = *(body.begin());
 
@@ -185,26 +185,12 @@ void Snake::get_ai_inputs(vector<int>& inputs)
 	// scan with upper and lower rays
 	if (this->food.position.x == head.x)
 	{
-		if (this->food.position.y <= head.y)
-		{
-			dist_to_food_upper = ( head.y - food.position.y );
-		}
-		else
-		{
-			dist_to_food_lower = ( food.position.y - head.y );
-		}
+		dist_to_food_upper = abs( head.y - food.position.y );
 	}
 	// scan with right and left rays
 	if (this->food.position.y == head.y)
 	{
-		if (this->food.position.x <= head.x)
-		{
-			dist_to_food_left = ( head.x - food.position.x );
-		}
-		else
-		{
-			dist_to_food_right = ( food.position.x -  head.x );
-		}
+		dist_to_food_left = abs( head.x - food.position.x );
 	}
 
 	int dist_to_food_upper_right = -1;
@@ -244,8 +230,14 @@ void Snake::get_ai_inputs(vector<int>& inputs)
 	int min_dist_to_snake_lower = -1;
 	int min_dist_to_snake_left = -1;
 
+	// distance to snake itself diagonally
+	int min_dist_to_snake_upper_right = -1;
+	int min_dist_to_snake_lower_right = -1;
+	int min_dist_to_snake_lower_left = -1;
+	int min_dist_to_snake_upper_left = -1;
+
 	/*
-	Traverse snake's body and count which rays it's crossing
+		Traverse snake's body and count which rays it's crossing
 	*/
 	for (auto it = body.begin(); it != body.end(); ++it)
 	{
@@ -303,8 +295,62 @@ void Snake::get_ai_inputs(vector<int>& inputs)
 		}
 		// TODO: all diagonals
 
+		Point normalized_body_item_pos = *it;
+		normalized_body_item_pos.x -= head.x;
+		normalized_body_item_pos.y -= head.y;
 
-	}
+		if ( normalized_body_item_pos.x == normalized_body_item_pos.y )
+		{
+			// upper_right
+			if (normalized_body_item_pos.x > 0 && normalized_body_item_pos.y < 0)
+			{
+				if (min_dist_to_snake_upper_right == -1)
+				{
+					min_dist_to_snake_upper_right = 2 * abs(normalized_body_item_pos.x);
+				}
+				else
+				{
+					min_dist_to_snake_upper_right = min( min_dist_to_snake_upper_right, 2 * normalized_body_item_pos.x ) ;
+				}
+			}
+			// lower_right
+			else if (normalized_body_item_pos.x > 0 && normalized_body_item_pos.y > 0)
+			{
+				if (min_dist_to_snake_lower_right == -1)
+				{
+					min_dist_to_snake_lower_right = 2 * abs(normalized_body_item_pos.x);
+				}
+				else
+				{
+					min_dist_to_snake_lower_right = min( min_dist_to_snake_lower_right, 2 * normalized_body_item_pos.x ) ;
+				}
+			}
+			// lower left
+			else if (normalized_body_item_pos.x < 0 && normalized_body_item_pos.y > 0)
+			{
+				if (min_dist_to_snake_lower_left == -1)
+				{
+					min_dist_to_snake_lower_left = 2 * abs(normalized_body_item_pos.x);
+				}
+				else
+				{
+					min_dist_to_snake_lower_left = min( min_dist_to_snake_lower_left, 2 * normalized_body_item_pos.x ) ;
+				}
+			}
+			// upper left 
+			else if (normalized_body_item_pos.x < 0 && normalized_body_item_pos.y < 0)
+			{
+				if (min_dist_to_snake_upper_left == -1)
+				{
+					min_dist_to_snake_upper_left = 2 * abs(normalized_body_item_pos.x);
+				}
+				else
+				{
+					min_dist_to_snake_upper_left = min( min_dist_to_snake_upper_left, 2 * normalized_body_item_pos.x ) ;
+				}
+			}
+		}
+	} // end traversing snake 
 
 	int direction = 0;
 
@@ -325,18 +371,6 @@ void Snake::get_ai_inputs(vector<int>& inputs)
 		direction = 4;
 	}
 
-	// to delete
-	//for (int i = head.y; i >= 0; i--)
-	//{
-	//	for (auto it = body.begin(); it != body.end(); ++it)
-	//	{
-	//		if ( it->y == i )
-	//		{
-	//			// ray found snake's body
-	//			min_dist_to_snake_upper = (min_dist_to_snake_upper == -1) ? (i - head.y) : min(min_dist_to_snake_upper, (i - head.y));
-	//		}
-	//	}
-	//}
 	inputs[0] = dist_to_upper_wall;
 	inputs[1] = dist_to_right_wall;
 	inputs[2] = dist_to_lower_wall;
@@ -362,8 +396,13 @@ void Snake::get_ai_inputs(vector<int>& inputs)
 	inputs[18] = min_dist_to_snake_lower;
 	inputs[19] = min_dist_to_snake_left;
 
-	inputs[20] = direction;
-	inputs[21] = this->body.size();
+	inputs[20] = min_dist_to_snake_upper_right;
+	inputs[21] = min_dist_to_snake_lower_right;
+	inputs[22] = min_dist_to_snake_lower_left;
+	inputs[23] = min_dist_to_snake_upper_left;
+
+	inputs[24] = direction;
+	inputs[25] = this->body.size();
 
 	return;
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <iomanip>
 #include <algorithm>
 #include <random>
 
@@ -27,8 +28,17 @@ public:
 	*/
 	void activete();
 
-
+	/*!
+	* \brief 
+	* Changes matrix values at random positions adding normal distribution value 
+	* with mean 0 and standart deviation of 0.2. Constrains to -1, 1 range
+	* 
+	* \param[in] mutation_rate used to calculate number of neurons to change.
+	*	Set to 1 if equals to zero in case of small matrix
+	*/
 	void mutate(double mutation_rate);
+
+	const MatrixXd* get_mat() const ;
 
 	Matrix* crossover(Matrix& parent);
 

@@ -80,7 +80,7 @@ void Matrix::set(int row, int col, double num)
 
 void Matrix::print()
 {
-	cout << *(this->mat) << "\n";
+	cout << std::setprecision(2) << *(this->mat) << "\n";
 	return;
 }
 
@@ -93,7 +93,7 @@ void Matrix::mutate(double mutation_rate)
 	std::uniform_int_distribution<> distr_rows(0, mat->rows() - 1);
 	std::uniform_int_distribution<> distr_cols(0, mat->cols() - 1);
 
-	std::normal_distribution<> distr_gauss(0, 1);
+	std::normal_distribution<> distr_gauss(0, 0.2);
 
 	int n_cell_to_mutate = mat->rows() * mat->cols() * mutation_rate;
 
@@ -121,4 +121,9 @@ void Matrix::mutate(double mutation_rate)
 		}
 	}
 	return;
+}
+
+const MatrixXd* Matrix::get_mat() const 
+{
+	return this->mat;
 }

@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\snake-ai-sfml\Layer.cpp" />
     <ClCompile Include="..\snake-ai-sfml\Matrix.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -26,6 +27,9 @@
     <ProjectReference Include="..\snake-ai-sfml\snake-ai-sfml.vcxproj">
       <Project>{4cfd1235-2735-4b3e-a47a-40fcb1981a8a}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TestMatrix.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
