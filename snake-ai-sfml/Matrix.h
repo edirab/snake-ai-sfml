@@ -44,7 +44,10 @@ public:
 
 	void set(int row, int col, double num);
 
-private:
+protected:
 	MatrixXd* mat;
+
+private:
+	
 };
 

@@ -1,8 +1,21 @@
 #include "Matrix.h"
 
+///////////////////
+double random(int from, int to)
+{
+	std::random_device rd;
+	std::mt19937 rand_gen( rd() );
+	std::uniform_int_distribution<> distr(from, to);
+
+	return distr( rand_gen );
+}
+///////////////////
+
+
 Matrix::Matrix(int rows, int cols)
 {
 	this->mat = new MatrixXd(rows, cols);
+	this->mat->setZero();
 }
 
 Matrix::~Matrix()
@@ -67,15 +80,45 @@ void Matrix::set(int row, int col, double num)
 
 void Matrix::print()
 {
-	cout << this->mat << "\n";
+	cout << *(this->mat) << "\n";
 	return;
 }
 
-double random(int from, int to)
+void Matrix::mutate(double mutation_rate)
 {
-	std::random_device rd();
-	std::mt19937 rand_gen( rd );
-	std::uniform_int_distribution<> distr(from, to);
+	MatrixXd& curr_mat = *(this->mat);
 
-	return distr( rand_gen );
+	std::random_device rd;
+	std::mt19937 random_generator( rd() );
+	std::uniform_int_distribution<> distr_rows(0, mat->rows() - 1);
+	std::uniform_int_distribution<> distr_cols(0, mat->cols() - 1);
+
+	std::normal_distribution<> distr_gauss(0, 1);
+
+	int n_cell_to_mutate = mat->rows() * mat->cols() * mutation_rate;
+
+	if (n_cell_to_mutate == 0 )
+	{
+		cout << "No cells to mutate. Setting to 1\n";
+		n_cell_to_mutate = 1;
+	}
+
+	for (int i = 0; i < n_cell_to_mutate; ++i)
+	{
+		int rRow = distr_rows( random_generator );
+		int rCol = distr_cols( random_generator );
+
+		//mat->operator()(random_row, random_col)
+		curr_mat(rRow, rCol) += distr_gauss( random_generator );
+
+		if (curr_mat(rRow, rCol) > 1 )
+		{
+			curr_mat(rRow, rCol) == 1;
+		} 
+		else if (curr_mat(rRow, rCol) < -1)
+		{
+			curr_mat(rRow, rCol) = -1;
+		}
+	}
+	return;
 }

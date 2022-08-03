@@ -37,6 +37,12 @@ Changes:
 	- added function for printing net input parameters
 	- partially tested
 
+Changes:
+	- Added class Layer with initial structure
+	- Created method Matrix::mutate
+	- Added helper function to generate random ints in range
+	- Added unit tests for Matrix class
+
 ### TODO: 
 - Rename project to Snake-AI-SFML
 
@@ -47,6 +53,8 @@ Changes:
 	- distance to snake's body (-1 if not encountered)
 plus additional input for the length
 plus current direction (in case if snake can kill itsef by changind dir to 180*)
+
+
 
 ### Done:
 
@@ -61,6 +69,21 @@ X disable move in reverse direction. Need to make a dicision: either to prohibit
 + add score to the screen
 + enable snake growing
 + add speed parameter, tune delay in main cycle to 60 fps
+
+### Idea #1
+- Когда будет реализована и отлажена нейросеть, можно реализовать алгоритм борьбы с 
+переобучением/запоминаним. Например, drop out
+
+### Idea #2
+- Можно реализовать обработку кадра с помощью компьютерного зрения.
+Т.е. змейка будет получать не вектор из 25-и параметров, в кадр ака скрин с экрана,
+который она должна проанализировать и принять решение куда двигаться. Можно добавить
+шумы к кадру, чтобы посложнее было. 
+	Цель: повспоминать средства библиотки OpenCV, бинаризацию, поик контуров и т.д.
+
+### Idea #3
+- Можно добавить стены! Тогда алгоритм зрения необходимо будет доработать для
+распознавания стен
 
 
 ### Notes:
