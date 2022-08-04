@@ -49,20 +49,31 @@ Changes:
 	- Added mat getter to Matrix class
 	- Unit tests moved to separate test class
 
-### TODO: 
-- Rename project to Snake-AI-SFML
+Changes:
+	- updated Layer::process
+	- added destructor ~Layer
+	- added NeuralNet class
+	- added helper function to convert std::vector to Matrix object
+	- NeuralNet::pass tested prelimenary
 
-- Develop an API to get inputs for a neural network:
+### TODO: 
+
+- Thorely test snake api
+- Add class Net
+- Design Population class
+- solve Eigen randomizing issues
+- dont forget to add destructors everywhere
+
+
+### Done:
++ Rename project to Snake-AI-SFML
++ Develop an API to get inputs for a neural network:
 	8 rays from snake's head, eacn ray gievs 3 numbers:
 	- distance to wall
 	- distance to food (-1 if not encountered)
 	- distance to snake's body (-1 if not encountered)
-plus additional input for the length
-plus current direction (in case if snake can kill itsef by changind dir to 180*)
-
-
-
-### Done:
+	plus additional input for the length
+	plus current direction (in case if snake can kill itsef by changind dir to 180*)
 
 X rework randomizing algorith: food items lay on diagonal y = -x. 
 	Consider another random distribution (e.i. normal distribution for 2D points)

@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="..\snake-ai-sfml\Layer.cpp" />
     <ClCompile Include="..\snake-ai-sfml\Matrix.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\NeuralNet.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

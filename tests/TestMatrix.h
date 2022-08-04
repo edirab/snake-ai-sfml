@@ -13,6 +13,8 @@ private:
 	void test_random();
 	void test_activate();
 	void test_mutate();
+
+    void test_vector_ctor();
 };
 
 void TestMatrix::execute()
@@ -20,6 +22,7 @@ void TestMatrix::execute()
     test_random();
     test_activate();
     test_mutate();
+    test_vector_ctor();
 }
 
 
@@ -74,4 +77,12 @@ void TestMatrix::test_mutate()
     m4.mutate(0.05); m4.print(); cout << "\n";
         
     return;
+}
+
+void TestMatrix::test_vector_ctor()
+{
+    vector<int> ins = {1, 2, 3, 4, 5};
+    Matrix m1(ins);
+
+    m1.print();
 }

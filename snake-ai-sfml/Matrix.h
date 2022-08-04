@@ -3,9 +3,11 @@
 #include <iomanip>
 #include <algorithm>
 #include <random>
+#include <vector>
 
 #include <Eigen/Dense>
 
+using std::vector;
 using std::cout;
 using std::max;
 using Eigen::MatrixXd;
@@ -13,8 +15,24 @@ using Eigen::MatrixXd;
 class Matrix
 {
 public:
+	/*!
+	* \brief Creates matrix with specified dimensions, 
+	* fills with zeros
+	*/
 	Matrix(int rows, int cols);
+
+	Matrix( vector<int>& inputs );
+	/*!
+	* \brief creates from Eigen MatrixXd
+	*/
+	Matrix(MatrixXd& in);
+
+	// copy c-tor
+	Matrix(const Matrix& m);
+
 	~Matrix();
+
+	vector<double> to_vector();
 
 	/*!
 	* \brief
@@ -37,6 +55,10 @@ public:
 	*	Set to 1 if equals to zero in case of small matrix
 	*/
 	void mutate(double mutation_rate);
+
+	Matrix operator*(Matrix& op1) const;
+
+	Matrix operator+(Matrix& op1) const;
 
 	const MatrixXd* get_mat() const ;
 

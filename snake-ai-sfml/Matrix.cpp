@@ -18,8 +18,43 @@ Matrix::Matrix(int rows, int cols)
 	this->mat->setZero();
 }
 
+Matrix::Matrix( vector<int>& inputs )
+{
+	this->mat = new MatrixXd(inputs.size(), 1);
+	for (int i = 0; i < inputs.size(); i++)
+	{
+		(*mat)(i, 0) = inputs[i];
+	}
+}
+
+vector<double> Matrix::to_vector()
+{
+	vector<double> v1;
+	for (int i = 0; i < mat->rows() ; i++)
+	{
+		for (int j = 0; j < mat->cols(); j++)
+		{
+			v1.push_back( (*mat)(i, j) );
+		}
+	}
+	return v1;
+}
+
+Matrix::Matrix(MatrixXd& in)
+{
+	this->mat = new MatrixXd(in.rows(), in.cols());
+	*mat = in;
+}
+
+Matrix::Matrix(const Matrix& m)
+{
+	this->mat = new MatrixXd();
+	*mat = *(m.get_mat());
+}
+
 Matrix::~Matrix()
 {
+	//std::cout << "Deleting mat\n";
 	delete mat;
 }
 
@@ -80,7 +115,15 @@ void Matrix::set(int row, int col, double num)
 
 void Matrix::print()
 {
-	cout << std::setprecision(2) << *(this->mat) << "\n";
+	if (mat->cols() == 1)
+	{
+		MatrixXd transposed = mat->transpose();
+		cout << std::setprecision(2) << "Transposed: " << transposed << "\n";
+	}
+	else
+	{
+		cout << std::setprecision(2) << *(this->mat) << "\n";
+	}
 	return;
 }
 
@@ -121,6 +164,20 @@ void Matrix::mutate(double mutation_rate)
 		}
 	}
 	return;
+}
+
+Matrix Matrix::operator*(Matrix& op1) const
+{
+	MatrixXd res = *(this->mat) *  *(op1.get_mat());
+	Matrix m(res);
+	return m;
+}
+
+Matrix Matrix::operator+(Matrix& op1) const
+{
+	MatrixXd res = *(this->mat) +  *(op1.get_mat());
+	Matrix m(res);
+	return m;
 }
 
 const MatrixXd* Matrix::get_mat() const 

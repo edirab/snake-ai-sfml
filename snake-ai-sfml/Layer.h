@@ -9,12 +9,13 @@ public:
 	* nNeurons == rows of a matrix
 	*/
 	Layer(int nInputs, int nNeurons);
+	~Layer();
 
 	/*!
 	* \brief
 	* Implements a classic W * x + b equation
 	*/
-	MatrixXd process( MatrixXd input );
+	Matrix process( MatrixXd input );
 
 	void randomize();
 
