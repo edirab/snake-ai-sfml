@@ -4,6 +4,7 @@
 #include "../snake-ai-sfml/Layer.h"
 #include "../snake-ai-sfml/NeuralNet.h"
 #include "TestMatrix.h"
+#include "TestLayer.h"
 
 using std::cout;
 
@@ -60,11 +61,14 @@ int main()
 {
     //test_eigen_copy_ctor();
 
-    TestMatrix tm;
-    tm.execute();
+    //TestMatrix tm;
+    //tm.execute();
     //test_process();
     
     //test_Net();
+
+    TestLayer tl;
+    tl.crossover();
 
     return 0;
 }

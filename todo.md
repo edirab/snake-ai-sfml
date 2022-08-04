@@ -56,6 +56,12 @@ Changes:
 	- added helper function to convert std::vector to Matrix object
 	- NeuralNet::pass tested prelimenary
 
+Changes:
+	- Another c-tor for Layer class added, getters added
+	- Added Matrix::clone()
+	- Added TestLayer class, crossover tested. To be updated
+	- Methods in Matrix reorganized
+
 ### TODO: 
 
 - Thorely test snake api. Make a separape project?

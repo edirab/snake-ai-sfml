@@ -6,6 +6,13 @@ Layer::Layer(int nInputs, int nNeurons)
 	biases = new Matrix(nNeurons, 1);
 }
 
+Layer::Layer(const Matrix& weights, const Matrix& biases)
+{
+	//this->weights = new Matrix(weights.get_mat()->rows(), weights.get_mat()->cols());
+	this->weights = weights.clone();
+	this->biases = biases.clone();
+}
+
 Layer::~Layer()
 {
 	delete weights;
@@ -37,3 +44,11 @@ void Layer::print()
 	return;
 }
 
+const Matrix& Layer::get_weights() const
+{
+	return *(this->weights);
+}
+const Matrix& Layer::get_biases() const
+{
+	return *(this->biases);
+}

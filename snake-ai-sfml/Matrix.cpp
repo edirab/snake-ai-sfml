@@ -18,6 +18,12 @@ Matrix::Matrix(int rows, int cols)
 	this->mat->setZero();
 }
 
+Matrix::Matrix(const Matrix& m)
+{
+	this->mat = new MatrixXd();
+	*mat = *(m.get_mat());
+}
+
 Matrix::Matrix( vector<int>& inputs )
 {
 	this->mat = new MatrixXd(inputs.size(), 1);
@@ -27,35 +33,30 @@ Matrix::Matrix( vector<int>& inputs )
 	}
 }
 
-vector<double> Matrix::to_vector()
-{
-	vector<double> v1;
-	for (int i = 0; i < mat->rows() ; i++)
-	{
-		for (int j = 0; j < mat->cols(); j++)
-		{
-			v1.push_back( (*mat)(i, j) );
-		}
-	}
-	return v1;
-}
-
 Matrix::Matrix(MatrixXd& in)
 {
 	this->mat = new MatrixXd(in.rows(), in.cols());
 	*mat = in;
 }
 
-Matrix::Matrix(const Matrix& m)
-{
-	this->mat = new MatrixXd();
-	*mat = *(m.get_mat());
-}
-
 Matrix::~Matrix()
 {
 	//std::cout << "Deleting mat\n";
 	delete mat;
+}
+
+Matrix Matrix::operator*(Matrix& op1) const
+{
+	MatrixXd res = *(this->mat) *  *(op1.get_mat());
+	Matrix m(res);
+	return m;
+}
+
+Matrix Matrix::operator+(Matrix& op1) const
+{
+	MatrixXd res = *(this->mat) +  *(op1.get_mat());
+	Matrix m(res);
+	return m;
 }
 
 void Matrix::randomize()
@@ -72,61 +73,6 @@ void Matrix::activete()
 		{
 			mat->operator()(i, j) = relu( mat->operator()(i, j) );
 		}
-	}
-	return;
-}
-
-Matrix Matrix::crossover(Matrix& parent)
-{
-	int nRows = this->mat->rows();
-	int nCols = this->mat->cols();
-
-	int randRow = random(0, nRows - 1);
-	int randCol = random(0, nCols - 1);
-
-	Matrix child_mat(nRows, nCols);
-
-	/*
-	* Can be optimized. Just copy initial matrix to new one and replace elems
-	*/
-	for (size_t j = 0; j < nCols; ++j)
-	{
-		for (size_t i = 0; i < nRows; ++i)
-		{
-			if ((i < randRow) || (i == randRow && j <= randCol) )
-			{
-				child_mat.set(i, j, (*mat)(i, j));
-			}
-			else
-			{
-				child_mat.set(i, j, parent.get(i, j));
-			}
-		}
-	}
-	return child_mat;
-}
-
-void Matrix::set(int row, int col, double num)
-{
-	this->mat->operator()(row, col) = num;
-	return;
-}
-
-double Matrix::get(int row, int col)
-{
-	return (*mat)(row, col);
-}
-
-void Matrix::print()
-{
-	if (mat->cols() == 1)
-	{
-		MatrixXd transposed = mat->transpose();
-		cout << std::setprecision(2) << "Transposed: " << transposed << "\n";
-	}
-	else
-	{
-		cout << std::setprecision(2) << *(this->mat) << "\n";
 	}
 	return;
 }
@@ -170,21 +116,86 @@ void Matrix::mutate(double mutation_rate)
 	return;
 }
 
-Matrix Matrix::operator*(Matrix& op1) const
+Matrix Matrix::crossover(Matrix& parent) const
 {
-	MatrixXd res = *(this->mat) *  *(op1.get_mat());
-	Matrix m(res);
-	return m;
+	int nRows = this->mat->rows();
+	int nCols = this->mat->cols();
+
+	int randRow = random(0, nRows - 1);
+	int randCol = random(0, nCols - 1);
+
+	Matrix child_mat(nRows, nCols);
+
+	/*
+	* Can be optimized. Just copy initial matrix to new one and replace elems
+	*/
+	for (size_t j = 0; j < nCols; ++j)
+	{
+		for (size_t i = 0; i < nRows; ++i)
+		{
+			if ((i < randRow) || (i == randRow && j <= randCol) )
+			{
+				child_mat.set(i, j, (*mat)(i, j));
+			}
+			else
+			{
+				child_mat.set(i, j, parent.get(i, j));
+			}
+		}
+	}
+	return child_mat;
 }
 
-Matrix Matrix::operator+(Matrix& op1) const
+void Matrix::print()
 {
-	MatrixXd res = *(this->mat) +  *(op1.get_mat());
-	Matrix m(res);
-	return m;
+	if (mat->cols() == 1)
+	{
+		MatrixXd transposed = mat->transpose();
+		cout << std::setprecision(2) << "Transposed: " << transposed << "\n";
+	}
+	else
+	{
+		cout << std::setprecision(2) << *(this->mat) << "\n";
+	}
+	return;
 }
+
+vector<double> Matrix::to_vector()
+{
+	vector<double> v1;
+	for (int i = 0; i < mat->rows() ; i++)
+	{
+		for (int j = 0; j < mat->cols(); j++)
+		{
+			v1.push_back( (*mat)(i, j) );
+		}
+	}
+	return v1;
+}
+
+Matrix* Matrix::clone() const
+{
+	Matrix* res = new Matrix(*(this->mat));
+	return res;
+}
+
+//Matrix* Matrix::operator=(const Matrix& m)
+//{
+//	
+//}
 
 const MatrixXd* Matrix::get_mat() const 
 {
 	return this->mat;
+}
+
+double Matrix::get(int row, int col)
+{
+	return (*mat)(row, col);
+}
+
+void Matrix::set(int row, int col, double num)
+{
+	this->mat->operator()(row, col) = num;
+	return;
 }

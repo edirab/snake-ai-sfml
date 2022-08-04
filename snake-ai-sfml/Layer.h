@@ -5,10 +5,17 @@ class Layer
 {
 public:
 	/*!
-	* nInputs == cols
-	* nNeurons == rows of a matrix
+	* \brief C-tor to create initial Neural Network
+	* \param[in] nInputs == cols
+	* \param[in] nNeurons == rows of a matrix
 	*/
 	Layer(int nInputs, int nNeurons);
+
+	/*!
+	* \brief
+	* C-tor to create a net from mutated and crossovered ancestors
+	*/
+	Layer(const Matrix& weights, const Matrix& biases);
 	~Layer();
 
 	/*!
@@ -20,6 +27,9 @@ public:
 	void randomize();
 
 	void print();
+
+	const Matrix& get_weights() const;
+	const Matrix& get_biases() const;
 
 private:
 

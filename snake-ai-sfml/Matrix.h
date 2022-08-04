@@ -21,18 +21,29 @@ public:
 	*/
 	Matrix(int rows, int cols);
 
+	/*! 
+	* \brief copy c-tor
+	*/
+	Matrix(const Matrix& m);
+
+	//Matrix* operator=(const Matrix& m);
+
+	/*!
+	* \brief Creates a single column matrix
+	*/
 	Matrix( vector<int>& inputs );
+
 	/*!
 	* \brief creates from Eigen MatrixXd
 	*/
 	Matrix(MatrixXd& in);
 
-	// copy c-tor
-	Matrix(const Matrix& m);
-
 	~Matrix();
 
-	vector<double> to_vector();
+	// operators
+	Matrix operator*(Matrix& op1) const;
+
+	Matrix operator+(Matrix& op1) const;
 
 	/*!
 	* \brief
@@ -56,29 +67,23 @@ public:
 	*/
 	void mutate(double mutation_rate);
 
-	Matrix operator*(Matrix& op1) const;
-
-	Matrix operator+(Matrix& op1) const;
-
-	const MatrixXd* get_mat() const ;
-
 	/*!
 	* \brief Copies N random rows from 0 to N-1.
 	* The last row is copied not fully
 
 	\return new Matrix instance
 	*/
-	Matrix crossover(Matrix& parent);
-
-	/*!
-	* RELU - rectified linear unit
-	*/
-	float relu(float x)
-	{
-       return max<float>(0,x);
-	}
+	Matrix crossover(Matrix& parent) const;
 
 	void print();
+
+	// different converstions
+	vector<double> to_vector();
+
+	Matrix* clone() const;
+
+	// TODO: review. Possible move it to private, cos clone() will be used
+	const MatrixXd* get_mat() const ;
 
 	// Used only in crossover function
 	double get(int row, int col);
@@ -88,6 +93,12 @@ protected:
 	MatrixXd* mat;
 
 private:
-	
+	/*!
+	* RELU - rectified linear unit
+	*/
+	float relu(float x)
+	{
+       return max<float>(0,x);
+	}
 };
 

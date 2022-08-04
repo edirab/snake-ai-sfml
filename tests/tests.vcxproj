@@ -30,6 +30,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="TestLayer.h" />
     <ClInclude Include="TestMatrix.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
