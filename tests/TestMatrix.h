@@ -15,14 +15,16 @@ private:
 	void test_mutate();
 
     void test_vector_ctor();
+    void test_crossover();
 };
 
 void TestMatrix::execute()
 {
-    test_random();
-    test_activate();
-    test_mutate();
-    test_vector_ctor();
+    //test_random();
+    //test_activate();
+    //test_mutate();
+    //test_vector_ctor();
+    test_crossover();
 }
 
 
@@ -59,7 +61,6 @@ void TestMatrix::test_activate()
     return;
 }
 
-
 void TestMatrix::test_mutate()
 {
     cout << "\tMatrix 5 by 10: \n";
@@ -85,4 +86,18 @@ void TestMatrix::test_vector_ctor()
     Matrix m1(ins);
 
     m1.print();
+}
+
+void TestMatrix::test_crossover()
+{
+    cout << "Crossover:\n";
+    vector<int> in1 = {1, 2, 3, 4, 5};
+    Matrix m1(in1);
+
+    vector<int> in2 = {10, 20, 30, 40, 50};
+    Matrix m2(in2);
+
+    Matrix m3 = m1.crossover(m2);
+    m3.print();
+    return;
 }

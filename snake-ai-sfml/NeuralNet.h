@@ -4,6 +4,10 @@
 
 using std::vector;
 
+/*!
+* \brief Class represents a dense neural network with
+* two fully connected hidden layers
+*/
 class NeuralNet
 {
 public:

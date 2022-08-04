@@ -1,7 +1,7 @@
 #include "Matrix.h"
 
 ///////////////////
-double random(int from, int to)
+int random(int from, int to)
 {
 	std::random_device rd;
 	std::mt19937 rand_gen( rd() );
@@ -76,15 +76,15 @@ void Matrix::activete()
 	return;
 }
 
-Matrix* Matrix::crossover(Matrix& parent)
+Matrix Matrix::crossover(Matrix& parent)
 {
 	int nRows = this->mat->rows();
 	int nCols = this->mat->cols();
 
-	int randRow = random(0, nRows);
-	int randCol = random(0, nCols);
+	int randRow = random(0, nRows - 1);
+	int randCol = random(0, nCols - 1);
 
-	Matrix* child_mat = new Matrix(nRows, nCols);
+	Matrix child_mat(nRows, nCols);
 
 	/*
 	* Can be optimized. Just copy initial matrix to new one and replace elems
@@ -95,12 +95,11 @@ Matrix* Matrix::crossover(Matrix& parent)
 		{
 			if ((i < randRow) || (i == randRow && j <= randCol) )
 			{
-				child_mat->set(i, j, this->mat->operator()(i, j));
+				child_mat.set(i, j, (*mat)(i, j));
 			}
-			// TODO: finish
 			else
 			{
-				//child_mat->set(i, j, //parent.oper (i, j));
+				child_mat.set(i, j, parent.get(i, j));
 			}
 		}
 	}
@@ -111,6 +110,11 @@ void Matrix::set(int row, int col, double num)
 {
 	this->mat->operator()(row, col) = num;
 	return;
+}
+
+double Matrix::get(int row, int col)
+{
+	return (*mat)(row, col);
 }
 
 void Matrix::print()

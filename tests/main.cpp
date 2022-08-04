@@ -61,11 +61,10 @@ int main()
     //test_eigen_copy_ctor();
 
     TestMatrix tm;
-    //tm.execute();
-    //test_process();
+    tm.execute();
     //test_process();
     
-    test_Net();
+    //test_Net();
 
     return 0;
 }

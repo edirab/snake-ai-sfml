@@ -62,7 +62,13 @@ public:
 
 	const MatrixXd* get_mat() const ;
 
-	Matrix* crossover(Matrix& parent);
+	/*!
+	* \brief Copies N random rows from 0 to N-1.
+	* The last row is copied not fully
+
+	\return new Matrix instance
+	*/
+	Matrix crossover(Matrix& parent);
 
 	/*!
 	* RELU - rectified linear unit
@@ -74,6 +80,8 @@ public:
 
 	void print();
 
+	// Used only in crossover function
+	double get(int row, int col);
 	void set(int row, int col, double num);
 
 protected:
