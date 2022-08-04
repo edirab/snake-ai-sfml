@@ -58,14 +58,17 @@ Changes:
 
 ### TODO: 
 
-- Thorely test snake api
-- Add class Net
+- Thorely test snake api. Make a separape project?
+- design fitness function
+- how to dump a net to file and resore back?
+
 - Design Population class
-- solve Eigen randomizing issues
-- dont forget to add destructors everywhere
+- solve Eigen randomizing issues. Test
 
 
 ### Done:
++ Add class Net
++ dont forget to add destructors everywhere
 + Rename project to Snake-AI-SFML
 + Develop an API to get inputs for a neural network:
 	8 rays from snake's head, eacn ray gievs 3 numbers:

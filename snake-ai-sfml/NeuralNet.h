@@ -11,7 +11,12 @@ public:
 
 	vector<double> pass(vector<int>& inputs);
 
+	void calc_fitness();
+
 private:
+
+	float fitness{0};
+
 	Layer hidden1;
 	Layer hidden2;
 	Layer out;

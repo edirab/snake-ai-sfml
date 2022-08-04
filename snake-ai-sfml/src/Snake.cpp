@@ -76,23 +76,26 @@ void Snake::move()
 	collision(head);
 
 	//
-	if (is_alive && food.position == head)
+	if (is_alive)
 	{
-		cout << "Collect food\n";
-		food.eaten = true;
-		food.spawn( this->get_body() );
-		food.draw();
-	}
-	else
-	{
-		body.pop_back();
+		if(food.position == head)
+		{
+			cout << "Collect food\n";
+			food.eaten = true;
+			food.spawn( this->get_body() );
+			food.draw();
+		}
+		else
+		{
+			body.pop_back();
+		}
 	}
 	return;
 }
 
 void Snake::collision(Point& head_new)
 {
-	if (head_new.y < 0 || head_new.y > params.height || head_new.x < 0 || head_new.x > params.width)
+	if (head_new.y < 0 || head_new.y > params.height - 1 || head_new.x < 0 || head_new.x > params.width - 1)
 	{
 		this->is_alive = false;
 	}

@@ -21,7 +21,7 @@ void Game::loop()
     vector<int> inputs;
 
     float period_ms = 1 / this->moves_per_second * 1000 ;
-    cout << period_ms << "\n";
+    //cout << period_ms << "\n";
     clock->restart();
 
     long total_frames = 0;
@@ -29,18 +29,18 @@ void Game::loop()
     while (window->isOpen())
     {
         processEvents(snake);
-        if (snake.isAlive() )
+
+        if (!is_paused && clock->getElapsedTime().asMilliseconds() > period_ms)
         {
-            if (!is_paused && clock->getElapsedTime().asMilliseconds() > period_ms)
+            //cout << "Total frames: " << total_frames << " " << clock->getElapsedTime().asMilliseconds() << "\n";
+            clock->restart();
+            window->clear();
+
+            food.spawn( snake.get_body() );
+            snake.move();
+
+            if (snake.isAlive() )
             {
-                //cout << "Total frames: " << total_frames << " " << clock->getElapsedTime().asMilliseconds() << "\n";
-                clock->restart();
-                window->clear();
-
-                food.spawn( snake.get_body() );
-                snake.move();
-
-
                 map.draw();
                 food.draw();
                 snake.draw(window);
@@ -52,12 +52,12 @@ void Game::loop()
                 snake.get_ai_inputs(inputs);
                 print_ai_inputs(inputs);
             }
-        }
-        else
-        {
-            // reset game
-            snake.reset();
-            window->setTitle("Score: 0");
+            else
+            {
+                // reset game
+                snake.reset();
+                window->setTitle("Score: 0");
+            }
         }
     }
 	return;
