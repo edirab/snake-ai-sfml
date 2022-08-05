@@ -5,6 +5,8 @@
 #include "../snake-ai-sfml/NeuralNet.h"
 #include "TestMatrix.h"
 #include "TestLayer.h"
+#include "TestNeuralNet.h"
+#include "TestSnakeAI.h"
 
 using std::cout;
 
@@ -23,21 +25,6 @@ void test_eigen_copy_ctor()
     return;
 }
 
-
-
-void test_Net()
-{
-    vector<int> inputs;
-    for (int i = 0; i < 26; ++i)
-    {
-        inputs.push_back(i);
-    }
-
-    NeuralNet net(2, 8, 26, 4);
-    auto res = net.pass(inputs);
-    return;
-}
-
 int main()
 {
     //test_eigen_copy_ctor();
@@ -48,8 +35,14 @@ int main()
     
     //test_Net();
 
-    TestLayer tl;
-    tl.crossover();
+    //TestLayer tl;
+    //tl.crossover();
+
+    //TestNeuralNet tn;
+    //tn.pass();
+
+    TestSnakeAI snake_agent;
+    snake_agent.run();
 
     return 0;
 }

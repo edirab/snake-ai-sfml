@@ -24,9 +24,9 @@ enum class Direction { Up, Right, Left, Down };
 class Snake
 {
 	public:
-		explicit Snake(MapParams params, Food& f, Point starting_position, Direction d);
+		explicit Snake(sf::RenderWindow* window, MapParams params, Food& f, Point starting_position, Direction d);
 
-		void draw(sf::RenderWindow* window);
+		void draw();
 		
 		/*!
 		* \brief moves snake one block in a set direction,
@@ -47,6 +47,8 @@ class Snake
 		void get_ai_inputs(vector<int>& inputs);
 
 	private:
+		sf::RenderWindow* window{nullptr};
+
 		MapParams params;
 		Food& food;
 		Direction d{ Direction::Up };

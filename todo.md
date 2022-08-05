@@ -68,6 +68,12 @@ Changes:
 	- NeuralNet: c-tor from layers and crossover method were implemented
 	- Refactoring of tests/main.cpp
 
+Changes:
+	- Added SnakeAI class
+	- Added test for SnakeAI
+	- Slightly changes signature of Snake's methods
+	- Added copy c-tor for NeuralNet, tests refactored
+
 ### TODO: 
 
 - Thorely test snake api. Make a separape project?
@@ -75,6 +81,7 @@ Changes:
 - how to dump a net to file and resore back?
 
 - Design Population class
+- Design SnakeAI class: snake itself, neural brain, numreb of steps, fitness
 - solve Eigen randomizing issues. Test
 
 

@@ -2,7 +2,7 @@
 
 #include "Food.h"
 
-Food::Food() 
+Food::Food() : rp(20, 20, true)
 {
 	position.x = 1;
 	position.y = 0;

@@ -26,8 +26,8 @@ public:
 	~Layer();
 
 	/*!
-	* \brief
-	* Implements a classic W * x + b equation
+	* \brief Implements a classic W * x + b equation
+	* \return Activated matrix
 	*/
 	Matrix process( MatrixXd input );
 

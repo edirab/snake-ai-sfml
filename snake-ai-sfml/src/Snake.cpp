@@ -1,12 +1,12 @@
 #include "Snake.h"
 
-Snake::Snake(MapParams params, Food& f, Point starting_position, Direction d) :
-	params(params), food(f), d(d)
+Snake::Snake(sf::RenderWindow* window, MapParams params, Food& f, Point starting_position, Direction d) :
+	window(window), params(params), food(f), d(d)
 {
 	body.push_back( Point{ starting_position } );
 }
 
-void Snake::draw(sf::RenderWindow* window)
+void Snake::draw()
 {
 	int w = params.width;
 	int h = params.height;

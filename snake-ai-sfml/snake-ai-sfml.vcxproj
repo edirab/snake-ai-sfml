@@ -30,11 +30,13 @@
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="NeuralNet.h" />
+    <ClInclude Include="SnakeAI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="NeuralNet.cpp" />
+    <ClCompile Include="SnakeAI.cpp" />
     <ClCompile Include="src\Food.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp">

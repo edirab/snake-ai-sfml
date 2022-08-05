@@ -11,13 +11,22 @@ using std::vector;
 class NeuralNet
 {
 public:
-	NeuralNet(int nHiddenLayers, int nNeurons, int nInputs, int nOutputs);
+
+	/*!
+	* \brief Default c-tor
+	*/
+	NeuralNet(int nHiddenLayers = 2, int nNeurons = 16, int nInputs = 26, int nOutputs = 4);
 
 	/*!
 	* \brief
 	* Creates net from crossovered and mutated layers
 	*/
 	NeuralNet(const Layer& hidden1, const Layer& hidden2, const Layer& out );
+
+	/*!
+	* \brief Copy c-tor
+	*/
+	NeuralNet(const NeuralNet &net);
 
 	/*!
 	* \brief Makes a full pass on neural network
@@ -31,8 +40,6 @@ public:
 	* \return reference to a newell allocated Net object
 	*/
 	NeuralNet& crossover(const NeuralNet& parent);
-
-	void calc_fitness();
 
 private:
 

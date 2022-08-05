@@ -15,7 +15,7 @@ void Game::loop()
 {
     MapParams params;
     Food food{window, params, 5, 5};
-    Snake snake(params, food, Point(10, 10), Direction::Up);
+    Snake snake(window, params, food, Point(10, 10), Direction::Up);
     Map map{window, params};
 
     vector<int> inputs;
@@ -43,7 +43,7 @@ void Game::loop()
             {
                 map.draw();
                 food.draw();
-                snake.draw(window);
+                snake.draw();
                 window->display();    
                 total_frames++;
                 
