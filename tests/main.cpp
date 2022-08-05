@@ -23,26 +23,7 @@ void test_eigen_copy_ctor()
     return;
 }
 
-void test_process()
-{
-    int nInputs = 3;
-    int nNuerons = 2;
 
-    Layer layer0(3, 2);
-    layer0.randomize();
-
-    Eigen::MatrixXd inputs(3,1);
-    inputs << 1,
-              2, 
-              3;
-
-    layer0.print();
-
-    cout << "\n res: \n"; 
-    Matrix res =  layer0.process(inputs);
-    res.print(); 
-    return;
-}
 
 void test_Net()
 {

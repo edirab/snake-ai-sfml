@@ -73,20 +73,24 @@ public:
 
 	\return new Matrix instance
 	*/
-	Matrix crossover(Matrix& parent) const;
+	Matrix crossover(const Matrix& parent) const;
 
 	void print();
 
 	// different converstions
 	vector<double> to_vector();
 
+	/*!
+	* \brief Creates a copy of current Matrix object
+	* \return a pointer to newly allocated memory
+	*/
 	Matrix* clone() const;
 
 	// TODO: review. Possible move it to private, cos clone() will be used
 	const MatrixXd* get_mat() const ;
 
 	// Used only in crossover function
-	double get(int row, int col);
+	double get(int row, int col) const;
 	void set(int row, int col, double num);
 
 protected:

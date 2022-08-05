@@ -13,6 +13,12 @@ Layer::Layer(const Matrix& weights, const Matrix& biases)
 	this->biases = biases.clone();
 }
 
+Layer::Layer(const Layer& in)
+{
+	this->weights = in.get_weights().clone();
+	this->biases = in.get_biases().clone();
+}
+
 Layer::~Layer()
 {
 	delete weights;

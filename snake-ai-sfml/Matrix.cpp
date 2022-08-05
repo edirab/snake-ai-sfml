@@ -116,7 +116,7 @@ void Matrix::mutate(double mutation_rate)
 	return;
 }
 
-Matrix Matrix::crossover(Matrix& parent) const
+Matrix Matrix::crossover(const Matrix& parent) const
 {
 	int nRows = this->mat->rows();
 	int nCols = this->mat->cols();
@@ -189,7 +189,7 @@ const MatrixXd* Matrix::get_mat() const
 	return this->mat;
 }
 
-double Matrix::get(int row, int col)
+double Matrix::get(int row, int col) const
 {
 	return (*mat)(row, col);
 }

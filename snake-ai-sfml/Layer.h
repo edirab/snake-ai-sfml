@@ -13,9 +13,16 @@ public:
 
 	/*!
 	* \brief
-	* C-tor to create a net from mutated and crossovered ancestors
+	* C-tor to create a layer from mutated and crossovered ancestors
 	*/
 	Layer(const Matrix& weights, const Matrix& biases);
+
+	/*!
+	* \brief
+	* C-tor to create a layer from mutated and crossovered ancestors
+	*/
+	Layer(const Layer& in);
+
 	~Layer();
 
 	/*!

@@ -62,6 +62,12 @@ Changes:
 	- Added TestLayer class, crossover tested. To be updated
 	- Methods in Matrix reorganized
 
+Changes:
+	- Added copy c-top to Layer class
+	- Added const qualifiers to some Matrix methods
+	- NeuralNet: c-tor from layers and crossover method were implemented
+	- Refactoring of tests/main.cpp
+
 ### TODO: 
 
 - Thorely test snake api. Make a separape project?
