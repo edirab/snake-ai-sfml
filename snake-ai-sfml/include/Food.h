@@ -13,8 +13,17 @@ using std::list;
 class Food
 {
 public:
-	Food();
+	/*!
+	* \brief Default c-tor
+	* \details sets position to 1, 0 cos right no in c-tor impossible 
+	* to determine snake's body. spawn() should be called after
+	*/
+	Food( bool true_random = true );
 	explicit Food(int x, int y);
+
+	/*!
+	* \brief Calculates new food location taking into consideration snake's body
+	*/
 	void spawn(const list<Point>* );
 	void draw();
 

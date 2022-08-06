@@ -31,7 +31,7 @@ class Snake
 		* \brief Minimal c-tor
 		* \details Does nothing only initializes Food& ref. Call randomize() explicitly
 		*/
-		Snake(Food& f) : food(f) {};
+		Snake(Food& f);
 
 		explicit Snake(Food& f, Point starting_position, Direction d);
 

@@ -11,7 +11,7 @@ class Population
 {
 public:
 
-	Population(int n_species);
+	Population(int n_species = 3);
 
 	void simulate();
 

@@ -1,5 +1,11 @@
 #include "Snake.h"
 
+Snake::Snake(Food& f) : food(f) 
+{
+	window = GameWindow::get();
+	randomize(true);
+}
+
 Snake::Snake(Food& f, Point starting_position, Direction d) :
 	food(f), d(d)
 {
@@ -158,6 +164,9 @@ void Snake::randomize(bool true_random)
 	body.clear();
 	body.push_back( rp.generate() );
 	is_alive = true;
+
+	// TODO: randomize direction 
+	// (later, when we check that initially generated Eigen matrices are different)
 
 	food.spawn(this->get_body());
 	return;

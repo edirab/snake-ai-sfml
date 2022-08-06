@@ -2,8 +2,9 @@
 
 #include "Food.h"
 
-Food::Food() : rp(20, 20, true)
+Food::Food( bool true_random ) : rp(params.height, params.width, !true_random)
 {
+	window = GameWindow::get();
 	position.x = 1;
 	position.y = 0;
 }
@@ -15,7 +16,6 @@ Food::Food(int x, int y) :
 	position.x = x;
 	position.y = y;
 }
-
 
 void Food::spawn(const list<Point>* body)
 {

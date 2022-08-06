@@ -81,21 +81,24 @@ Changes:
 	- Added another c-tor and randomize() method to Snake class
 	- Added test to Population class
 
-### TODO: 
-
-- Thorely test snake api. Make a separape project?
-- SnakeAI: generate random food pos, snake pos and snake direction.
-	Add food c-tor which accepts color,
-	Add paramete wether to draw a snake or not
-	This will allow to test several SnakeAI objects visually
+Changes:
+	- First succesful run of TestPopulation!
 	
+
+### TODO: 
+- Thorely test snake api. Make a separape project?
+- SnakeAI: generate random direction.
+	Add food c-tor which accepts color,
+	
+- Add paramete wether to draw a snake or not
 - how to dump a net to file and resore back?
-- Create default c-tor for Food
-- Design Population class
 - solve Eigen randomizing issues. Test
 - Add multithreading for quick computations
 
 ### Done:
++ Create default c-tor for Food
++ SnakeAI: generate random food pos, snake pos
++ Design Population class
 + Too many parameters in c-tors: Make singletons for MapPArams and game window
 + design fitness function
 + Design SnakeAI class: snake itself, neural brain, numreb of steps, fitness

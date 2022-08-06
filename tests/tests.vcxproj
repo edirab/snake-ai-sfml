@@ -22,6 +22,7 @@
     <ClCompile Include="..\snake-ai-sfml\Layer.cpp" />
     <ClCompile Include="..\snake-ai-sfml\Matrix.cpp" />
     <ClCompile Include="..\snake-ai-sfml\NeuralNet.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\Population.cpp" />
     <ClCompile Include="..\snake-ai-sfml\SnakeAI.cpp" />
     <ClCompile Include="..\snake-ai-sfml\src\Food.cpp" />
     <ClCompile Include="..\snake-ai-sfml\src\GameWindow.cpp" />

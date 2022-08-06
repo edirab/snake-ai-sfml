@@ -1,12 +1,13 @@
 #include "Population.h"
 
-Population::Population(int n_species = 3) 
+Population::Population(int n_species) 
 	: number_of_species(n_species)
 {
 	//agents.resize(number_of_species);
 	for (int i = 0; i < number_of_species; ++i)
 	{
 		SnakeAI* agent = new SnakeAI();
+		agents.push_back(agent);
 	}
 }
 
@@ -33,10 +34,11 @@ void Population::simulate()
             clock->restart();
             window->clear();
 
-			for (int i = 0; i < number_of_species; ++i)
+			for (int i = 0; i < agents.size(); ++i)
 			{
 				agents[i]->step();
 			}
+			window->display();
 		}
 	}
 	return;

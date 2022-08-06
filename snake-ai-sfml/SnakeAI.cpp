@@ -1,13 +1,16 @@
 #include "SnakeAI.h"
 
-SnakeAI::SnakeAI( )
-	: snake(food)
+SnakeAI::SnakeAI()
+	: 
+		window(GameWindow::get()),
+		snake(food)
 {
-	snake.randomize();
+	window->setFramerateLimit(60);
 }
 
 SnakeAI::SnakeAI(
-	Food f, Point startint_position, Direction d) : 
+	Food f, Point startint_position, Direction d) 
+	: 
 		window(GameWindow::get()), 
 		food(10, 10),
 		snake(f, startint_position, d)
@@ -23,20 +26,6 @@ SnakeAI::SnakeAI(
 { 
 	window->setFramerateLimit(60);
 }
-
-
-//void SnakeAI::play()
-//{
-//	while (snake.isAlive() && n_moves_left)
-//	{
-//		food.spawn(snake.get_body());
-//		this->make_decision();
-//		snake.move();
-//
-//		n_moves_left--;
-//	}
-//	return;
-//}
 
 float SnakeAI::fitness()
 {
@@ -69,8 +58,7 @@ void SnakeAI::step()
 			//map.draw();
 			food.draw();
 			snake.draw();
-			window->display();
-		}   
+		}
 		n_moves_left--;
     }
 	return;
