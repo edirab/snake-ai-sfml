@@ -5,7 +5,15 @@
 class RandomPoint
 {
 public:
+	/*!
+	* \breif Default c-tor. Does nothing
+	*/
 	RandomPoint();
+
+	/*!
+	* \brief
+	* \param[in] debug if set will generate same points from run to run
+	*/
 	explicit RandomPoint(int n_rows, int n_cols, bool debug);
 	Point generate();
 

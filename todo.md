@@ -74,18 +74,29 @@ Changes:
 	- Slightly changes signature of Snake's methods
 	- Added copy c-tor for NeuralNet, tests refactored
 
+Changes:
+	- Added Population class
+	- Added step() method to Snake class 
+		in order to simulate several AIs simultaneously
+	- Added another c-tor and randomize() method to Snake class
+	- Added test to Population class
+
 ### TODO: 
 
 - Thorely test snake api. Make a separape project?
+- SnakeAI: generate random food pos, snake pos and snake direction.
+	Add food c-tor which accepts color,
+	Add paramete wether to draw a snake or not
+	This will allow to test several SnakeAI objects visually
+	
 - how to dump a net to file and resore back?
-- Too many parameters in c-tors: 
-	Make singletons for MapPArams and game window
-	Create default c-tor for Food
+- Create default c-tor for Food
 - Design Population class
 - solve Eigen randomizing issues. Test
 - Add multithreading for quick computations
 
 ### Done:
++ Too many parameters in c-tors: Make singletons for MapPArams and game window
 + design fitness function
 + Design SnakeAI class: snake itself, neural brain, numreb of steps, fitness
 + Add class Net

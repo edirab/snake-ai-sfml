@@ -41,6 +41,7 @@
     <ClInclude Include="TestLayer.h" />
     <ClInclude Include="TestMatrix.h" />
     <ClInclude Include="TestNeuralNet.h" />
+    <ClInclude Include="TestPopulation.h" />
     <ClInclude Include="TestSnakeAI.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

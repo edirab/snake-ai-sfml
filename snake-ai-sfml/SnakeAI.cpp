@@ -1,5 +1,11 @@
 #include "SnakeAI.h"
 
+SnakeAI::SnakeAI( )
+	: snake(food)
+{
+	snake.randomize();
+}
+
 SnakeAI::SnakeAI(
 	Food f, Point startint_position, Direction d) : 
 		window(GameWindow::get()), 
@@ -50,10 +56,28 @@ void SnakeAI::draw()
 	snake.draw();
 }
 
+void SnakeAI::step()
+{
+	if (snake.isAlive() && n_moves_left)
+    {
+		food.spawn( snake.get_body() );
+		this->make_decision();
+		snake.move();
+
+		if (m_draw)
+		{
+			//map.draw();
+			food.draw();
+			snake.draw();
+			window->display();
+		}   
+		n_moves_left--;
+    }
+	return;
+}
+
 void SnakeAI::play()
 {
-	//Map map{window, params};
-
 	sf::Clock* clock = new sf::Clock();
 	clock->restart();
 
@@ -73,7 +97,6 @@ void SnakeAI::play()
 
         if (clock->getElapsedTime().asMilliseconds() > period_ms)
         {
-            //cout << "Total frames: " << total_frames << " " << clock->getElapsedTime().asMilliseconds() << "\n";
             clock->restart();
             window->clear();
 
@@ -87,19 +110,11 @@ void SnakeAI::play()
                 food.draw();
                 snake.draw();
                 window->display();    
-                //total_frames++;
                 
-                //update_score(snake.get_length() - 1);
-                //snake.get_ai_inputs(inputs);
-                //print_ai_inputs(inputs);
-
 				n_moves_left--;
             }
             else
             {
-                // reset game
-                //snake.reset();
-                //window->setTitle("Score: 0");
             }
         }
     }

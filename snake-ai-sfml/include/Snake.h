@@ -26,6 +26,13 @@ enum class Direction { Up, Right, Left, Down };
 class Snake
 {
 	public:
+
+		/*!
+		* \brief Minimal c-tor
+		* \details Does nothing only initializes Food& ref. Call randomize() explicitly
+		*/
+		Snake(Food& f) : food(f) {};
+
 		explicit Snake(Food& f, Point starting_position, Direction d);
 
 		void draw();
@@ -44,7 +51,15 @@ class Snake
 		void set_direction( const Direction& dir);
 		Direction get_direction() const;
 
+		/*!
+		* \brief resets snake's position to the center. Clears body
+		*/
 		void reset();
+
+		/*!
+		* \brief clears body, randomizes starting position and food position
+		*/
+		void randomize(bool true_random = false);
 
 		void get_ai_inputs(vector<int>& inputs);
 

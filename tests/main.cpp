@@ -7,6 +7,7 @@
 #include "TestLayer.h"
 #include "TestNeuralNet.h"
 #include "TestSnakeAI.h"
+#include "TestPopulation.h"
 
 using std::cout;
 
@@ -41,8 +42,11 @@ int main()
     //TestNeuralNet tn;
     //tn.pass();
 
-    TestSnakeAI snake_agent;
-    snake_agent.run();
+    //TestSnakeAI snake_agent;
+    //snake_agent.run();
+
+    TestPopulation pop;
+    pop.run_simulation();
 
     return 0;
 }

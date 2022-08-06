@@ -152,6 +152,17 @@ void Snake::reset()
 	return;
 }
 
+void Snake::randomize(bool true_random)
+{
+	RandomPoint rp(params.height, params.width, !true_random);
+	body.clear();
+	body.push_back( rp.generate() );
+	is_alive = true;
+
+	food.spawn(this->get_body());
+	return;
+}
+
 const list<Point>* Snake::get_body() const
 {
 	return (const list<Point>*) &body;
