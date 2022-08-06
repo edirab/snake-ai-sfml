@@ -1,11 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-
-//#include "Utilities.h"
-//#include "Map.h"
-//#include "Snake.h"
 #include "Game.h"
-//#include "tests.h"
 
 
 void game()

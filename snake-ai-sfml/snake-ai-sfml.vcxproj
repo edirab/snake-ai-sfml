@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="include\Food.h" />
     <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\GameWindow.h" />
     <ClInclude Include="include\Map.h" />
     <ClInclude Include="include\MapParams.h" />
     <ClInclude Include="include\Point.h" />
@@ -39,6 +40,7 @@
     <ClCompile Include="SnakeAI.cpp" />
     <ClCompile Include="src\Food.cpp" />
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\GameWindow.cpp" />
     <ClCompile Include="src\main.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Projects\snake-ai-sfml\snake-ai-sfml\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>

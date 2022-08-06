@@ -4,7 +4,7 @@
 #include <chrono>
 #include <string>
 
-
+#include "GameWindow.h"
 #include "Utilities.h"
 #include "Food.h"
 #include "Map.h"
