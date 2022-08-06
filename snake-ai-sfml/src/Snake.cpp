@@ -1,7 +1,7 @@
 #include "Snake.h"
 
-Snake::Snake(sf::RenderWindow* window, MapParams params, Food& f, Point starting_position, Direction d) :
-	window(window), params(params), food(f), d(d)
+Snake::Snake(sf::RenderWindow* window, Food& f, Point starting_position, Direction d) :
+	window(window), food(f), d(d)
 {
 	body.push_back( Point{ starting_position } );
 }

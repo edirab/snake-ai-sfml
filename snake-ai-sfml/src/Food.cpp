@@ -8,9 +8,8 @@ Food::Food() : rp(20, 20, true)
 	position.y = 0;
 }
 
-Food::Food(sf::RenderWindow* window, MapParams params, int x, int y) : 
+Food::Food(sf::RenderWindow* window, int x, int y) : 
 		window(window),
-		params(params),  
 		rp(params.height, params.width, false)
 {
 	position.x = x;

@@ -16,12 +16,12 @@ class SnakeAI
 public:
 	SnakeAI(
 		sf::RenderWindow* window,
-		MapParams params, Food f, Point startint_position, Direction d
+		Food f, Point startint_position, Direction d
 	);
 
 	SnakeAI(
 		sf::RenderWindow* window,
-		MapParams& params, Food &f, Point& startint_position, Direction d,
+		Food &f, Point& startint_position, Direction d,
 		NeuralNet& net
 	);
 

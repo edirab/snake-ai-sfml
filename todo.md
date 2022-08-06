@@ -77,15 +77,17 @@ Changes:
 ### TODO: 
 
 - Thorely test snake api. Make a separape project?
-- design fitness function
 - how to dump a net to file and resore back?
-
+- Too many parameters in c-tors: 
+	Make singletons for MapPArams and game window
+	Create default c-tor for Food
 - Design Population class
-- Design SnakeAI class: snake itself, neural brain, numreb of steps, fitness
 - solve Eigen randomizing issues. Test
-
+- Add multithreading for quick computations
 
 ### Done:
++ design fitness function
++ Design SnakeAI class: snake itself, neural brain, numreb of steps, fitness
 + Add class Net
 + dont forget to add destructors everywhere
 + Rename project to Snake-AI-SFML

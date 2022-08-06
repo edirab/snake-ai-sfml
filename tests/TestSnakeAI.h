@@ -16,11 +16,17 @@ void TestSnakeAI::run()
 	sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(800, 800), "SFML works!");
     window->setFramerateLimit(60);
 
-	MapParams params;
-	Food food{window, params, 5, 5};
+	//sf::Event event;
+ //   while (window->pollEvent(event))
+ //   {
+ //       if (event.type == sf::Event::Closed)
+ //           window->close();
+ //   }
+
+	Food food{window, 5, 5};
 
 
-	SnakeAI snake_agent( window, params, food, Point{10, 10}, Direction::Up );
+	SnakeAI snake_agent( window, food, Point{10, 10}, Direction::Up );
 	snake_agent.play();
 
 }

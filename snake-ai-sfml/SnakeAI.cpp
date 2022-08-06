@@ -2,17 +2,17 @@
 
 SnakeAI::SnakeAI(
 	sf::RenderWindow* window, 
-	MapParams params, Food f, Point startint_position, Direction d) : 
+	Food f, Point startint_position, Direction d) : 
 		window(window), 
-		food(window, params, 10, 10),
-		snake(window, params, f, startint_position, d)
+		food(window, 10, 10),
+		snake(window, f, startint_position, d)
 { }
 
 SnakeAI::SnakeAI(
 	sf::RenderWindow* window,
-	MapParams& params, Food &f, Point& startint_position, Direction d,
+	Food &f, Point& startint_position, Direction d,
 	NeuralNet& net) 
-	: window(window), snake(window, params, f, startint_position, d),
+	: window(window), snake(window, f, startint_position, d),
 	  brain(net)
 { }
 
@@ -58,16 +58,16 @@ void SnakeAI::play()
 	float moves_per_second{4};
 	float period_ms = 1 / moves_per_second * 1000 ;
 
-	sf::Event event;
-    while (window->pollEvent(event))
-    {
-        if (event.type == sf::Event::Closed)
-            window->close();
-    }
 
 	while (window->isOpen())
     {
         //processEvents(snake);
+		sf::Event event;
+		while (window->pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window->close();
+		}
 
         if (clock->getElapsedTime().asMilliseconds() > period_ms)
         {
@@ -101,6 +101,8 @@ void SnakeAI::play()
             }
         }
     }
+	 window->close();
+	 return;
 }
 
 void SnakeAI::make_decision()

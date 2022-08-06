@@ -12,7 +12,7 @@ class Food
 {
 public:
 	Food();
-	explicit Food(sf::RenderWindow* window, MapParams params, int x, int y);
+	explicit Food(sf::RenderWindow* window, int x, int y);
 	void spawn(const list<Point>* );
 	void draw();
 

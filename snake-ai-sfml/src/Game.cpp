@@ -14,8 +14,8 @@ void Game::init()
 void Game::loop()
 {
     MapParams params;
-    Food food{window, params, 5, 5};
-    Snake snake(window, params, food, Point(10, 10), Direction::Up);
+    Food food{window, 5, 5};
+    Snake snake(window, food, Point(10, 10), Direction::Up);
     Map map{window, params};
 
     vector<int> inputs;

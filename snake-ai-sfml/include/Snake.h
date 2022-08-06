@@ -24,7 +24,7 @@ enum class Direction { Up, Right, Left, Down };
 class Snake
 {
 	public:
-		explicit Snake(sf::RenderWindow* window, MapParams params, Food& f, Point starting_position, Direction d);
+		explicit Snake(sf::RenderWindow* window, Food& f, Point starting_position, Direction d);
 
 		void draw();
 		
