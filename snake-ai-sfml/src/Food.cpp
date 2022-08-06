@@ -8,10 +8,10 @@ Food::Food() : rp(20, 20, true)
 	position.y = 0;
 }
 
-Food::Food(sf::RenderWindow* window, int x, int y) : 
-		window(window),
+Food::Food(int x, int y) : 
 		rp(params.height, params.width, false)
 {
+	window = GameWindow::get();
 	position.x = x;
 	position.y = y;
 }

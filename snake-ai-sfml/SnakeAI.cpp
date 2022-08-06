@@ -1,20 +1,22 @@
 #include "SnakeAI.h"
 
 SnakeAI::SnakeAI(
-	sf::RenderWindow* window, 
 	Food f, Point startint_position, Direction d) : 
-		window(window), 
-		food(window, 10, 10),
-		snake(window, f, startint_position, d)
-{ }
+		window(GameWindow::get()), 
+		food(10, 10),
+		snake(f, startint_position, d)
+{
+	window->setFramerateLimit(60);
+}
 
 SnakeAI::SnakeAI(
-	sf::RenderWindow* window,
 	Food &f, Point& startint_position, Direction d,
 	NeuralNet& net) 
-	: window(window), snake(window, f, startint_position, d),
+	: window(GameWindow::get()), snake(f, startint_position, d),
 	  brain(net)
-{ }
+{ 
+	window->setFramerateLimit(60);
+}
 
 
 //void SnakeAI::play()

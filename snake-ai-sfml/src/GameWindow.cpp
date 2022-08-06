@@ -16,16 +16,3 @@ sf::RenderWindow* GameWindow::get()
 		return window;
 	}
 }
-
-//sf::RenderWindow* GameWindow::get()
-//{
-//	if (window == nullptr)
-//	{
-//		window = new sf::RenderWindow(sf::VideoMode(800, 800), "SFML works!");
-//		return window;
-//	}
-//	else
-//	{
-//		return window;
-//	}
-//}

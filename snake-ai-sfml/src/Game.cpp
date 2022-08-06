@@ -3,7 +3,7 @@
 
 void Game::init()
 {
-    window = new sf::RenderWindow(sf::VideoMode(800, 800), "SFML works!");
+    window = GameWindow::get();
     window->setFramerateLimit(this->fps);
 
 	clock = new sf::Clock();
@@ -13,10 +13,9 @@ void Game::init()
 
 void Game::loop()
 {
-    MapParams params;
-    Food food{window, 5, 5};
-    Snake snake(window, food, Point(10, 10), Direction::Up);
-    Map map{window, params};
+    Food food{5, 5};
+    Snake snake(food, Point(10, 10), Direction::Up);
+    Map map{};
 
     vector<int> inputs;
 

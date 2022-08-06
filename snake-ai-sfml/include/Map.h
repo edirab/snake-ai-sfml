@@ -2,6 +2,8 @@
 #include "Utilities.h"
 #include <iostream>
 #include "MapParams.h"
+#include "GameWindow.h"
+
 #include <SFML/Graphics.hpp>
 
 using std::cout;
@@ -9,7 +11,8 @@ using std::cout;
 class Map
 {
 public:
-	explicit Map(sf::RenderWindow* window, MapParams params);
+	explicit Map();
+	explicit Map(MapParams params);
 
 	/*!
 	* \brief Draws grid

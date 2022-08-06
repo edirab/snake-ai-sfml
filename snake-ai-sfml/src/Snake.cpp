@@ -1,8 +1,9 @@
 #include "Snake.h"
 
-Snake::Snake(sf::RenderWindow* window, Food& f, Point starting_position, Direction d) :
-	window(window), food(f), d(d)
+Snake::Snake(Food& f, Point starting_position, Direction d) :
+	food(f), d(d)
 {
+	window = GameWindow::get();
 	body.push_back( Point{ starting_position } );
 }
 

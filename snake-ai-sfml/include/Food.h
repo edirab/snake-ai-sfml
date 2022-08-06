@@ -1,6 +1,8 @@
 #pragma once
 #include "RamdomPoint.h"
 #include "MapParams.h"
+#include "GameWindow.h"
+
 #include <SFML/Graphics.hpp>
 #include <list>
 #include <iostream>
@@ -12,7 +14,7 @@ class Food
 {
 public:
 	Food();
-	explicit Food(sf::RenderWindow* window, int x, int y);
+	explicit Food(int x, int y);
 	void spawn(const list<Point>* );
 	void draw();
 

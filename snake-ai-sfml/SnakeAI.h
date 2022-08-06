@@ -15,12 +15,10 @@ class SnakeAI
 {
 public:
 	SnakeAI(
-		sf::RenderWindow* window,
 		Food f, Point startint_position, Direction d
 	);
 
 	SnakeAI(
-		sf::RenderWindow* window,
 		Food &f, Point& startint_position, Direction d,
 		NeuralNet& net
 	);

@@ -6,6 +6,8 @@
 #include <iostream>
 
 #include <SFML/Graphics.hpp>
+
+#include "GameWindow.h"
 #include "Food.h"
 #include "Point.h"
 #include "RamdomPoint.h"
@@ -24,7 +26,7 @@ enum class Direction { Up, Right, Left, Down };
 class Snake
 {
 	public:
-		explicit Snake(sf::RenderWindow* window, Food& f, Point starting_position, Direction d);
+		explicit Snake(Food& f, Point starting_position, Direction d);
 
 		void draw();
 		
