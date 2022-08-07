@@ -93,8 +93,15 @@ Changes:
 	- overloaded less operator in SnakeAI, need to debug
 	- New tests created
 
+Changes:
+	- Added Evolution class
+	- Created parametric c-tor and destructor for Population
+	- Population::breed reworked
+	- 
+
 ### TODO: 
-- Debug priority_queue issues
+- Save best fitness from a certain Population. Add getter
+- Maybe it would be better to create a standalone method Population::selection()
 - Thorely test snake api. Make a separape project?
 - SnakeAI: generate random direction.
 	Add food c-tor which accepts color,
@@ -104,6 +111,8 @@ Changes:
 - Add multithreading for quick computations
 
 ### Done:
++ Rework Population::breed algorithm. We should get in total number_of_species
++ Debug priority_queue issues
 + Debug and fix ~~copy c-tor of Layer class~~ crossover in NeuralNet
 X solve Eigen randomizing issues. Test (double check)
 + Create default c-tor for Food

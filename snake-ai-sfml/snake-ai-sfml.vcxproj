@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ai_agent\include\Evolution.h" />
     <ClInclude Include="game_core\include\Food.h" />
     <ClInclude Include="game_core\include\Game.h" />
     <ClInclude Include="game_core\include\GameWindow.h" />
@@ -35,6 +36,7 @@
     <ClInclude Include="ai_agent\include\SnakeAI.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ai_agent\src\Evolution.cpp" />
     <ClCompile Include="ai_agent\src\Layer.cpp" />
     <ClCompile Include="ai_agent\src\Matrix.cpp" />
     <ClCompile Include="ai_agent\src\NeuralNet.cpp" />

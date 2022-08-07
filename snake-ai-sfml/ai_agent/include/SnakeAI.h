@@ -60,6 +60,10 @@ public:
 
 	void draw();
 
+	/*!
+	* \brief Creates new object via crossover of curr and parent brains
+	* Allocates memory!
+	*/
 	SnakeAI* breed(const SnakeAI* parent);
 
 	float get_fitness();

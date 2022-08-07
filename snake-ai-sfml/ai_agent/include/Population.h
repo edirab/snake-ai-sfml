@@ -16,12 +16,21 @@ class Population
 {
 public:
 
+	/*!
+	* \brief Default c-tor with default n_species value of 3
+	*/
 	Population(int n_species = 3);
 
+	Population(vector<SnakeAI*> new_generation);
 
+	~Population();
 
 	void simulate();
 
+	/*!
+	* \brief Selects N best species and breeds them
+	* \return vector of newly created agents
+	*/
 	vector<SnakeAI*> breed();
 
 	vector<SnakeAI*> agents; // for test purposes

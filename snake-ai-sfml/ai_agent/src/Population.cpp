@@ -11,6 +11,20 @@ Population::Population(int n_species)
 	}
 }
 
+Population::Population(vector<SnakeAI*> new_generation)
+{
+	this->agents = new_generation;
+	this->number_of_species = new_generation.size();
+}
+
+Population::~Population()
+{
+	for (auto elem : agents)
+	{
+		delete elem;
+	}
+}
+
 void Population::simulate()
 {
 	sf::Clock* clock = new sf::Clock();
@@ -58,14 +72,19 @@ vector<SnakeAI*>Population::breed()
 	vector<SnakeAI*> n_best_agents;
 
 	assert( n_best_to_breed <= number_of_species );
+	assert( n_best_to_breed > 0 );
+	assert( number_of_species >= 2 ); // otherwise we cannot mate them. A piar is needed
+
 	priority_queue<SnakeAI*,  vector<SnakeAI*>, std::function<bool(SnakeAI*, SnakeAI*)>> min_heap(Compare);
 
+	// Creating heap
 	for (auto agent : agents)
 	{
 		cout << "\tfit: "<< agent->get_fitness() << "\n";
 		min_heap.push(agent);
 	}
 
+	// Selection process
 	for (int i = n_best_to_breed; i >= 0; --i)
 	{
 		cout << i << ": " << min_heap.top()->get_fitness() << "\n";
@@ -75,21 +94,25 @@ vector<SnakeAI*>Population::breed()
 
 	/*
 	* mate agents cicularly. 1st + 2nd, 3nd + 3rd, nth + 1-st
-	* It'll be equal to number of n_best_agents
+	* Repetative pairs may occur in case of 
+	* n_best_to_breed is less then number_of_species
 	*/
-	for (int i = 0; i < n_best_agents.size(); ++i)
+	SnakeAI* new_agent;
+	int counter = number_of_species;
+	int curr_index = 0;
+
+	while( counter )
 	{
-		SnakeAI* new_agent;
-		if (i == n_best_agents.size() - 1)
+		if ( counter == n_best_agents.size() - 1 )
 		{
-			new_agent = agents[i]->breed( agents[0] );
+			new_agent = agents[ counter ]->breed( agents[0] );
 		}
 		else
 		{
-			new_agent = agents[i]->breed( agents[i+1] );
+			new_agent = agents[ counter ]->breed( agents[ counter+1 ] );
 		}
 		new_generation.push_back(new_agent);
+		counter--;
 	}
-
 	return new_generation;
 }

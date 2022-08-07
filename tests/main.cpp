@@ -51,7 +51,7 @@ int main()
 
     TestPopulation pop;
     //pop.run_simulation();
-    pop.prior_queue();
+    //pop.prior_queue();
 
     return 0;
 }

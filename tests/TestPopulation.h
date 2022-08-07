@@ -19,11 +19,12 @@ void TestPopulation::run_simulation()
 	return;
 }
 
-//bool Compare(SnakeAI* a, SnakeAI* b)
-//{
-//	return a->get_fitness() < b->get_fitness();
-//}
+#define DISABLE_THAT_COD
 
+#if !defined DISABLE_THAT_COD
+/*!
+* This code uses non-secure methods created specially for this case
+*/
 void TestPopulation::prior_queue()
 {
 	int n_best_to_breed = 6;
@@ -53,3 +54,4 @@ void TestPopulation::prior_queue()
 
 	return;
 }
+#endif
