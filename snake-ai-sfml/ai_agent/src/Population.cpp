@@ -34,10 +34,10 @@ void Population::simulate()
 	float period_ms = 1 / moves_per_second * 1000 ;
 
 	sf::RenderWindow* window = GameWindow::get();
-	while (window->isOpen())
+	while (window->isOpen() && this->someone_still_alive())
     {
 		sf::Event event;
-		while (window->pollEvent(event))
+		while (window->pollEvent(event) && this->someone_still_alive())
 		{
 			if (event.type == sf::Event::Closed)
 				window->close();
@@ -80,6 +80,8 @@ vector<SnakeAI*>Population::breed()
 	// Creating heap
 	for (auto agent : agents)
 	{
+		this->m_best_fitness = std::max(m_best_fitness, agent->get_fitness());
+
 		cout << "\tfit: "<< agent->get_fitness() << "\n";
 		min_heap.push(agent);
 	}
@@ -103,16 +105,37 @@ vector<SnakeAI*>Population::breed()
 
 	while( counter )
 	{
-		if ( counter == n_best_agents.size() - 1 )
+		if ( curr_index == n_best_agents.size() - 1 )
 		{
-			new_agent = agents[ counter ]->breed( agents[0] );
+			new_agent = agents[ curr_index ]->breed( agents[0] );
+			curr_index = 0;
 		}
 		else
 		{
-			new_agent = agents[ counter ]->breed( agents[ counter+1 ] );
+			new_agent = agents[ curr_index ]->breed( agents[ curr_index + 1 ] );
 		}
 		new_generation.push_back(new_agent);
+
 		counter--;
+		curr_index++;
 	}
 	return new_generation;
+}
+
+float Population::get_best_fitness()
+{
+	return m_best_fitness;
+}
+
+bool Population::someone_still_alive()
+{
+	bool one_is_alive = false;
+	for (auto agent : agents)
+	{
+		if (agent->snake.isAlive() && agent->get_n_moves_left() > 0)
+		{
+			one_is_alive = true;
+		}
+	}
+	return one_is_alive;
 }

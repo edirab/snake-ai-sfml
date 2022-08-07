@@ -8,6 +8,7 @@
 #include "TestNeuralNet.h"
 #include "TestSnakeAI.h"
 #include "TestPopulation.h"
+#include "TestEvolution.h"
 
 using std::cout;
 
@@ -49,9 +50,12 @@ int main()
     //snake_agent.copy_ctor();
     //snake_agent.breed();
 
-    TestPopulation pop;
+    //TestPopulation pop;
     //pop.run_simulation();
     //pop.prior_queue();
+
+    TestEvolution te;
+    te.start();
 
     return 0;
 }

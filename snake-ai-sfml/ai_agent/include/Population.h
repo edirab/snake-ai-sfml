@@ -7,6 +7,7 @@
 #include <utility>
 #include <vector>
 #include <queue>
+#include <algorithm>
 
 using std::vector;
 using std::pair;
@@ -33,14 +34,22 @@ public:
 	*/
 	vector<SnakeAI*> breed();
 
+	float get_best_fitness();
+
 	vector<SnakeAI*> agents; // for test purposes
 
 private:
 
 	//vector<SnakeAI*> agents;
+	float m_best_fitness{0};
 
 	int number_of_species{10};
 	int n_best_to_breed{2};
+
+	/*!
+	* \brief Check is there are alive AI agents
+	*/
+	bool someone_still_alive();
 
 };
 

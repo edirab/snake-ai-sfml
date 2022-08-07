@@ -24,6 +24,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="TestEvolution.h" />
     <ClInclude Include="TestLayer.h" />
     <ClInclude Include="TestMatrix.h" />
     <ClInclude Include="TestNeuralNet.h" />
@@ -31,6 +32,7 @@
     <ClInclude Include="TestSnakeAI.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\snake-ai-sfml\ai_agent\src\Evolution.cpp" />
     <ClCompile Include="..\snake-ai-sfml\ai_agent\src\Layer.cpp" />
     <ClCompile Include="..\snake-ai-sfml\ai_agent\src\Matrix.cpp" />
     <ClCompile Include="..\snake-ai-sfml\ai_agent\src\NeuralNet.cpp" />

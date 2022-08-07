@@ -97,7 +97,11 @@ Changes:
 	- Added Evolution class
 	- Created parametric c-tor and destructor for Population
 	- Population::breed reworked
-	- 
+
+Changes:
+	- Fixed bug in Population::breed(), added get_best_fitness()
+	- Created TestEvolution class
+	- Fixed bug with balck window, added SnakeAI::someone_is_alive method
 
 ### TODO: 
 - Save best fitness from a certain Population. Add getter
