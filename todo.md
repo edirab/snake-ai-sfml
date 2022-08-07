@@ -103,6 +103,9 @@ Changes:
 	- Created TestEvolution class
 	- Fixed bug with balck window, added SnakeAI::someone_is_alive method
 
+Changes:
+	- Fixed bug (typo) in NeuralNet c-tors
+
 ### TODO: 
 - Save best fitness from a certain Population. Add getter
 - Maybe it would be better to create a standalone method Population::selection()

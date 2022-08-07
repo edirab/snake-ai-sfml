@@ -13,13 +13,13 @@ NeuralNet::NeuralNet(int nHiddenLayers, int nNeurons, int nInputs, int nOutputs)
 }
 
 NeuralNet::NeuralNet(const Layer& hidden1, const Layer& hidden2, const Layer& out ) 
-	: hidden1(hidden1), hidden2(hidden1), out(out)
+	: hidden1(hidden1), hidden2(hidden2), out(out)
 {
 
 }
 
 NeuralNet::NeuralNet(const NeuralNet &net)
-	: hidden1(net.hidden1), hidden2(net.hidden1), out(net.out)
+	: hidden1(net.hidden1), hidden2(net.hidden2), out(net.out)
 {
 
 }

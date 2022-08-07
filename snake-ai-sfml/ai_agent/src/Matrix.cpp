@@ -92,7 +92,7 @@ void Matrix::mutate(double mutation_rate)
 
 	if (n_cell_to_mutate == 0 )
 	{
-		cout << "No cells to mutate. Setting to 1\n";
+		//cout << "No cells to mutate. Setting to 1\n";
 		n_cell_to_mutate = 1;
 	}
 
