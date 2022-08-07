@@ -13,6 +13,10 @@ using std::vector;
 using std::pair;
 using std::priority_queue;
 
+#define N_SPECIES 100
+#define N_TO_BREED 10
+#define N_MOVES_PER_SEC 10
+
 class Population
 {
 public:
@@ -20,7 +24,7 @@ public:
 	/*!
 	* \brief Default c-tor with default n_species value of 3
 	*/
-	Population(int n_species = 3);
+	Population(int n_species = N_SPECIES, int n_to_breed = N_TO_BREED, int moves = N_MOVES_PER_SEC);
 
 	Population(vector<SnakeAI*> new_generation);
 
@@ -43,8 +47,10 @@ private:
 	//vector<SnakeAI*> agents;
 	float m_best_fitness{0};
 
-	int number_of_species{10};
-	int n_best_to_breed{2};
+	int number_of_species{N_SPECIES};
+	int n_best_to_breed{N_TO_BREED};
+
+	float moves_per_second{N_MOVES_PER_SEC}; ///< e.i. simulation speed
 
 	/*!
 	* \brief Check is there are alive AI agents

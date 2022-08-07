@@ -1,7 +1,10 @@
 #include "Population.h"
 
-Population::Population(int n_species) 
-	: number_of_species(n_species)
+Population::Population(int n_species, int n_to_breed, int moves ) 
+	: 
+		number_of_species(n_species),
+		n_best_to_breed(n_to_breed),
+		moves_per_second(moves)
 {
 	//agents.resize(number_of_species);
 	for (int i = 0; i < number_of_species; ++i)
@@ -30,7 +33,6 @@ void Population::simulate()
 	sf::Clock* clock = new sf::Clock();
 	clock->restart();
 
-	float moves_per_second{4};
 	float period_ms = 1 / moves_per_second * 1000 ;
 
 	sf::RenderWindow* window = GameWindow::get();

@@ -107,7 +107,14 @@ Changes:
 	- Fixed bug (typo) in NeuralNet c-tors
 
 ### TODO: 
-- Save best fitness from a certain Population. Add getter
+- Debug "Invalid food pos"
+- Create a clear and centralized way to set these params:
+	+ num of generations
+	+ num of species in a population
+	+ num of best to breed
+	+ game speed
+	- mutation rate
+
 - Maybe it would be better to create a standalone method Population::selection()
 - Thorely test snake api. Make a separape project?
 - SnakeAI: generate random direction.
@@ -118,6 +125,7 @@ Changes:
 - Add multithreading for quick computations
 
 ### Done:
++ Save best fitness from a certain Population. Add getter
 + Rework Population::breed algorithm. We should get in total number_of_species
 + Debug priority_queue issues
 + Debug and fix ~~copy c-tor of Layer class~~ crossover in NeuralNet

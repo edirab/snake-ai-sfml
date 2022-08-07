@@ -1,6 +1,6 @@
 #include "Evolution.h"
 
-Evolution::Evolution( int generations, int species )
+Evolution::Evolution( int generations, int species, int to_breed, int n_moves )
 	: num_of_generations(generations), num_of_species(species)
 {
 }
@@ -17,7 +17,7 @@ void Evolution::start()
 		cout << "\tGeneration: " << generation_counter << " ";
 		if (population == nullptr)
 		{
-			population = new Population{ num_of_species };
+			population = new Population{ num_of_species, to_breed, n_moves };
 		}
 		else
 		{

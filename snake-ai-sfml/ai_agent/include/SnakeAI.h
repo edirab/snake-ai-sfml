@@ -79,7 +79,7 @@ private:
 	vector<int> inputs;
 
 	float m_fitness{0};
-	int n_moves_left{30};
+	int n_moves_left{150}; ///< number of allowed function move() calls
 	bool m_draw{true};
 	
 	/*!

@@ -10,7 +10,7 @@ public:
 
 void TestEvolution::start()
 {
-	Evolution e(10, 20);
+	Evolution e(30, 100, 10, 10);
 	e.start();
 
 	return;
