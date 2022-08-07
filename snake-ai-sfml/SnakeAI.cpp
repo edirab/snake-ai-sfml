@@ -8,6 +8,15 @@ SnakeAI::SnakeAI()
 	window->setFramerateLimit(60);
 }
 
+SnakeAI::SnakeAI(NeuralNet& net)
+	:
+		window(GameWindow::get()),
+		snake(food),
+		brain(net)
+{
+	window->setFramerateLimit(60);
+}
+
 SnakeAI::SnakeAI(
 	Food f, Point startint_position, Direction d) 
 	: 
@@ -27,10 +36,17 @@ SnakeAI::SnakeAI(
 	window->setFramerateLimit(60);
 }
 
-float SnakeAI::fitness()
+float SnakeAI::get_fitness()
 {
 	calc_fitness();
 	return this->m_fitness;
+}
+
+SnakeAI* SnakeAI::breed(const SnakeAI& parent)
+{
+	NeuralNet child = this->brain.crossover(parent.brain);
+	SnakeAI* child_ai = new SnakeAI{child};
+	return child_ai;
 }
 
 void SnakeAI::calc_fitness()

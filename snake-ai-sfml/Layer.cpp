@@ -12,7 +12,7 @@ Layer::Layer(const Matrix& weights, const Matrix& biases)
 	this->weights = weights.clone();
 	this->biases = biases.clone();
 }
-
+// FIX
 Layer::Layer(const Layer& in)
 {
 	this->weights = in.get_weights().clone();
@@ -49,7 +49,7 @@ void Layer::print()
 	biases->print();
 	return;
 }
-
+// FIX
 const Matrix& Layer::get_weights() const
 {
 	return *(this->weights);

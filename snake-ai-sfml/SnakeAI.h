@@ -21,6 +21,11 @@ public:
 	*/
 	SnakeAI( );
 
+	/*!
+	* \brief Creates a new agent from child net brain
+	*/
+	SnakeAI(NeuralNet& net);
+
 	SnakeAI(
 		Food f, Point startint_position, Direction d
 	);
@@ -29,6 +34,16 @@ public:
 		Food &f, Point& startint_position, Direction d,
 		NeuralNet& net
 	);
+
+	bool operator<(const SnakeAI& x)
+	{
+		return this->m_fitness > x.m_fitness;
+	}
+
+	bool operator<(const SnakeAI* x)
+	{
+		return this->m_fitness > x->m_fitness;
+	}
 
 	Snake snake;
 	NeuralNet brain;
@@ -40,11 +55,17 @@ public:
 	*/
 	void step();
 
+	/*!
+	* \brief plays game itself until agent is alive and n_moves_left is not zero
+	* Always draws objects
+	*/
 	void play();
 
 	void draw();
 
-	float fitness();
+	SnakeAI* breed(const SnakeAI& parent);
+
+	float get_fitness();
 
 private:
 	sf::RenderWindow* window{nullptr};
@@ -54,7 +75,7 @@ private:
 	vector<int> inputs;
 
 	float m_fitness{0};
-	int n_moves_left{600};
+	int n_moves_left{30};
 	bool m_draw{true};
 	
 	/*!

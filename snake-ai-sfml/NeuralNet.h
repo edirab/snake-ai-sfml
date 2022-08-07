@@ -37,7 +37,7 @@ public:
 	/*!
 	* \brief Performs a crossover operation layer by layer on
 		two nets: current and parent
-	* \return reference to a newell allocated Net object
+	* \return reference to a newly allocated Net object
 	*/
 	NeuralNet& crossover(const NeuralNet& parent);
 
@@ -45,7 +45,6 @@ private:
 
 	// TODO: add to ctor
 	float mutation_rate{0.05f}; 
-	float fitness{0};
 
 	Layer hidden1;
 	Layer hidden2;

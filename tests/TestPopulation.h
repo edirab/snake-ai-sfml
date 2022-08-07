@@ -12,7 +12,9 @@ public:
 
 void TestPopulation::run_simulation()
 {
-	Population population;
+	Population population{10};
 	population.simulate();
+	population.breed();
+
 	return;
 }

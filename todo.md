@@ -83,19 +83,28 @@ Changes:
 
 Changes:
 	- First succesful run of TestPopulation!
-	
+	- Fixed bugs in c-tors
+
+Changes:
+	- Added Population::breed()
+	- Added SnakeAI::SnakeAI(NeuralNet& net)
+	- Added SnakeAI::breed(), need to debug
+	- Created new c-tor from NeuralNet for SnakeAI
+	- overloaded less operator in SnakeAI, need to debug
+	- New tests created
 
 ### TODO: 
+- !!! Debug and fix copy c-tor of Layer class
 - Thorely test snake api. Make a separape project?
 - SnakeAI: generate random direction.
 	Add food c-tor which accepts color,
 	
 - Add paramete wether to draw a snake or not
 - how to dump a net to file and resore back?
-- solve Eigen randomizing issues. Test
 - Add multithreading for quick computations
 
 ### Done:
+X solve Eigen randomizing issues. Test (double check)
 + Create default c-tor for Food
 + SnakeAI: generate random food pos, snake pos
 + Design Population class

@@ -9,8 +9,11 @@ class TestLayer
 public:
 	void crossover();
 	void test_process();
+	void copy_ctor();
 private:
 };
+
+
 
 void TestLayer::test_process()
 {
@@ -56,5 +59,35 @@ void TestLayer::crossover()
 	cout << "b3 crossovered:\n";
 	Matrix b3 = b1.crossover(b2);
 	b3.print();
+	return;
+}
+
+void TestLayer::copy_ctor()
+{
+	Layer L1(8, 4);
+	L1.randomize();
+
+	Layer L2(8, 4);
+	L2.randomize();
+
+	L1.print();
+	L2.print();
+
+	Eigen::MatrixXd inputs(8,1);
+    inputs << 1, 2, 3, 4, 
+		5, 
+		6, 
+		7, 
+		8;
+
+	Layer L3(L1);
+	L3.print();
+		
+	Matrix res =  L3.process(inputs);
+    res.print(); 
+
+	Layer L4(L2.get_weights(), L2.get_biases());
+	L4.print();
+
 	return;
 }
