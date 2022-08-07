@@ -24,13 +24,12 @@ void TestSnakeAI::run()
 
 }
 
-// FAIL
 void TestSnakeAI::breed()
 {
 	SnakeAI* ai_1 = new SnakeAI;
 	SnakeAI* ai_2 = new SnakeAI;
 
-	SnakeAI* ai_3 = ai_1->breed(*ai_2); // FAIL here
+	SnakeAI* ai_3 = ai_1->breed(ai_2);
 	return;
 }
 

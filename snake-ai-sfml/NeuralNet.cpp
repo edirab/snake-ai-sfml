@@ -45,7 +45,7 @@ vector<double> NeuralNet::pass(vector<int>& inputs)
 	return output.to_vector();
 }
 
-NeuralNet& NeuralNet::crossover(const NeuralNet& parent)
+NeuralNet NeuralNet::crossover(const NeuralNet& parent)
 {
 	Matrix w1_new = this->hidden1.get_weights().crossover( parent.hidden1.get_weights() );
 	Matrix b1_new = this->hidden1.get_biases().crossover( parent.hidden1.get_biases() );

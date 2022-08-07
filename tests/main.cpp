@@ -44,13 +44,13 @@ int main()
     //tn.pass();
     //tn.copy_ctor();
 
-    TestSnakeAI snake_agent;
+    //TestSnakeAI snake_agent;
     //snake_agent.run();
     //snake_agent.copy_ctor();
-    snake_agent.breed();
+    //snake_agent.breed();
 
-    //TestPopulation pop;
-    //pop.run_simulation();
+    TestPopulation pop;
+    pop.run_simulation();
 
     return 0;
 }

@@ -76,11 +76,11 @@ vector<SnakeAI*>Population::breed()
 		SnakeAI* new_agent;
 		if (i == n_best_agents.size() - 1)
 		{
-			new_agent = agents[i]->breed( *agents[0] );
+			new_agent = agents[i]->breed( agents[0] );
 		}
 		else
 		{
-			new_agent = agents[i]->breed( *agents[i+1] );
+			new_agent = agents[i]->breed( agents[i+1] );
 		}
 		new_generation.push_back(new_agent);
 	}

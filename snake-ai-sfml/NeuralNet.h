@@ -39,7 +39,7 @@ public:
 		two nets: current and parent
 	* \return reference to a newly allocated Net object
 	*/
-	NeuralNet& crossover(const NeuralNet& parent);
+	NeuralNet crossover(const NeuralNet& parent);
 
 private:
 

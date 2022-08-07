@@ -42,9 +42,9 @@ float SnakeAI::get_fitness()
 	return this->m_fitness;
 }
 
-SnakeAI* SnakeAI::breed(const SnakeAI& parent)
+SnakeAI* SnakeAI::breed(const SnakeAI* parent)
 {
-	NeuralNet child = this->brain.crossover(parent.brain);
+	NeuralNet child = this->brain.crossover(parent->brain);
 	SnakeAI* child_ai = new SnakeAI{child};
 	return child_ai;
 }

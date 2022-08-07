@@ -63,7 +63,7 @@ public:
 
 	void draw();
 
-	SnakeAI* breed(const SnakeAI& parent);
+	SnakeAI* breed(const SnakeAI* parent);
 
 	float get_fitness();
 
