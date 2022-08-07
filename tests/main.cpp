@@ -50,7 +50,8 @@ int main()
     //snake_agent.breed();
 
     TestPopulation pop;
-    pop.run_simulation();
+    //pop.run_simulation();
+    pop.prior_queue();
 
     return 0;
 }

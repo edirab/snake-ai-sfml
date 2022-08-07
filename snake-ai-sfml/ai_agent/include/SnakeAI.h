@@ -35,15 +35,12 @@ public:
 		NeuralNet& net
 	);
 
-	bool operator<(const SnakeAI& x)
-	{
-		return this->m_fitness > x.m_fitness;
-	}
+	//bool operator<(const SnakeAI& x)
+	//{
+	//	return this->m_fitness < x.m_fitness;
+	//}
 
-	bool operator<(const SnakeAI* x)
-	{
-		return this->m_fitness > x->m_fitness;
-	}
+	//friend bool operator<(const SnakeAI* x, const SnakeAI* y);
 
 	Snake snake;
 	NeuralNet brain;
@@ -66,6 +63,7 @@ public:
 	SnakeAI* breed(const SnakeAI* parent);
 
 	float get_fitness();
+	void  set_fitness(float f) {this->m_fitness = f;}; // for test purposes
 
 private:
 	sf::RenderWindow* window{nullptr};

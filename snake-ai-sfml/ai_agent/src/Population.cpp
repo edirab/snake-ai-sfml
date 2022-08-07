@@ -44,15 +44,21 @@ void Population::simulate()
 	return;
 }
 
+/*
+* Helper functin declared outside the class
+*/
+bool Compare(SnakeAI* a, SnakeAI* b)
+{
+	return a->get_fitness() < b->get_fitness();
+}
 
 vector<SnakeAI*>Population::breed()
 {
 	vector<SnakeAI*> new_generation;
 	vector<SnakeAI*> n_best_agents;
 
-
 	assert( n_best_to_breed <= number_of_species );
-	priority_queue<SnakeAI*> min_heap;
+	priority_queue<SnakeAI*,  vector<SnakeAI*>, std::function<bool(SnakeAI*, SnakeAI*)>> min_heap(Compare);
 
 	for (auto agent : agents)
 	{

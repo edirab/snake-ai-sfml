@@ -94,11 +94,12 @@ Changes:
 	- New tests created
 
 ### TODO: 
+- Debug priority_queue issues
 - Thorely test snake api. Make a separape project?
 - SnakeAI: generate random direction.
 	Add food c-tor which accepts color,
 	
-- Add paramete wether to draw a snake or not
+- Add parameter wether to draw a snake or not
 - how to dump a net to file and resore back?
 - Add multithreading for quick computations
 

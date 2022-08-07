@@ -38,7 +38,7 @@ SnakeAI::SnakeAI(
 
 float SnakeAI::get_fitness()
 {
-	calc_fitness();
+	//calc_fitness();  // for test purposes
 	return this->m_fitness;
 }
 

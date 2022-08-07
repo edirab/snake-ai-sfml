@@ -24,11 +24,15 @@ public:
 
 	vector<SnakeAI*> breed();
 
+	vector<SnakeAI*> agents; // for test purposes
+
 private:
 
-	vector<SnakeAI*> agents;
+	//vector<SnakeAI*> agents;
 
 	int number_of_species{10};
 	int n_best_to_breed{2};
 
 };
+
+bool Compare(SnakeAI* a, SnakeAI* b);
