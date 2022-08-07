@@ -32,3 +32,30 @@ void DrawRectangle(sf::RenderWindow* window, float left, float top, float width,
     // Draw it
     window->draw(rectangle);
 }
+
+void print_ai_inputs(vector<int>inputs)
+{
+    vector<string> captions 
+    {
+        "Distance to walls:",
+        "Diagonal distance to walls:",
+        "Distance to food:",
+        "Diagonal distance to food:",
+        "Distance to body:",
+        "Direction & size:",
+        "To be continued:"
+    };
+
+    int counter = 0;
+
+    for (int i = 0; i < inputs.size(); i++)
+    {
+        if ( i % 4 == 0)
+        {
+            cout << "\n" << captions[counter] << "\n\t";
+            counter++;
+        }
+        cout << inputs[i] << " ";
+    }
+    return;
+}

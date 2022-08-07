@@ -4,7 +4,7 @@
 #include <chrono>
 #include <string>
 
-
+#include "GameWindow.h"
 #include "Utilities.h"
 #include "Food.h"
 #include "Map.h"
@@ -28,6 +28,7 @@ public:
 private:
 	sf::RenderWindow* window{nullptr};
 	sf::Clock* clock{nullptr};
+	bool is_paused{false};
 
 	/*!
 	* Method for processing keyboard events

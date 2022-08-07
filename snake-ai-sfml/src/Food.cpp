@@ -2,21 +2,20 @@
 
 #include "Food.h"
 
-Food::Food() 
+Food::Food( bool true_random ) : rp(params.height, params.width, !true_random)
 {
+	window = GameWindow::get();
 	position.x = 1;
 	position.y = 0;
 }
 
-Food::Food(sf::RenderWindow* window, MapParams params, int x, int y) : 
-		window(window),
-		params(params),  
+Food::Food(int x, int y) : 
 		rp(params.height, params.width, false)
 {
+	window = GameWindow::get();
 	position.x = x;
 	position.y = y;
 }
-
 
 void Food::spawn(const list<Point>* body)
 {

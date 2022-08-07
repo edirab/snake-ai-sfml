@@ -1,7 +1,7 @@
 #include "Map.h"
 
-Map::Map(sf::RenderWindow* window, MapParams params) :
-	window(window), params(params)
+Map::Map() :
+	window(GameWindow::get())
 { }
 
 void Map::draw()

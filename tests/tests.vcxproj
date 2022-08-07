@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -19,46 +19,39 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Food.h" />
-    <ClInclude Include="include\Game.h" />
-    <ClInclude Include="include\GameWindow.h" />
-    <ClInclude Include="include\Map.h" />
-    <ClInclude Include="include\MapParams.h" />
-    <ClInclude Include="include\Point.h" />
-    <ClInclude Include="include\RamdomPoint.h" />
-    <ClInclude Include="include\Snake.h" />
-    <ClInclude Include="include\Utilities.h" />
-    <ClInclude Include="Layer.h" />
-    <ClInclude Include="Matrix.h" />
-    <ClInclude Include="NeuralNet.h" />
-    <ClInclude Include="Population.h" />
-    <ClInclude Include="SnakeAI.h" />
+    <ClCompile Include="..\snake-ai-sfml\Layer.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\Matrix.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\NeuralNet.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\Population.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\SnakeAI.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\src\Food.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\src\GameWindow.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\src\Map.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\src\Point.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\src\RamdomPoint.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\src\Snake.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\src\Utilities.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Layer.cpp" />
-    <ClCompile Include="Matrix.cpp" />
-    <ClCompile Include="NeuralNet.cpp" />
-    <ClCompile Include="Population.cpp" />
-    <ClCompile Include="SnakeAI.cpp" />
-    <ClCompile Include="src\Food.cpp" />
-    <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\GameWindow.cpp" />
-    <ClCompile Include="src\main.cpp">
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Projects\snake-ai-sfml\snake-ai-sfml\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
-    <ClCompile Include="src\Map.cpp" />
-    <ClCompile Include="src\Point.cpp" />
-    <ClCompile Include="src\RamdomPoint.cpp" />
-    <ClCompile Include="src\Snake.cpp" />
-    <ClCompile Include="src\Utilities.cpp" />
+    <ProjectReference Include="..\snake-ai-sfml\snake-ai-sfml.vcxproj">
+      <Project>{4cfd1235-2735-4b3e-a47a-40fcb1981a8a}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TestLayer.h" />
+    <ClInclude Include="TestMatrix.h" />
+    <ClInclude Include="TestNeuralNet.h" />
+    <ClInclude Include="TestPopulation.h" />
+    <ClInclude Include="TestSnakeAI.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{4cfd1235-2735-4b3e-a47a-40fcb1981a8a}</ProjectGuid>
-    <RootNamespace>simplegame</RootNamespace>
+    <ProjectGuid>{b6648fec-3a17-46a0-9b8d-b421ff229f6b}</ProjectGuid>
+    <RootNamespace>forwdecl</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>snake-ai-sfml</ProjectName>
+    <ProjectName>tests</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -107,19 +100,15 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\Projects\SFML\out\install\x64-Release\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>D:\Projects\SFML\out\install\x64-Release\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\Projects\SFML\out\install\x64-Release\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>D:\Projects\SFML\out\install\x64-Release\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -127,13 +116,11 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Projects\snake-ai-sfml\snake-ai-sfml\include;D:\Projects\eigen\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\eigen;D:\Projects\snake-ai-sfml\snake-ai-sfml\include;D:\Projects\SFML\out\install\x64-Debug\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Projects\SFML\out\install\x64-Debug\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>flac.lib;freetype.lib;ogg.lib;openal32.lib;sfml-audio-d.lib;sfml-graphics-d.lib;sfml-main-d.lib;sfml-network-d.lib;sfml-system-d.lib;sfml-window-d.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -144,15 +131,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Projects\snake-ai-sfml\snake-ai-sfml\include;D:\Projects\eigen\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\eigen;D:\Projects\snake-ai-sfml\snake-ai-sfml\include;D:\Projects\SFML\out\install\x64-Debug\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Projects\SFML\out\install\x64-Release\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>flac.lib;freetype.lib;ogg.lib;openal32.lib;sfml-audio.lib;sfml-graphics.lib;sfml-main.lib;sfml-network.lib;sfml-system.lib;sfml-window.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -161,13 +146,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Projects\snake-ai-sfml\snake-ai-sfml\include;D:\Projects\eigen\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\eigen;D:\Projects\snake-ai-sfml\snake-ai-sfml\include;D:\Projects\SFML\out\install\x64-Debug\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Projects\SFML\out\install\x64-Debug\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>flac.lib;freetype.lib;ogg.lib;openal32.lib;sfml-audio-d.lib;sfml-graphics-d.lib;sfml-main-d.lib;sfml-network-d.lib;sfml-system-d.lib;sfml-window-d.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\Projects\SFML\out\install\x64-Debug\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -178,15 +163,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Projects\snake-ai-sfml\snake-ai-sfml\include;D:\Projects\eigen\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\eigen;D:\Projects\snake-ai-sfml\snake-ai-sfml\include;D:\Projects\SFML\out\install\x64-Debug\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Projects\SFML\out\install\x64-Release\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>flac.lib;freetype.lib;ogg.lib;openal32.lib;sfml-audio.lib;sfml-graphics.lib;sfml-main.lib;sfml-network.lib;sfml-system.lib;sfml-window.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
