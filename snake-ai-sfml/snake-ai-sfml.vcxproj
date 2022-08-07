@@ -19,38 +19,38 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Food.h" />
-    <ClInclude Include="include\Game.h" />
-    <ClInclude Include="include\GameWindow.h" />
-    <ClInclude Include="include\Map.h" />
-    <ClInclude Include="include\MapParams.h" />
-    <ClInclude Include="include\Point.h" />
-    <ClInclude Include="include\RamdomPoint.h" />
-    <ClInclude Include="include\Snake.h" />
-    <ClInclude Include="include\Utilities.h" />
-    <ClInclude Include="Layer.h" />
-    <ClInclude Include="Matrix.h" />
-    <ClInclude Include="NeuralNet.h" />
-    <ClInclude Include="Population.h" />
-    <ClInclude Include="SnakeAI.h" />
+    <ClInclude Include="game_core\include\Food.h" />
+    <ClInclude Include="game_core\include\Game.h" />
+    <ClInclude Include="game_core\include\GameWindow.h" />
+    <ClInclude Include="game_core\include\Map.h" />
+    <ClInclude Include="game_core\include\MapParams.h" />
+    <ClInclude Include="game_core\include\Point.h" />
+    <ClInclude Include="game_core\include\RamdomPoint.h" />
+    <ClInclude Include="game_core\include\Snake.h" />
+    <ClInclude Include="game_core\include\Utilities.h" />
+    <ClInclude Include="ai_agent\include\Layer.h" />
+    <ClInclude Include="ai_agent\include\Matrix.h" />
+    <ClInclude Include="ai_agent\include\NeuralNet.h" />
+    <ClInclude Include="ai_agent\include\Population.h" />
+    <ClInclude Include="ai_agent\include\SnakeAI.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Layer.cpp" />
-    <ClCompile Include="Matrix.cpp" />
-    <ClCompile Include="NeuralNet.cpp" />
-    <ClCompile Include="Population.cpp" />
-    <ClCompile Include="SnakeAI.cpp" />
-    <ClCompile Include="src\Food.cpp" />
-    <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\GameWindow.cpp" />
-    <ClCompile Include="src\main.cpp">
+    <ClCompile Include="ai_agent\src\Layer.cpp" />
+    <ClCompile Include="ai_agent\src\Matrix.cpp" />
+    <ClCompile Include="ai_agent\src\NeuralNet.cpp" />
+    <ClCompile Include="ai_agent\src\Population.cpp" />
+    <ClCompile Include="ai_agent\src\SnakeAI.cpp" />
+    <ClCompile Include="game_core\src\Food.cpp" />
+    <ClCompile Include="game_core\src\Game.cpp" />
+    <ClCompile Include="game_core\src\GameWindow.cpp" />
+    <ClCompile Include="game_core\src\main.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Projects\snake-ai-sfml\snake-ai-sfml\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
-    <ClCompile Include="src\Map.cpp" />
-    <ClCompile Include="src\Point.cpp" />
-    <ClCompile Include="src\RamdomPoint.cpp" />
-    <ClCompile Include="src\Snake.cpp" />
-    <ClCompile Include="src\Utilities.cpp" />
+    <ClCompile Include="game_core\src\Map.cpp" />
+    <ClCompile Include="game_core\src\Point.cpp" />
+    <ClCompile Include="game_core\src\RamdomPoint.cpp" />
+    <ClCompile Include="game_core\src\Snake.cpp" />
+    <ClCompile Include="game_core\src\Utilities.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -127,7 +127,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Projects\snake-ai-sfml\snake-ai-sfml\include;D:\Projects\eigen\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\snake-ai-sfml\snake-ai-sfml\include;D:\Projects\eigen\;%(AdditionalIncludeDirectories);D:\Projects\snake-ai-sfml\snake-ai-sfml\ai_agent\include;D:\Projects\snake-ai-sfml\snake-ai-sfml\game_core\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -144,7 +144,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Projects\snake-ai-sfml\snake-ai-sfml\include;D:\Projects\eigen\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\snake-ai-sfml\snake-ai-sfml\include;D:\Projects\eigen\;%(AdditionalIncludeDirectories);D:\Projects\snake-ai-sfml\snake-ai-sfml\ai_agent\include;D:\Projects\snake-ai-sfml\snake-ai-sfml\game_core\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -161,7 +161,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Projects\snake-ai-sfml\snake-ai-sfml\include;D:\Projects\eigen\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\snake-ai-sfml\snake-ai-sfml\ai_agent\include;D:\Projects\snake-ai-sfml\snake-ai-sfml\game_core\include;D:\Projects\eigen\;%(AdditionalIncludeDirectories);D:\Projects\snake-ai-sfml\snake-ai-sfml\ai_agent\include;D:\Projects\snake-ai-sfml\snake-ai-sfml\game_core\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -178,7 +178,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Projects\snake-ai-sfml\snake-ai-sfml\include;D:\Projects\eigen\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\eigen\;D:\Projects\snake-ai-sfml\snake-ai-sfml\ai_agent\include;D:\Projects\snake-ai-sfml\snake-ai-sfml\game_core\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

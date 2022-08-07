@@ -94,7 +94,6 @@ Changes:
 	- New tests created
 
 ### TODO: 
-- !!! Debug and fix copy c-tor of Layer class
 - Thorely test snake api. Make a separape project?
 - SnakeAI: generate random direction.
 	Add food c-tor which accepts color,
@@ -104,6 +103,7 @@ Changes:
 - Add multithreading for quick computations
 
 ### Done:
++ Debug and fix ~~copy c-tor of Layer class~~ crossover in NeuralNet
 X solve Eigen randomizing issues. Test (double check)
 + Create default c-tor for Food
 + SnakeAI: generate random food pos, snake pos
@@ -165,3 +165,7 @@ X disable move in reverse direction. Need to make a dicision: either to prohibit
 - случайные значения берутся в диапазоне от -1 до 1
 - нейросеть представлена таблицей (класс Matrix)
 - crossover - перестановка случайных строк таблиц 
+
+### Выяснить
+когда стоит возвращать ссылку из функции. Например, создаём новый объект 
+в куче внутри метода, возвращаем ссылку на него. Как будет уничтожаться такой объект?

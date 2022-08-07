@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "../snake-ai-sfml//NeuralNet.h"
+#include "../snake-ai-sfml/ai_agent/include/NeuralNet.h"
 
 using std::vector;
 

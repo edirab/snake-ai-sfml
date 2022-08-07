@@ -19,21 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\snake-ai-sfml\Layer.cpp" />
-    <ClCompile Include="..\snake-ai-sfml\Matrix.cpp" />
-    <ClCompile Include="..\snake-ai-sfml\NeuralNet.cpp" />
-    <ClCompile Include="..\snake-ai-sfml\Population.cpp" />
-    <ClCompile Include="..\snake-ai-sfml\SnakeAI.cpp" />
-    <ClCompile Include="..\snake-ai-sfml\src\Food.cpp" />
-    <ClCompile Include="..\snake-ai-sfml\src\GameWindow.cpp" />
-    <ClCompile Include="..\snake-ai-sfml\src\Map.cpp" />
-    <ClCompile Include="..\snake-ai-sfml\src\Point.cpp" />
-    <ClCompile Include="..\snake-ai-sfml\src\RamdomPoint.cpp" />
-    <ClCompile Include="..\snake-ai-sfml\src\Snake.cpp" />
-    <ClCompile Include="..\snake-ai-sfml\src\Utilities.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\snake-ai-sfml\snake-ai-sfml.vcxproj">
       <Project>{4cfd1235-2735-4b3e-a47a-40fcb1981a8a}</Project>
     </ProjectReference>
@@ -44,6 +29,22 @@
     <ClInclude Include="TestNeuralNet.h" />
     <ClInclude Include="TestPopulation.h" />
     <ClInclude Include="TestSnakeAI.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\snake-ai-sfml\ai_agent\src\Layer.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\ai_agent\src\Matrix.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\ai_agent\src\NeuralNet.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\ai_agent\src\Population.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\ai_agent\src\SnakeAI.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\game_core\src\Food.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\game_core\src\Game.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\game_core\src\GameWindow.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\game_core\src\Map.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\game_core\src\Point.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\game_core\src\RamdomPoint.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\game_core\src\Snake.cpp" />
+    <ClCompile Include="..\snake-ai-sfml\game_core\src\Utilities.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -116,7 +117,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Projects\eigen;D:\Projects\snake-ai-sfml\snake-ai-sfml\include;D:\Projects\SFML\out\install\x64-Debug\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\snake-ai-sfml\snake-ai-sfml\game_core\include;D:\Projects\snake-ai-sfml\snake-ai-sfml\ai_agent\include;D:\Projects\eigen;D:\Projects\SFML\out\install\x64-Debug\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -131,7 +132,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Projects\eigen;D:\Projects\snake-ai-sfml\snake-ai-sfml\include;D:\Projects\SFML\out\install\x64-Debug\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\snake-ai-sfml\snake-ai-sfml\game_core\include;D:\Projects\snake-ai-sfml\snake-ai-sfml\ai_agent\include;D:\Projects\eigen;D:\Projects\SFML\out\install\x64-Debug\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -146,7 +147,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Projects\eigen;D:\Projects\snake-ai-sfml\snake-ai-sfml\include;D:\Projects\SFML\out\install\x64-Debug\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\snake-ai-sfml\snake-ai-sfml\game_core\include;D:\Projects\snake-ai-sfml\snake-ai-sfml\ai_agent\include;D:\Projects\eigen;D:\Projects\SFML\out\install\x64-Debug\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -163,7 +164,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Projects\eigen;D:\Projects\snake-ai-sfml\snake-ai-sfml\include;D:\Projects\SFML\out\install\x64-Debug\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\snake-ai-sfml\snake-ai-sfml\game_core\include;D:\Projects\snake-ai-sfml\snake-ai-sfml\ai_agent\include;D:\Projects\eigen;D:\Projects\SFML\out\install\x64-Debug\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

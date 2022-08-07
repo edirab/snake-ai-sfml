@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../snake-ai-sfml/Population.h"
+#include "../snake-ai-sfml/ai_agent/include/Population.h"
 
 class TestPopulation
 {

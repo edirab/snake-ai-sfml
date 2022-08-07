@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "../snake-ai-sfml/Matrix.h"
-#include "../snake-ai-sfml/Layer.h"
-#include "../snake-ai-sfml/NeuralNet.h"
+#include "../snake-ai-sfml/ai_agent/include/Matrix.h"
+#include "../snake-ai-sfml/ai_agent/include/Layer.h"
+#include "../snake-ai-sfml/ai_agent/include/NeuralNet.h"
 #include "TestMatrix.h"
 #include "TestLayer.h"
 #include "TestNeuralNet.h"

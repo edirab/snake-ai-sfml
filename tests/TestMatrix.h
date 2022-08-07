@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 
-#include "../snake-ai-sfml/Matrix.h"
+#include "../snake-ai-sfml/ai_agent/include/Matrix.h"
 
 using std::cout;
 

@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-#include "../snake-ai-sfml/NeuralNet.h"
-#include "../snake-ai-sfml/SnakeAI.h"
+#include "../snake-ai-sfml/ai_agent/include/NeuralNet.h"
+#include "../snake-ai-sfml/ai_agent/include/SnakeAI.h"
 
 class TestSnakeAI
 {

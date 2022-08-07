@@ -1,8 +1,8 @@
 #pragma once
 #include <iostream>
 
-#include "../snake-ai-sfml/Matrix.h"
-#include "../snake-ai-sfml/Layer.h"
+#include "../snake-ai-sfml/ai_agent/include/Matrix.h"
+#include "../snake-ai-sfml/ai_agent/include/Layer.h"
 
 class TestLayer
 {
