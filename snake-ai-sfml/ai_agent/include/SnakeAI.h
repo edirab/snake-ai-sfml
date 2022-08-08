@@ -3,13 +3,18 @@
 #include "Food.h"
 #include "Snake.h"
 #include "NeuralNet.h"
-#include<algorithm>
+#include <algorithm>
 #include <vector>
+#include <math.h>
 
 using std::vector;
 using std::max_element;
 using std::find;
 using std::distance;
+using std::powf;
+
+
+#define N_MOVES_ALLOWED 150
 
 class SnakeAI
 {
@@ -79,7 +84,7 @@ private:
 	vector<int> inputs;
 
 	float m_fitness{0};
-	int n_moves_left{150}; ///< number of allowed function move() calls
+	int n_moves_left{N_MOVES_ALLOWED}; ///< number of allowed function move() calls
 	bool m_draw{true};
 	
 	/*!

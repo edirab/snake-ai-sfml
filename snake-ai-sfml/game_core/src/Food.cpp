@@ -31,7 +31,7 @@ void Food::spawn(const list<Point>* body)
 			{
 				if ( it->x == position.x && it->y == position.y )
 				{
-					cout << "Invalid food pos\n";
+					//cout << "Invalid food pos\n";
 					food_pos_valid = false;
 				}
 			}

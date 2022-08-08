@@ -3,7 +3,7 @@
 SnakeAI::SnakeAI()
 	: 
 		window(GameWindow::get()),
-		snake(food)
+		snake(food, Point(10, 10), Direction::Up )
 {
 	window->setFramerateLimit(60);
 }
@@ -51,14 +51,26 @@ SnakeAI* SnakeAI::breed(const SnakeAI* parent)
 
 void SnakeAI::calc_fitness()
 {
-	this->m_fitness = (snake.get_length() - 1) * 1000;
-	this->m_fitness += (600 - n_moves_left);
+	int lifetime = N_MOVES_ALLOWED - n_moves_left;
+
+	if (snake.get_length() - 1 < 10)
+	{
+		this->m_fitness = lifetime * lifetime * powf(2, snake.get_length() - 1);
+	}
+	else
+	{
+		this->m_fitness = lifetime * lifetime * powf(2, 10) *  (snake.get_length() - 1);
+	}
+	//this->m_fitness = (snake.get_length() - 1) * 1000;
+	//this->m_fitness += (N_MOVES_ALLOWED - n_moves_left);
+	return;
 }
 
 void SnakeAI::draw()
 {
 	food.draw();
 	snake.draw();
+	return;
 }
 
 void SnakeAI::step()

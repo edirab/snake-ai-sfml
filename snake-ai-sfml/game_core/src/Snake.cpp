@@ -87,7 +87,7 @@ void Snake::move()
 	{
 		if(food.position == head)
 		{
-			cout << "Collect food\n";
+			//cout << "Collect food\n";
 			food.eaten = true;
 			food.spawn( this->get_body() );
 			food.draw();
