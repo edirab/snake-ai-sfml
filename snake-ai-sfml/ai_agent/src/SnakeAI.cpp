@@ -3,7 +3,7 @@
 SnakeAI::SnakeAI()
 	: 
 		window(GameWindow::get()),
-		snake(food, Point(10, 10), Direction::Up )
+		snake(food, Point(10, 10), 3 )
 {
 	window->setFramerateLimit(60);
 }
@@ -11,7 +11,7 @@ SnakeAI::SnakeAI()
 SnakeAI::SnakeAI(NeuralNet& net)
 	:
 		window(GameWindow::get()),
-		snake(food),
+		snake(food, Point(10, 10), 3),
 		brain(net)
 {
 	window->setFramerateLimit(60);

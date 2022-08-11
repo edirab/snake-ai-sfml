@@ -10,6 +10,7 @@
 	Сколько особей в популяции? (2000)
 	На каком поколении начинает появляться порядок? (где-то с 4-5-го)
 	Сколько особей используется для размножения?
+5. Выведи в консоль значения ф-ии фитнеса в проекте-примере
 
 Змейка начинает из центра всегда. Квадраит еды произволен.
 В поколении 2000 особей.
@@ -33,8 +34,21 @@
 запятой несут больше информации чем целые. Между двумя целыми бесконечное число float'ов
 
 
+В проекте-примере змейка из 3-х элементов уже на первом поколении.
+Возможно, отсутствие тела путает нейросеть. 
+
 ### TODO: 
-- Create Snake API v2 - floats
+- Fix Population constructor: n_moves is not equal to moves_per_sec (e.i. game speed!)
+	It's a BUG!
+	
+- Display the only one snake, the best fromm previous generation
+- Thorely test snake api. 
+	Make a separape project
+	Darw lines of vision/.
+	Add interactivity: move snake and food piece with mouse
+
+- Change breeding starategy: if you have pop of 2000 and selecting 100 to breed
+	it will be only 5% of initial population. Breeing in pairs not good, mate them randomly
 - Create helper struct to setup all important params at once
 - Create a clear and centralized way to set these params:
 	+ num of generations
@@ -44,7 +58,7 @@
 	- mutation rate
 
 - Maybe it would be better to create a standalone method Population::selection()
-- Thorely test snake api. Make a separape project?
+
 - SnakeAI: generate random direction.
 	Add food c-tor which accepts color,
 	
@@ -53,6 +67,11 @@
 - Add multithreading for quick computations
 
 ### Done:
++ Initial snake length for evolution shuold be 3 items
++ Create Snake API v2 
+	+ floats
+	+ initial values are zeros
+	+ proper distance calculation
 + Debug "Invalid food pos" (normal behaviour, won't be fixed)
 + Save best fitness from a certain Population. Add getter
 + Rework Population::breed algorithm. We should get in total number_of_species
@@ -123,3 +142,9 @@ X disable move in reverse direction. Need to make a dicision: either to prohibit
 ### Выяснить
 когда стоит возвращать ссылку из функции. Например, создаём новый объект 
 в куче внутри метода, возвращаем ссылку на него. Как будет уничтожаться такой объект?
+
+
+### In Notepad++
+Ctrl + Shift + Arrow - move line\block
+Alt + Shifl + Arrow - multiple cursor. In VS also
+

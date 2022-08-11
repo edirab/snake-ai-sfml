@@ -32,7 +32,7 @@ public:
 	* \brief Makes a full pass on neural network
 	* \return vector of 4 doubles
 	*/
-	vector<double> pass(vector<int>& inputs);
+	vector<double> pass(vector<float>& inputs);
 
 	/*!
 	* \brief Performs a crossover operation layer by layer on

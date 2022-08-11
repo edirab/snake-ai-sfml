@@ -82,7 +82,7 @@ void TestMatrix::test_mutate()
 
 void TestMatrix::test_vector_ctor()
 {
-    vector<int> ins = {1, 2, 3, 4, 5};
+    vector<float> ins = {1, 2, 3, 4, 5};
     Matrix m1(ins);
 
     m1.print();
@@ -91,10 +91,10 @@ void TestMatrix::test_vector_ctor()
 void TestMatrix::test_crossover()
 {
     cout << "Crossover:\n";
-    vector<int> in1 = {1, 2, 3, 4, 5};
+    vector<float> in1 = {1, 2, 3, 4, 5};
     Matrix m1(in1);
 
-    vector<int> in2 = {10, 20, 30, 40, 50};
+    vector<float> in2 = {10, 20, 30, 40, 50};
     Matrix m2(in2);
 
     Matrix m3 = m1.crossover(m2);

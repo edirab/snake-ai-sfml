@@ -1,7 +1,8 @@
 #include "Evolution.h"
 
 Evolution::Evolution( int generations, int species, int to_breed, int n_moves )
-	: num_of_generations(generations), num_of_species(species)
+	: num_of_generations(generations), num_of_species(species),
+	to_breed(to_breed), n_moves(n_moves)
 {
 }
 
@@ -21,7 +22,7 @@ void Evolution::start()
 		}
 		else
 		{
-			population = new Population(next_gen);
+			population = new Population(next_gen, to_breed);
 		}
 		population->simulate();
 

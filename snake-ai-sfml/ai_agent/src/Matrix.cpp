@@ -24,7 +24,7 @@ Matrix::Matrix(const Matrix& m)
 	*mat = *(m.get_mat());
 }
 
-Matrix::Matrix( vector<int>& inputs )
+Matrix::Matrix( vector<float>& inputs )
 {
 	this->mat = new MatrixXd(inputs.size(), 1);
 	for (int i = 0; i < inputs.size(); i++)

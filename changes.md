@@ -105,3 +105,4 @@ Changes:
 	- Altered get_fitness() function
 	- Commented out debug output
 	- Changed initial snake position. It's center now
+	- Fixed bug in get_fitness function()

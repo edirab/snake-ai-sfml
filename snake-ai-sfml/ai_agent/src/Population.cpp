@@ -14,7 +14,8 @@ Population::Population(int n_species, int n_to_breed, int moves )
 	}
 }
 
-Population::Population(vector<SnakeAI*> new_generation)
+Population::Population(vector<SnakeAI*> new_generation, int n_to_breed)
+	: n_best_to_breed(n_to_breed)
 {
 	this->agents = new_generation;
 	this->number_of_species = new_generation.size();

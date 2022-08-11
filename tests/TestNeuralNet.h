@@ -17,7 +17,7 @@ private:
 
 void TestNeuralNet::pass()
 {
-    vector<int> inputs;
+    vector<float> inputs;
     for (int i = 0; i < 26; ++i)
     {
         inputs.push_back(i);
@@ -30,7 +30,7 @@ void TestNeuralNet::pass()
 
 void TestNeuralNet::copy_ctor()
 {
-    vector<int> inputs;
+    vector<float> inputs;
     for (int i = 0; i < 26; ++i)
     {
         inputs.push_back(i);

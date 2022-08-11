@@ -24,7 +24,7 @@ NeuralNet::NeuralNet(const NeuralNet &net)
 
 }
 
-vector<double> NeuralNet::pass(vector<int>& inputs)
+vector<double> NeuralNet::pass(vector<float>& inputs)
 {
 	//cout << "\tNet forward: \n";
 	Matrix m_inputs(inputs);

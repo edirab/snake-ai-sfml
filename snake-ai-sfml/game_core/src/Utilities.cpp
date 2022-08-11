@@ -33,7 +33,7 @@ void DrawRectangle(sf::RenderWindow* window, float left, float top, float width,
     window->draw(rectangle);
 }
 
-void print_ai_inputs(vector<int>inputs)
+void print_ai_inputs(vector<float>inputs)
 {
     vector<string> captions 
     {

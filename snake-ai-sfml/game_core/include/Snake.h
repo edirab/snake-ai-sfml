@@ -20,6 +20,7 @@ using std::list;
 using std::cout;
 using std::abs;
 using std::min;
+using std::sqrt;
 
 enum class Direction { Up, Right, Left, Down };
 
@@ -32,6 +33,11 @@ class Snake
 		* \details Does nothing only initializes Food& ref. Call randomize() explicitly
 		*/
 		Snake(Food& f);
+
+		/*!
+		* \brief Snake with specified position and length. Direction is Up
+		*/
+		explicit Snake(Food& f, Point starting_position, int length);
 
 		explicit Snake(Food& f, Point starting_position, Direction d);
 
@@ -61,7 +67,13 @@ class Snake
 		*/
 		void randomize(bool true_random = false);
 
-		void get_ai_inputs(vector<int>& inputs);
+		/*!
+		* \brief provides inputs for neural network
+		* \details snake provides 26 params in total:
+		* 3 groups of 8 rays (dist to walls, food and body) + 
+		* current direction and body length
+		*/
+		void get_ai_inputs(vector<float>& inputs);
 
 	private:
 		sf::RenderWindow* window{nullptr};

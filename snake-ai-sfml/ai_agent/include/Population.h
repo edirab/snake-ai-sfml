@@ -26,7 +26,7 @@ public:
 	*/
 	Population(int n_species = N_SPECIES, int n_to_breed = N_TO_BREED, int moves = N_MOVES_PER_SEC);
 
-	Population(vector<SnakeAI*> new_generation);
+	Population(vector<SnakeAI*> new_generation, int n_to_breed);
 
 	~Population();
 

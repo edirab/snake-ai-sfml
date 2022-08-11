@@ -81,7 +81,7 @@ private:
 
 	Food food;
 
-	vector<int> inputs;
+	vector<float> inputs;
 
 	float m_fitness{0};
 	int n_moves_left{N_MOVES_ALLOWED}; ///< number of allowed function move() calls

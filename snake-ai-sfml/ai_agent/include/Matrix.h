@@ -31,7 +31,7 @@ public:
 	/*!
 	* \brief Creates a single column matrix
 	*/
-	Matrix( vector<int>& inputs );
+	Matrix( vector<float>& inputs );
 
 	/*!
 	* \brief creates from Eigen MatrixXd

@@ -17,7 +17,7 @@ void Game::loop()
     Snake snake(food, Point(10, 10), Direction::Up);
     Map map{};
 
-    vector<int> inputs;
+    vector<float> inputs;
 
     float period_ms = 1 / this->moves_per_second * 1000 ;
     //cout << period_ms << "\n";
