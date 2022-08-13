@@ -10,7 +10,7 @@
 	Сколько особей в популяции? (2000)
 	На каком поколении начинает появляться порядок? (где-то с 4-5-го)
 	Сколько особей используется для размножения?
-5. Выведи в консоль значения ф-ии фитнеса в проекте-примере
++ 5. Выведи в консоль значения ф-ии фитнеса в проекте-примере
 
 Змейка начинает из центра всегда. Квадраит еды произволен.
 В поколении 2000 особей.
@@ -38,10 +38,8 @@
 Возможно, отсутствие тела путает нейросеть. 
 
 ### TODO: 
-- Fix Population constructor: n_moves is not equal to moves_per_sec (e.i. game speed!)
-	It's a BUG!
 	
-- Display the only one snake, the best fromm previous generation
+- Display the only one snake, the best from previous generation
 - Thorely test snake api. 
 	Make a separape project
 	Darw lines of vision/.
@@ -49,7 +47,7 @@
 
 - Change breeding starategy: if you have pop of 2000 and selecting 100 to breed
 	it will be only 5% of initial population. Breeing in pairs not good, mate them randomly
-- Create helper struct to setup all important params at once
+	
 - Create a clear and centralized way to set these params:
 	+ num of generations
 	+ num of species in a population
@@ -66,7 +64,10 @@
 - how to dump a net to file and resore back?
 - Add multithreading for quick computations
 
+
 ### Done:
++ Fix Population constructor: n_moves is not equal to moves_per_sec (e.i. game speed!) It's a BUG!
++ Create helper struct to setup all important params at once
 + Initial snake length for evolution shuold be 3 items
 + Create Snake API v2 
 	+ floats

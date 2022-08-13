@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="ai_agent\include\Evolution.h" />
     <ClInclude Include="ai_agent\include\EvolutionParams.h" />
+    <ClInclude Include="ai_agent\include\Selection.h" />
     <ClInclude Include="game_core\include\Food.h" />
     <ClInclude Include="game_core\include\Game.h" />
     <ClInclude Include="game_core\include\GameWindow.h" />
@@ -42,6 +43,7 @@
     <ClCompile Include="ai_agent\src\Matrix.cpp" />
     <ClCompile Include="ai_agent\src\NeuralNet.cpp" />
     <ClCompile Include="ai_agent\src\Population.cpp" />
+    <ClCompile Include="ai_agent\src\Selection.cpp" />
     <ClCompile Include="ai_agent\src\SnakeAI.cpp" />
     <ClCompile Include="game_core\src\Food.cpp" />
     <ClCompile Include="game_core\src\Game.cpp" />

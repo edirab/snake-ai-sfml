@@ -4,21 +4,20 @@ SnakeAI::SnakeAI( EvolutionParams& p )
 	: 
 		window(GameWindow::get()),
 		params(p),
+		brain(p),
 		snake(food, Point(10, 10), 3 )
 {
 	window->setFramerateLimit(60);
-	n_moves_left = p.lifetime;
 }
 
 SnakeAI::SnakeAI( EvolutionParams& p, NeuralNet& net )
 	:
 		window(GameWindow::get()),
 		params(p),
-		snake(food, Point(10, 10), 3),
-		brain(net)
+		brain(p, net),
+		snake(food, Point(10, 10), 3)
 {
 	window->setFramerateLimit(60);
-	n_moves_left = p.lifetime;
 }
 
 SnakeAI::SnakeAI( EvolutionParams& p,
@@ -26,11 +25,11 @@ SnakeAI::SnakeAI( EvolutionParams& p,
 	: 
 		window(GameWindow::get()), 
 		params(p),
+		brain(p),
 		food(10, 10),
 		snake(f, startint_position, d)
 {
 	window->setFramerateLimit(60);
-	n_moves_left = p.lifetime;
 }
 
 SnakeAI::SnakeAI( EvolutionParams& p,
@@ -39,11 +38,10 @@ SnakeAI::SnakeAI( EvolutionParams& p,
 	: 
 		window(GameWindow::get()),
 		params(p),
-		snake(f, startint_position, d),
-		brain(net)
-{ 
+		brain(p, net),
+		snake(f, startint_position, d)
+{
 	window->setFramerateLimit(60);
-	n_moves_left = p.lifetime;
 }
 
 float SnakeAI::get_fitness()
@@ -61,15 +59,13 @@ SnakeAI* SnakeAI::breed(const SnakeAI* parent)
 
 void SnakeAI::calc_fitness()
 {
-	int lifetime = N_MOVES_ALLOWED - n_moves_left;
-
 	if (snake.get_length() - 1 < 10)
 	{
-		this->m_fitness = lifetime * lifetime * powf(2, snake.get_length() - 1);
+		this->m_fitness = m_lifetime * m_lifetime * powf(2, snake.get_length() - 1);
 	}
 	else
 	{
-		this->m_fitness = lifetime * lifetime * powf(2, 10) *  (snake.get_length() - 1);
+		this->m_fitness = m_lifetime * m_lifetime * powf(2, 10) *  (snake.get_length() - 1);
 	}
 	//this->m_fitness = (snake.get_length() - 1) * 1000;
 	//this->m_fitness += (N_MOVES_ALLOWED - n_moves_left);
@@ -85,7 +81,7 @@ void SnakeAI::draw()
 
 void SnakeAI::step()
 {
-	if (snake.isAlive() && n_moves_left)
+	if (snake.isAlive() && m_lifetime < params.lifetime)
     {
 		food.spawn( snake.get_body() );
 		this->make_decision();
@@ -97,7 +93,7 @@ void SnakeAI::step()
 			food.draw();
 			snake.draw();
 		}
-		n_moves_left--;
+		m_lifetime++;
     }
 	return;
 }
@@ -126,7 +122,7 @@ void SnakeAI::play()
             clock->restart();
             window->clear();
 
-            if (snake.isAlive() && n_moves_left)
+            if (snake.isAlive() && m_lifetime < params.lifetime)
             {
 				food.spawn( snake.get_body() );
 				this->make_decision();
@@ -137,7 +133,7 @@ void SnakeAI::play()
                 snake.draw();
                 window->display();    
                 
-				n_moves_left--;
+				m_lifetime++;
             }
             else
             {

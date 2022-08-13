@@ -1,4 +1,5 @@
 #pragma once
+#include "EvolutionParams.h"
 #include "Layer.h"
 #include <vector>
 
@@ -15,18 +16,18 @@ public:
 	/*!
 	* \brief Default c-tor
 	*/
-	NeuralNet(int nHiddenLayers = 2, int nNeurons = 16, int nInputs = 26, int nOutputs = 4);
+	NeuralNet(const EvolutionParams& p, int nHiddenLayers = 2, int nNeurons = 16, int nInputs = 26, int nOutputs = 4);
 
 	/*!
 	* \brief
 	* Creates net from crossovered and mutated layers
 	*/
-	NeuralNet(const Layer& hidden1, const Layer& hidden2, const Layer& out );
+	NeuralNet(const EvolutionParams& p, const Layer& hidden1, const Layer& hidden2, const Layer& out );
 
 	/*!
 	* \brief Copy c-tor
 	*/
-	NeuralNet(const NeuralNet &net);
+	NeuralNet(const EvolutionParams& p, const NeuralNet &net);
 
 	/*!
 	* \brief Makes a full pass on neural network
@@ -41,10 +42,9 @@ public:
 	*/
 	NeuralNet crossover(const NeuralNet& parent);
 
-private:
+	const EvolutionParams params;
 
-	// TODO: add to ctor
-	float mutation_rate{0.05f}; 
+private:
 
 	Layer hidden1;
 	Layer hidden2;

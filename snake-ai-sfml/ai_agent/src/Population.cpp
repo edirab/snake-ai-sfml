@@ -30,7 +30,7 @@ void Population::simulate()
 	sf::Clock* clock = new sf::Clock();
 	clock->restart();
 
-	float period_ms = 1 / params.moves_per_sec * 1000 ;
+	float period_ms = 1 / float(params.moves_per_sec) * 1000 ;
 
 	sf::RenderWindow* window = GameWindow::get();
 	while (window->isOpen() && this->someone_still_alive())
@@ -131,7 +131,7 @@ bool Population::someone_still_alive()
 	bool one_is_alive = false;
 	for (auto agent : agents)
 	{
-		if (agent->snake.isAlive() && agent->get_n_moves_left() > 0)
+		if (agent->snake.isAlive() && agent->get_lifetime() < params.lifetime)
 		{
 			one_is_alive = true;
 		}

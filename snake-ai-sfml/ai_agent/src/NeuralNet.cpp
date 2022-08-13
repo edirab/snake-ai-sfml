@@ -1,7 +1,11 @@
 #include "NeuralNet.h"
 
-NeuralNet::NeuralNet(int nHiddenLayers, int nNeurons, int nInputs, int nOutputs)
-	: hidden1(nInputs, nNeurons), hidden2(nNeurons, nNeurons), out(nNeurons, 4)
+NeuralNet::NeuralNet(const EvolutionParams& p, int nHiddenLayers, int nNeurons, int nInputs, int nOutputs)
+	:
+		params(p),
+		hidden1(nInputs, nNeurons), 
+		hidden2(nNeurons, nNeurons), 
+		out(nNeurons, 4)
 {
 	hidden1.randomize();
 	hidden2.randomize();
@@ -12,14 +16,22 @@ NeuralNet::NeuralNet(int nHiddenLayers, int nNeurons, int nInputs, int nOutputs)
 	//out.print();
 }
 
-NeuralNet::NeuralNet(const Layer& hidden1, const Layer& hidden2, const Layer& out ) 
-	: hidden1(hidden1), hidden2(hidden2), out(out)
-{
+NeuralNet::NeuralNet(const EvolutionParams& p, const Layer& hidden1, const Layer& hidden2, const Layer& out ) 
+	: 
+		params(p),
+		hidden1(hidden1), 
+		hidden2(hidden2), 
+		out(out)
+{ 
 
 }
 
-NeuralNet::NeuralNet(const NeuralNet &net)
-	: hidden1(net.hidden1), hidden2(net.hidden2), out(net.out)
+NeuralNet::NeuralNet(const EvolutionParams& p, const NeuralNet &net)
+	:
+		params(p),
+		hidden1(net.hidden1), 
+		hidden2(net.hidden2), 
+		out(net.out)
 {
 
 }
@@ -49,23 +61,23 @@ NeuralNet NeuralNet::crossover(const NeuralNet& parent)
 {
 	Matrix w1_new = this->hidden1.get_weights().crossover( parent.hidden1.get_weights() );
 	Matrix b1_new = this->hidden1.get_biases().crossover( parent.hidden1.get_biases() );
-	w1_new.mutate(mutation_rate);
-	b1_new.mutate(mutation_rate);
+	w1_new.mutate(params.mutation_rate);
+	b1_new.mutate(params.mutation_rate);
 
 	Layer hidden_1_new(w1_new, b1_new);
 
 	Matrix w2_new = this->hidden2.get_weights().crossover( parent.hidden2.get_weights() );
 	Matrix b2_new = this->hidden2.get_biases().crossover( parent.hidden2.get_biases() );
-	w2_new.mutate(mutation_rate);
-	b2_new.mutate(mutation_rate);
+	w2_new.mutate(params.mutation_rate);
+	b2_new.mutate(params.mutation_rate);
 	Layer hidden_2_new(w2_new, b2_new);
 
 	Matrix w3_new = this->out.get_weights().crossover( parent.out.get_weights() );
 	Matrix b3_new = this->out.get_biases().crossover( parent.out.get_biases() );
-	w3_new.mutate(mutation_rate);
-	b3_new.mutate(mutation_rate);
+	w3_new.mutate(params.mutation_rate);
+	b3_new.mutate(params.mutation_rate);
 	Layer out_new(w3_new, b3_new);
 
-	NeuralNet n(hidden_1_new, hidden_2_new, out_new);
+	NeuralNet n(parent.params, hidden_1_new, hidden_2_new, out_new);
 	return n;
 }

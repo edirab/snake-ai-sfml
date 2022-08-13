@@ -12,7 +12,7 @@ struct EvolutionParams
 	int num_generations;
 	int species_in_generation;
 	int num_to_breed;
-	int lifetime;
+	int lifetime; ///< number of allowed function SnakeAI::move() calls
 
 	int moves_per_sec;  ///< e.i. simulation speed
 	float mutation_rate;

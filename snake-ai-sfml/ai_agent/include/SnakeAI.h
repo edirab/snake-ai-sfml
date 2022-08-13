@@ -63,7 +63,7 @@ public:
 	SnakeAI* breed(const SnakeAI* parent);
 
 	float get_fitness();
-	int get_n_moves_left() const { return n_moves_left; }
+	int get_lifetime() const { return this->m_lifetime; }
 
 	void  set_fitness(float f) {this->m_fitness = f;}; // for test purposes
 
@@ -77,7 +77,8 @@ private:
 	vector<float> inputs;
 
 	float m_fitness{0};
-	int n_moves_left{UNINITIALIZED}; ///< number of allowed function move() calls
+	int m_lifetime{0};
+
 	bool m_draw{true};
 	
 	/*!
