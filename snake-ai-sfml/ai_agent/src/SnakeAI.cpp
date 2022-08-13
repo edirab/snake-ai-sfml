@@ -1,39 +1,49 @@
 #include "SnakeAI.h"
 
-SnakeAI::SnakeAI()
+SnakeAI::SnakeAI( EvolutionParams& p )
 	: 
 		window(GameWindow::get()),
+		params(p),
 		snake(food, Point(10, 10), 3 )
 {
 	window->setFramerateLimit(60);
+	n_moves_left = p.lifetime;
 }
 
-SnakeAI::SnakeAI(NeuralNet& net)
+SnakeAI::SnakeAI( EvolutionParams& p, NeuralNet& net )
 	:
 		window(GameWindow::get()),
+		params(p),
 		snake(food, Point(10, 10), 3),
 		brain(net)
 {
 	window->setFramerateLimit(60);
+	n_moves_left = p.lifetime;
 }
 
-SnakeAI::SnakeAI(
+SnakeAI::SnakeAI( EvolutionParams& p,
 	Food f, Point startint_position, Direction d) 
 	: 
 		window(GameWindow::get()), 
+		params(p),
 		food(10, 10),
 		snake(f, startint_position, d)
 {
 	window->setFramerateLimit(60);
+	n_moves_left = p.lifetime;
 }
 
-SnakeAI::SnakeAI(
+SnakeAI::SnakeAI( EvolutionParams& p,
 	Food &f, Point& startint_position, Direction d,
 	NeuralNet& net) 
-	: window(GameWindow::get()), snake(f, startint_position, d),
-	  brain(net)
+	: 
+		window(GameWindow::get()),
+		params(p),
+		snake(f, startint_position, d),
+		brain(net)
 { 
 	window->setFramerateLimit(60);
+	n_moves_left = p.lifetime;
 }
 
 float SnakeAI::get_fitness()
@@ -45,7 +55,7 @@ float SnakeAI::get_fitness()
 SnakeAI* SnakeAI::breed(const SnakeAI* parent)
 {
 	NeuralNet child = this->brain.crossover(parent->brain);
-	SnakeAI* child_ai = new SnakeAI{child};
+	SnakeAI* child_ai = new SnakeAI{params, child};
 	return child_ai;
 }
 

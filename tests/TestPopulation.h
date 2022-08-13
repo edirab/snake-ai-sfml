@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../snake-ai-sfml/ai_agent/include/Population.h"
+#include "../snake-ai-sfml/ai_agent/include/EvolutionParams.h"
 
 class TestPopulation
 {
@@ -12,7 +13,13 @@ public:
 
 void TestPopulation::run_simulation()
 {
-	Population population{10};
+	EvolutionParams p;
+	p.num_generations = 2000;
+	p.species_in_generation = 200;
+	p.num_to_breed = 100;
+	p.lifetime = 200;
+
+	Population population{p};
 	population.simulate();
 	population.breed();
 

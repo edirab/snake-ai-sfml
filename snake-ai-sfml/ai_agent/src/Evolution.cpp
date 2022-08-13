@@ -1,8 +1,8 @@
 #include "Evolution.h"
 
-Evolution::Evolution( int generations, int species, int to_breed, int n_moves )
-	: num_of_generations(generations), num_of_species(species),
-	to_breed(to_breed), n_moves(n_moves)
+Evolution::Evolution( EvolutionParams& p )
+	:
+	params(p)
 {
 }
 
@@ -13,16 +13,16 @@ void Evolution::start()
 
 	int generation_counter = 0;
 
-	while (generation_counter < num_of_generations)
+	while (generation_counter < params.num_generations)
 	{
 		cout << "\tGeneration: " << generation_counter << " ";
 		if (population == nullptr)
 		{
-			population = new Population{ num_of_species, to_breed, n_moves };
+			population = new Population{ this->params };
 		}
 		else
 		{
-			population = new Population(next_gen, to_breed);
+			population = new Population(next_gen, this->params);
 		}
 		population->simulate();
 

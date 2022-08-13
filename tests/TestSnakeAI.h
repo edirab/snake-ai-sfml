@@ -3,31 +3,46 @@
 
 #include "../snake-ai-sfml/ai_agent/include/NeuralNet.h"
 #include "../snake-ai-sfml/ai_agent/include/SnakeAI.h"
+#include "../snake-ai-sfml/ai_agent/include/EvolutionParams.h"
 
 class TestSnakeAI
 {
 public:
+	TestSnakeAI();
+
 	void run();
-
 	void copy_ctor();
-
 	void breed();
+
+private:
+	EvolutionParams p;
 };
+
+TestSnakeAI::TestSnakeAI()
+{
+	p.num_generations = 2000;
+	p.species_in_generation = 200;
+	p.num_to_breed = 100;
+	p.lifetime = 200;
+
+	p.moves_per_sec = 5;
+	p.mutation_rate = 0.05;
+}
 
 
 void TestSnakeAI::run()
 {
 	Food food{5, 5};
 
-	SnakeAI snake_agent(food, Point{10, 10}, Direction::Up );
+	SnakeAI snake_agent(p, food, Point{10, 10}, Direction::Up );
 	snake_agent.play();
 
 }
 
 void TestSnakeAI::breed()
 {
-	SnakeAI* ai_1 = new SnakeAI;
-	SnakeAI* ai_2 = new SnakeAI;
+	SnakeAI* ai_1 = new SnakeAI(p);
+	SnakeAI* ai_2 = new SnakeAI(p);
 
 	SnakeAI* ai_3 = ai_1->breed(ai_2);
 	return;
@@ -35,10 +50,10 @@ void TestSnakeAI::breed()
 
 void TestSnakeAI::copy_ctor()
 {
-	SnakeAI ai_1;
+	SnakeAI ai_1(p);
 	ai_1.play();
 
-	SnakeAI ai_2;
+	SnakeAI ai_2(p);
 	ai_2.play();
 
 	sf::Clock* clock = new sf::Clock();

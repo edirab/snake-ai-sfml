@@ -1,24 +1,20 @@
 #include "Population.h"
 
-Population::Population(int n_species, int n_to_breed, int moves ) 
-	: 
-		number_of_species(n_species),
-		n_best_to_breed(n_to_breed),
-		moves_per_second(moves)
+
+Population::Population(EvolutionParams& p)
+	: params(p)
 {
-	//agents.resize(number_of_species);
-	for (int i = 0; i < number_of_species; ++i)
+	for (int i = 0; i < p.species_in_generation; ++i)
 	{
-		SnakeAI* agent = new SnakeAI();
+		SnakeAI* agent = new SnakeAI(p);
 		agents.push_back(agent);
 	}
 }
 
-Population::Population(vector<SnakeAI*> new_generation, int n_to_breed)
-	: n_best_to_breed(n_to_breed)
+Population::Population(vector<SnakeAI*> new_generation, EvolutionParams& p)
+	: params(p)
 {
 	this->agents = new_generation;
-	this->number_of_species = new_generation.size();
 }
 
 Population::~Population()
@@ -34,7 +30,7 @@ void Population::simulate()
 	sf::Clock* clock = new sf::Clock();
 	clock->restart();
 
-	float period_ms = 1 / moves_per_second * 1000 ;
+	float period_ms = 1 / params.moves_per_sec * 1000 ;
 
 	sf::RenderWindow* window = GameWindow::get();
 	while (window->isOpen() && this->someone_still_alive())
@@ -74,9 +70,9 @@ vector<SnakeAI*>Population::breed()
 	vector<SnakeAI*> new_generation;
 	vector<SnakeAI*> n_best_agents;
 
-	assert( n_best_to_breed <= number_of_species );
-	assert( n_best_to_breed > 0 );
-	assert( number_of_species >= 2 ); // otherwise we cannot mate them. A piar is needed
+	assert( params.num_to_breed <= params.species_in_generation );
+	assert( params.num_to_breed > 0 );
+	assert( params.species_in_generation >= 2 ); // otherwise we cannot mate them. A piar is needed
 
 	priority_queue<SnakeAI*,  vector<SnakeAI*>, std::function<bool(SnakeAI*, SnakeAI*)>> min_heap(Compare);
 
@@ -90,7 +86,7 @@ vector<SnakeAI*>Population::breed()
 	}
 
 	// Selection process
-	for (int i = n_best_to_breed; i >= 0; --i)
+	for (int i = params.num_to_breed; i >= 0; --i)
 	{
 		cout << i << ": " << min_heap.top()->get_fitness() << "\n";
 		n_best_agents.push_back( min_heap.top() );
@@ -103,7 +99,7 @@ vector<SnakeAI*>Population::breed()
 	* n_best_to_breed is less then number_of_species
 	*/
 	SnakeAI* new_agent;
-	int counter = number_of_species;
+	int counter = params.species_in_generation;
 	int curr_index = 0;
 
 	while( counter )

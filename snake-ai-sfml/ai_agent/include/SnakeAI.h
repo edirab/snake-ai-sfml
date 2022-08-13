@@ -3,6 +3,8 @@
 #include "Food.h"
 #include "Snake.h"
 #include "NeuralNet.h"
+#include "EvolutionParams.h"
+
 #include <algorithm>
 #include <vector>
 #include <math.h>
@@ -14,8 +16,6 @@ using std::distance;
 using std::powf;
 
 
-#define N_MOVES_ALLOWED 150
-
 class SnakeAI
 {
 public:
@@ -24,28 +24,19 @@ public:
 	* \brief Default c-tor
 	* Food pos, startin pos and direction are random
 	*/
-	SnakeAI( );
+	SnakeAI( EvolutionParams& p );
 
 	/*!
 	* \brief Creates a new agent from child net brain
 	*/
-	SnakeAI(NeuralNet& net);
+	SnakeAI( EvolutionParams& p, NeuralNet& net );
 
-	SnakeAI(
-		Food f, Point startint_position, Direction d
-	);
+	SnakeAI( EvolutionParams& p, 
+		Food f, Point startint_position, Direction d );
 
-	SnakeAI(
+	SnakeAI( EvolutionParams& p,
 		Food &f, Point& startint_position, Direction d,
-		NeuralNet& net
-	);
-
-	//bool operator<(const SnakeAI& x)
-	//{
-	//	return this->m_fitness < x.m_fitness;
-	//}
-
-	//friend bool operator<(const SnakeAI* x, const SnakeAI* y);
+		NeuralNet& net );
 
 	Snake snake;
 	NeuralNet brain;
@@ -77,6 +68,8 @@ public:
 	void  set_fitness(float f) {this->m_fitness = f;}; // for test purposes
 
 private:
+	EvolutionParams params;
+
 	sf::RenderWindow* window{nullptr};
 
 	Food food;
@@ -84,7 +77,7 @@ private:
 	vector<float> inputs;
 
 	float m_fitness{0};
-	int n_moves_left{N_MOVES_ALLOWED}; ///< number of allowed function move() calls
+	int n_moves_left{UNINITIALIZED}; ///< number of allowed function move() calls
 	bool m_draw{true};
 	
 	/*!

@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ai_agent\include\Evolution.h" />
+    <ClInclude Include="ai_agent\include\EvolutionParams.h" />
     <ClInclude Include="game_core\include\Food.h" />
     <ClInclude Include="game_core\include\Game.h" />
     <ClInclude Include="game_core\include\GameWindow.h" />

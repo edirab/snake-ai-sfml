@@ -50,4 +50,3 @@ private:
 	Layer hidden2;
 	Layer out;
 };
-

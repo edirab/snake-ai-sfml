@@ -106,3 +106,8 @@ Changes:
 	- Commented out debug output
 	- Changed initial snake position. It's center now
 	- Fixed bug in get_fitness function()
+	
+Cahnges:
+	- Added EvolutionParams struct to store evolution parameters in a centralized way
+	- Evolution, Population and SnakeAI classes c-tors abapted to use EvolutionParams
+	- Tests are also updated to be properly compiled
