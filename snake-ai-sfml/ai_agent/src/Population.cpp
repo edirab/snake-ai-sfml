@@ -57,66 +57,39 @@ void Population::simulate()
 	return;
 }
 
-/*
-* Helper functin declared outside the class
-*/
-bool Compare(SnakeAI* a, SnakeAI* b)
-{
-	return a->get_fitness() < b->get_fitness();
-}
-
 vector<SnakeAI*>Population::breed()
 {
 	vector<SnakeAI*> new_generation;
-	vector<SnakeAI*> n_best_agents;
-
-	assert( params.num_to_breed <= params.species_in_generation );
-	assert( params.num_to_breed > 0 );
-	assert( params.species_in_generation >= 2 ); // otherwise we cannot mate them. A piar is needed
-
-	priority_queue<SnakeAI*,  vector<SnakeAI*>, std::function<bool(SnakeAI*, SnakeAI*)>> min_heap(Compare);
-
-	// Creating heap
-	for (auto agent : agents)
-	{
-		this->m_best_fitness = std::max(m_best_fitness, agent->get_fitness());
-
-		cout << "\tfit: "<< agent->get_fitness() << "\n";
-		min_heap.push(agent);
-	}
-
-	// Selection process
-	for (int i = params.num_to_breed; i >= 0; --i)
-	{
-		cout << i << ": " << min_heap.top()->get_fitness() << "\n";
-		n_best_agents.push_back( min_heap.top() );
-		min_heap.pop();
-	}
+	vector<SnakeAI*> n_best_agents = select.truncation(this->params, this->agents);
+	cout << "Best fitness: " << select.get_best_fitness() << "\n";
 
 	/*
-	* mate agents cicularly. 1st + 2nd, 3nd + 3rd, nth + 1-st
-	* Repetative pairs may occur in case of 
-	* n_best_to_breed is less then number_of_species
+		Preserfe best from previous genaration.
+		Maybe we'll display it later
 	*/
+	new_generation.push_back( n_best_agents[0]->clone() );
+	/*
+	* mate agents randomly
+	*/
+	random_device rd;
+	mt19937 generator(rd());
+	uniform_int_distribution<> distr(0, params.species_in_generation - 1);
+
 	SnakeAI* new_agent;
-	int counter = params.species_in_generation;
-	int curr_index = 0;
+	int counter = params.species_in_generation - 1;
+
+	int first = 0;
+	int second = 0;
 
 	while( counter )
 	{
-		if ( curr_index == n_best_agents.size() - 1 )
-		{
-			new_agent = agents[ curr_index ]->breed( agents[0] );
-			curr_index = 0;
-		}
-		else
-		{
-			new_agent = agents[ curr_index ]->breed( agents[ curr_index + 1 ] );
-		}
+		first = distr(generator);
+		second = distr(generator); // TODO: potential bug here
+
+		new_agent = agents[ first ]->breed( agents[ second ] );
 		new_generation.push_back(new_agent);
 
 		counter--;
-		curr_index++;
 	}
 	return new_generation;
 }

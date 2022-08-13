@@ -57,6 +57,12 @@ SnakeAI* SnakeAI::breed(const SnakeAI* parent)
 	return child_ai;
 }
 
+SnakeAI* SnakeAI::clone()
+{
+	SnakeAI* clone_ai = new SnakeAI{params, this->brain};
+	return clone_ai;
+}
+
 void SnakeAI::calc_fitness()
 {
 	if (snake.get_length() - 1 < 10)

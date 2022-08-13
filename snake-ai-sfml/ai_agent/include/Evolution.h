@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 
+#include "GameWindow.h"
 #include "EvolutionParams.h"
 #include "Population.h"
 #include "SnakeAI.h"

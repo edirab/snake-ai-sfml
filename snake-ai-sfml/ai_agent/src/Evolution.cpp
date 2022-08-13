@@ -8,12 +8,13 @@ Evolution::Evolution( EvolutionParams& p )
 
 void Evolution::start()
 {
+	sf::RenderWindow* window = GameWindow::get();
 	Population* population = nullptr;
 	vector<SnakeAI*> next_gen;
 
 	int generation_counter = 0;
 
-	while (generation_counter < params.num_generations)
+	while (window->isOpen() && generation_counter < params.num_generations)
 	{
 		cout << "\tGeneration: " << generation_counter << " ";
 		if (population == nullptr)

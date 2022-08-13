@@ -2,6 +2,7 @@
 
 #include "GameWindow.h"
 #include "SnakeAI.h"
+#include "Selection.h"
 #include "EvolutionParams.h"
 
 #include <assert.h>
@@ -9,11 +10,14 @@
 #include <vector>
 #include <queue>
 #include <algorithm>
+#include <random>
 
 using std::vector;
 using std::pair;
 using std::priority_queue;
-
+using std::random_device;
+using std::mt19937;
+using std::uniform_int_distribution;
 
 class Population
 {
@@ -43,6 +47,7 @@ public:
 private:
 
 	EvolutionParams params;
+	Selection select;
 
 	//vector<SnakeAI*> agents;
 	float m_best_fitness{0};

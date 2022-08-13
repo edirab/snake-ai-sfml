@@ -62,6 +62,8 @@ public:
 	*/
 	SnakeAI* breed(const SnakeAI* parent);
 
+	SnakeAI* clone();
+
 	float get_fitness();
 	int get_lifetime() const { return this->m_lifetime; }
 

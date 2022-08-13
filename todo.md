@@ -33,12 +33,16 @@
 и так лучше никогда больше не делать. Нейронки любят числа, и числа с плавающей 
 запятой несут больше информации чем целые. Между двумя целыми бесконечное число float'ов
 
-
 В проекте-примере змейка из 3-х элементов уже на первом поколении.
 Возможно, отсутствие тела путает нейросеть. 
 
+Может,у меня баг в ф-ии crossover? В проекте-примере crossover делается
+для матрицы и столбца смещения разом, а не отдельно как у меня.
+В таком случае значения смещения, которые тоже подвержены мутациям, оказываются 
+отвязаны от матрицы нейронной сети.
+
 ### TODO: 
-	
+- Display sensebla window title: Generation number, best fitness etc.
 - Display the only one snake, the best from previous generation
 - Thorely test snake api. 
 	Make a separape project
@@ -66,6 +70,7 @@
 
 
 ### Done:
++ Fix bug with text spawning in console after closing window
 + Fix Population constructor: n_moves is not equal to moves_per_sec (e.i. game speed!) It's a BUG!
 + Create helper struct to setup all important params at once
 + Initial snake length for evolution shuold be 3 items
