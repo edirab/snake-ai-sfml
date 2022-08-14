@@ -1,60 +1,55 @@
 #include "Layer.h"
 
-Layer::Layer(int nInputs, int nNeurons)
+Layer::Layer(int nNeurons, int nInputs)
 {
-	weights = new Matrix(nNeurons, nInputs);
-	biases = new Matrix(nNeurons, 1);
+	matrix = new Matrix(nNeurons, nInputs + 1);
+	int cols_ = matrix->get_mat()->cols();
+
+	for (int i = 0; i < matrix->get_mat()->rows(); ++i)
+	{
+		matrix->set( i, cols_ - 1, 1.0f);
+	}
 }
 
-Layer::Layer(const Matrix& weights, const Matrix& biases)
+Layer::Layer(const Matrix& weights_and_bias)
 {
-	//this->weights = new Matrix(weights.get_mat()->rows(), weights.get_mat()->cols());
-	this->weights = weights.clone();
-	this->biases = biases.clone();
+	this->matrix = weights_and_bias.clone();
 }
-// FIX
+
 Layer::Layer(const Layer& in)
 {
-	this->weights = in.get_weights().clone();
-	this->biases = in.get_biases().clone();
+	this->matrix = in.get_matrix().clone();
 }
 
 Layer::~Layer()
 {
-	delete weights;
-	delete biases;
+	delete matrix;
 }
 
 Matrix Layer::process( MatrixXd input )
 {
 	Matrix in(input);
-	//MatrixXd res = *weights->get_mat() * input + *biases->get_mat();
-	Matrix res = *weights * in + *biases;
+	in.addBias();
+
+	Matrix res = *matrix * in; // TODO: think about dims
 	res.activete();
 	return res;
 }
 
 void Layer::randomize()
 {
-	weights->randomize();
-	biases->randomize();
+	matrix->randomize();
 	return;
 }
 
 void Layer::print()
 {
 	cout << "\tWeights:\n";
-	weights->print();
-	cout << "\n\tBiases:\n";
-	biases->print();
+	matrix->print();
 	return;
 }
 // FIX
-const Matrix& Layer::get_weights() const
+const Matrix& Layer::get_matrix() const
 {
-	return *(this->weights);
-}
-const Matrix& Layer::get_biases() const
-{
-	return *(this->biases);
+	return *(this->matrix);
 }

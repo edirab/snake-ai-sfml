@@ -5,17 +5,18 @@ class Layer
 {
 public:
 	/*!
-	* \brief C-tor to create initial Neural Network
-	* \param[in] nInputs == cols
+	* \brief C-tor to create a layer: an extended matrix containing weights and a bias
+	* Biases are the last column
 	* \param[in] nNeurons == rows of a matrix
+	* \param[in] nInputs == cols
 	*/
-	Layer(int nInputs, int nNeurons);
+	Layer(int nNeurons, int nInputs);
 
 	/*!
 	* \brief
 	* C-tor to create a layer from mutated and crossovered ancestors
 	*/
-	Layer(const Matrix& weights, const Matrix& biases);
+	Layer(const Matrix& weights_and_bias);
 
 	/*!
 	* \brief
@@ -35,22 +36,16 @@ public:
 
 	void print();
 
-	const Matrix& get_weights() const;
-	const Matrix& get_biases() const;
+	const Matrix& get_matrix() const;
 
 private:
 
 	/*!
-	* Matrix represents weights. Each row in a separate neuron 
+	* Matrix represents weights and a bias. Each row in a separate neuron 
 	* with its coefficients correspondind to inputs. The number of rows 
-	* equal to number of neurons
+	* equal to number of neurons.
+	* The last columns is a bias
 	*/
-	Matrix* weights{nullptr};
-
-	/*!
-	* A column vector with biases
-	*/
-	Matrix* biases{nullptr};
+	Matrix* matrix{nullptr};
 
 };
-

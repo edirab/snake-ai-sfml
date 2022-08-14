@@ -75,6 +75,8 @@ public:
 	*/
 	Matrix crossover(const Matrix& parent) const;
 
+	void addBias();
+
 	void print();
 
 	// different converstions

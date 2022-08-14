@@ -146,6 +146,23 @@ Matrix Matrix::crossover(const Matrix& parent) const
 	return child_mat;
 }
 
+void Matrix::addBias()
+{
+	MatrixXd* mat_extended = new MatrixXd(mat->rows() + 1, mat->cols());
+	mat_extended->setOnes();
+
+	for (int i = 0; i < mat->rows(); ++i)
+	{
+		for (int j = 0; j < mat->cols(); ++j)
+		{
+			mat_extended->operator()(i, j) = mat->operator()(i, j);
+		}
+	}
+	delete mat;
+	mat = mat_extended;
+	return;
+}
+
 void Matrix::print()
 {
 	if (mat->cols() == 1)

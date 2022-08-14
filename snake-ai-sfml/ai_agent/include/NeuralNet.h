@@ -22,7 +22,7 @@ public:
 	* \brief
 	* Creates net from crossovered and mutated layers
 	*/
-	NeuralNet(const EvolutionParams& p, const Layer& hidden1, const Layer& hidden2, const Layer& out );
+	NeuralNet(const EvolutionParams& p, vector<Layer>& layers);
 
 	/*!
 	* \brief Copy c-tor
@@ -44,9 +44,8 @@ public:
 
 	const EvolutionParams params;
 
+	vector<Layer> layers;
+
 private:
 
-	Layer hidden1;
-	Layer hidden2;
-	Layer out;
 };

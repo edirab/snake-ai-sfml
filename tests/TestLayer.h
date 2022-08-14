@@ -13,8 +13,6 @@ public:
 private:
 };
 
-
-
 void TestLayer::test_process()
 {
     int nInputs = 3;
@@ -47,18 +45,13 @@ void TestLayer::crossover()
 	L1.print();
 	L2.print();
 
-	Matrix w1 = L1.get_weights();
-	Matrix b1 = L1.get_biases();
-	Matrix w2 = L2.get_weights();
-	Matrix b2 = L2.get_biases();
+	Matrix w1 = L1.get_matrix();
+	Matrix w2 = L2.get_matrix();
 
 	cout << "w3 crossovered:\n";
 	Matrix w3 = w1.crossover(w2);
 	w3.print();
 
-	cout << "b3 crossovered:\n";
-	Matrix b3 = b1.crossover(b2);
-	b3.print();
 	return;
 }
 
@@ -73,12 +66,8 @@ void TestLayer::copy_ctor()
 	L1.print();
 	L2.print();
 
-	Eigen::MatrixXd inputs(8,1);
-    inputs << 1, 2, 3, 4, 
-		5, 
-		6, 
-		7, 
-		8;
+	Eigen::MatrixXd inputs(4,1);
+    inputs << 1, 2, 3, 4;
 
 	Layer L3(L1);
 	L3.print();
@@ -86,7 +75,7 @@ void TestLayer::copy_ctor()
 	Matrix res =  L3.process(inputs);
     res.print(); 
 
-	Layer L4(L2.get_weights(), L2.get_biases());
+	Layer L4(L2.get_matrix());
 	L4.print();
 
 	return;
