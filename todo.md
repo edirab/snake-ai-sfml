@@ -29,20 +29,21 @@
      }
   }
 ```
-Вполне возможно, что мой способ расчёта расстояния (шахматное расстояние) - говно 
-и так лучше никогда больше не делать. Нейронки любят числа, и числа с плавающей 
-запятой несут больше информации чем целые. Между двумя целыми бесконечное число float'ов
-
-В проекте-примере змейка из 3-х элементов уже на первом поколении.
-Возможно, отсутствие тела путает нейросеть. 
+Проверь ещё раз какие входные данные получает змейка в проекте-примере:
+может ли она видеть назад через себя?
 
 Может,у меня баг в ф-ии crossover? В проекте-примере crossover делается
 для матрицы и столбца смещения разом, а не отдельно как у меня.
 В таком случае значения смещения, которые тоже подвержены мутациям, оказываются 
 отвязаны от матрицы нейронной сети.
 
+Надо абсолютно чётко разобраться как устроен класс нейросети в проекте-примере. 
+Напиши модульные тесты, проверь на матрицах небольших размерностей, заполненных
+каким-то одним числом
+
 ### TODO: 
-- Display sensebla window title: Generation number, best fitness etc.
+- FIX format of input data: return 1/param (closer to food - better, closer to wall - more dangerous)
+- Display sensible window title: Generation number, best fitness etc.
 - Display the only one snake, the best from previous generation
 - Thorely test snake api. 
 	Make a separape project
@@ -59,8 +60,6 @@
 	+ game speed
 	- mutation rate
 
-- Maybe it would be better to create a standalone method Population::selection()
-
 - SnakeAI: generate random direction.
 	Add food c-tor which accepts color,
 	
@@ -70,6 +69,7 @@
 
 
 ### Done:
++ Created a standalone class Selection
 + Fix bug with text spawning in console after closing window
 + Fix Population constructor: n_moves is not equal to moves_per_sec (e.i. game speed!) It's a BUG!
 + Create helper struct to setup all important params at once

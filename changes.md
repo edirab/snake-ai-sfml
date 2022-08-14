@@ -117,3 +117,14 @@ Changes:
 	- removed redundunt n_noves_left from SnakaAI
 	- Fixed bug in simulation period calculation
 	- Tests fixed
+
+Changes:
+	- selection part moved to a separate Selection class:
+		truncation selsction reworked: mating is now random,
+		added getter for best fitness
+	- best snake from prev generation is now preserved
+	- added clone method to SnakeAI
+	
+Changes:
+	- now inputs are 1.0f / param
+	- fixed bug in get_ai_inputs() method

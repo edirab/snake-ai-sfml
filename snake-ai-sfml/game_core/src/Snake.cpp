@@ -196,10 +196,10 @@ void Snake::get_ai_inputs(vector<float>& inputs)
 
 	Point head = *(body.begin());
 
-	float dist_to_upper_wall = head.y;
-	float dist_to_lower_wall = params.height - 1 - head.y; 
-	float dist_to_right_wall = params.width - 1 - head.x;
-	float dist_to_left_wall = head.x;
+	float dist_to_upper_wall = 1.0f / head.y;
+	float dist_to_lower_wall = 1.0f / (params.height - 1 - head.y); 
+	float dist_to_right_wall = 1.0f / (params.width - 1 - head.x);
+	float dist_to_left_wall  = 1.0f / head.x;
 
 	/*
 		thus snake cannot move diagonally floating point numbers
@@ -208,10 +208,10 @@ void Snake::get_ai_inputs(vector<float>& inputs)
 		In case of a 45* rays it will simple become (2 * smallest triangle side)
 	*/ 
 
-    float dist_to_wall_upper_right = min<float>( dist_to_upper_wall, dist_to_right_wall ) * sqrt_2; // to upper right side
-    float dist_to_wall_lower_right = min<float>( dist_to_lower_wall, dist_to_right_wall ) * sqrt_2; // lower right
-    float dist_to_wall_lower_left =  min<float>( dist_to_lower_wall, dist_to_left_wall  ) * sqrt_2; // lower left
-    float dist_to_wall_upper_left =  min<float>( dist_to_upper_wall, dist_to_left_wall  ) * sqrt_2; // upper left
+    float dist_to_wall_upper_right = 1.0f / (min<float>( dist_to_upper_wall, dist_to_right_wall ) * sqrt_2); // to upper right side
+    float dist_to_wall_lower_right = 1.0f / (min<float>( dist_to_lower_wall, dist_to_right_wall ) * sqrt_2); // lower right
+    float dist_to_wall_lower_left =  1.0f / (min<float>( dist_to_lower_wall, dist_to_left_wall  ) * sqrt_2); // lower left
+    float dist_to_wall_upper_left =  1.0f / (min<float>( dist_to_upper_wall, dist_to_left_wall  ) * sqrt_2); // upper left
 
 	// find distances for food;
 	float dist_to_food_upper = 0;
@@ -222,12 +222,12 @@ void Snake::get_ai_inputs(vector<float>& inputs)
 	// scan with upper and lower rays
 	if (this->food.position.x == head.x)
 	{
-		dist_to_food_upper = abs( head.y - food.position.y );
+		dist_to_food_upper = 1.0f / abs( head.y - food.position.y );
 	}
 	// scan with right and left rays
 	if (this->food.position.y == head.y)
 	{
-		dist_to_food_left = abs( head.x - food.position.x );
+		dist_to_food_left = 1.0f / abs( head.x - food.position.x );
 	}
 
 	float dist_to_food_upper_right = 0;
@@ -245,19 +245,19 @@ void Snake::get_ai_inputs(vector<float>& inputs)
 		// now we need to determin a sector
 		if (normalized_food_pos.x > 0 && normalized_food_pos.y < 0 )
 		{
-			dist_to_food_upper_right = normalized_food_pos.x * sqrt_2;
+			dist_to_food_upper_right = 1.0f / (normalized_food_pos.x * sqrt_2);
 		} 
 		else if ( normalized_food_pos.x > 0 && normalized_food_pos.y > 0 )
 		{
-			dist_to_food_lower_right = normalized_food_pos.x * sqrt_2;
+			dist_to_food_lower_right = 1.0f / (normalized_food_pos.x * sqrt_2);
 		}
 		else if ( normalized_food_pos.x < 0 && normalized_food_pos.y > 0 )
 		{
-			dist_to_food_lower_left = abs(normalized_food_pos.x) * sqrt_2;
+			dist_to_food_lower_left = 1.0f / (abs(normalized_food_pos.x) * sqrt_2);
 		}
 		else if ( normalized_food_pos.x < 0 && normalized_food_pos.y < 0 )
 		{
-			dist_to_food_upper_left = abs(normalized_food_pos.x) * sqrt_2;
+			dist_to_food_upper_left = 1.0f / (abs(normalized_food_pos.x) * sqrt_2);
 		}
 	}
 
@@ -284,12 +284,13 @@ void Snake::get_ai_inputs(vector<float>& inputs)
 			int dist = head.y - it->y;
 			if ( min_dist_to_snake_upper == -1 )
 			{
-				min_dist_to_snake_upper == dist;
+				min_dist_to_snake_upper = dist;
 			}
 			else
 			{
 				min_dist_to_snake_upper = min<float>( min_dist_to_snake_upper, dist );
 			}
+			min_dist_to_snake_upper = 1.0f / min_dist_to_snake_upper;
 		}
 		// right
 		if (it->y == head.y && it->x > head.x)
@@ -297,12 +298,13 @@ void Snake::get_ai_inputs(vector<float>& inputs)
 			int dist = it->x - head.x;
 			if ( min_dist_to_snake_right == -1 )
 			{
-				min_dist_to_snake_right == dist;
+				min_dist_to_snake_right = dist;
 			}
 			else
 			{
 				min_dist_to_snake_right = min<float>( min_dist_to_snake_right, dist );
 			}
+			min_dist_to_snake_right = 1.0f / min_dist_to_snake_right;
 		}
 		// down
 		if (it->x == head.x && it->y > head.y)
@@ -310,12 +312,13 @@ void Snake::get_ai_inputs(vector<float>& inputs)
 			int dist =  it->y - head.y;
 			if ( min_dist_to_snake_lower == -1 )
 			{
-				min_dist_to_snake_lower == dist;
+				min_dist_to_snake_lower = dist;
 			}
 			else
 			{
 				min_dist_to_snake_lower = min<float>( min_dist_to_snake_lower, dist );
 			}
+			min_dist_to_snake_lower = 1.0f / min_dist_to_snake_lower;
 		}
 		// left
 		if (it->y == head.y && it->x < head.x)
@@ -323,15 +326,16 @@ void Snake::get_ai_inputs(vector<float>& inputs)
 			int dist = head.x - it->x;
 			if ( min_dist_to_snake_left == -1 )
 			{
-				min_dist_to_snake_left == dist;
+				min_dist_to_snake_left = dist;
 			}
 			else
 			{
 				min_dist_to_snake_left = min<float>( min_dist_to_snake_left, dist );
 			}
+			min_dist_to_snake_left = 1.0f / min_dist_to_snake_left;
 		}
-		// TODO: all diagonals
-
+		
+		//all diagonals
 		Point normalized_body_item_pos = *it;
 		normalized_body_item_pos.x -= head.x;
 		normalized_body_item_pos.y -= head.y;
@@ -349,6 +353,7 @@ void Snake::get_ai_inputs(vector<float>& inputs)
 				{
 					min_dist_to_snake_upper_right = min<float>( min_dist_to_snake_upper_right, normalized_body_item_pos.x * sqrt_2 ) ;
 				}
+				min_dist_to_snake_upper_right = 1.0f / min_dist_to_snake_upper_right;
 			}
 			// lower_right
 			else if (normalized_body_item_pos.x > 0 && normalized_body_item_pos.y > 0)
@@ -361,6 +366,7 @@ void Snake::get_ai_inputs(vector<float>& inputs)
 				{
 					min_dist_to_snake_lower_right = min<float>( min_dist_to_snake_lower_right, normalized_body_item_pos.x * sqrt_2 ) ;
 				}
+				min_dist_to_snake_lower_right = 1.0f / min_dist_to_snake_lower_right;
 			}
 			// lower left
 			else if (normalized_body_item_pos.x < 0 && normalized_body_item_pos.y > 0)
@@ -373,6 +379,7 @@ void Snake::get_ai_inputs(vector<float>& inputs)
 				{
 					min_dist_to_snake_lower_left = min<float>( min_dist_to_snake_lower_left, normalized_body_item_pos.x * sqrt_2);
 				}
+				min_dist_to_snake_lower_left = 1.0f / min_dist_to_snake_lower_left;
 			}
 			// upper left 
 			else if (normalized_body_item_pos.x < 0 && normalized_body_item_pos.y < 0)
@@ -385,6 +392,7 @@ void Snake::get_ai_inputs(vector<float>& inputs)
 				{
 					min_dist_to_snake_upper_left = min<float>( min_dist_to_snake_upper_left, normalized_body_item_pos.x * sqrt_2);
 				}
+				min_dist_to_snake_upper_left = 1.0f / min_dist_to_snake_upper_left;
 			}
 		}
 	} // end traversing snake 
@@ -438,8 +446,8 @@ void Snake::get_ai_inputs(vector<float>& inputs)
 	inputs[22] = min_dist_to_snake_lower_left;
 	inputs[23] = min_dist_to_snake_upper_left;
 
-	inputs[24] = direction;
-	inputs[25] = this->body.size();
+	//inputs[24] = direction;
+	//inputs[25] = this->body.size();
 
 	return;
 }
