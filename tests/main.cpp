@@ -41,9 +41,9 @@ int main()
     //tl.crossover();
     //tl.copy_ctor();
 
-    TestNeuralNet tn;
-    tn.pass();
-    tn.copy_ctor();
+    //TestNeuralNet tn;
+    //tn.pass();
+    //tn.copy_ctor();
 
     //TestSnakeAI snake_agent;
     //snake_agent.run();
@@ -54,8 +54,8 @@ int main()
     //pop.run_simulation();
     //pop.prior_queue();
 
-    //TestEvolution te;
-    //te.start();
+    TestEvolution te;
+    te.start();
 
     return 0;
 }

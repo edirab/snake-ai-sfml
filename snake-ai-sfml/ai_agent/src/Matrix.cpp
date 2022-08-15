@@ -24,6 +24,13 @@ Matrix::Matrix(const Matrix& m)
 	*mat = *(m.get_mat());
 }
 
+Matrix& Matrix::operator=(const Matrix& m)
+{
+	delete mat;
+	mat = new MatrixXd(*m.get_mat());
+	return *this;
+}
+
 Matrix::Matrix( vector<float>& inputs )
 {
 	this->mat = new MatrixXd(inputs.size(), 1);

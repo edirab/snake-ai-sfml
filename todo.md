@@ -42,7 +42,9 @@
 каким-то одним числом
 
 ### TODO: 
-- FIX format of input data: return 1/param (closer to food - better, closer to wall - more dangerous)
+- Fix errors in Neural Net class (rework branch)
+- Upgrade selection methods (wheel selection)
+
 - Display sensible window title: Generation number, best fitness etc.
 - Display the only one snake, the best from previous generation
 - Thorely test snake api. 
@@ -69,6 +71,7 @@
 
 
 ### Done:
++ FIX format of input data: return 1/param (closer to food - better, closer to wall - more dangerous)
 + Created a standalone class Selection
 + Fix bug with text spawning in console after closing window
 + Fix Population constructor: n_moves is not equal to moves_per_sec (e.i. game speed!) It's a BUG!

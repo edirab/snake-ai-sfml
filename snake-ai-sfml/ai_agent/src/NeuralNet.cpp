@@ -11,7 +11,7 @@ NeuralNet::NeuralNet(const EvolutionParams& p, int nHiddenLayers, int nNeurons, 
 		layers.push_back(  Layer(nNeurons, nNeurons) );
 	}
 	// the output layer
-	layers.push_back( Layer(nNeurons, nOutputs) );
+	layers.push_back( Layer(nOutputs, nNeurons) );
 
 	for (auto& elem : layers)
 	{
@@ -45,11 +45,13 @@ vector<double> NeuralNet::pass(vector<float>& inputs)
 {
 	//cout << "\tNet forward: \n";
 	Matrix m_inputs(inputs);
+	//m_inputs.addBias();
 	//m_inputs.print();
 
 	for (auto& layer : layers)
 	{
 		m_inputs = layer.process( *m_inputs.get_mat() );
+		//m_inputs.addBias();
 		//output.print();
 	}
 	return m_inputs.to_vector();

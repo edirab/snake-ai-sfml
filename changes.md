@@ -128,3 +128,9 @@ Changes:
 Changes:
 	- now inputs are 1.0f / param
 	- fixed bug in get_ai_inputs() method
+
+Changes:
+	- Layer isnow a single extended matrix: last column is a bias
+	- Reworked Layer class
+	- Added addBias method to Matrix class
+	- Reworker NeuralNet c-tors. Need to be vrified
