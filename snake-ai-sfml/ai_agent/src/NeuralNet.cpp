@@ -45,13 +45,11 @@ vector<double> NeuralNet::pass(vector<float>& inputs)
 {
 	//cout << "\tNet forward: \n";
 	Matrix m_inputs(inputs);
-	//m_inputs.addBias();
 	//m_inputs.print();
 
 	for (auto& layer : layers)
 	{
 		m_inputs = layer.process( *m_inputs.get_mat() );
-		//m_inputs.addBias();
 		//output.print();
 	}
 	return m_inputs.to_vector();

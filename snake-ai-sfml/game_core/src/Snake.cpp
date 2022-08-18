@@ -451,3 +451,113 @@ void Snake::get_ai_inputs(vector<float>& inputs)
 
 	return;
 }
+
+void Snake::get_ai_inputs_v2(vector<float>& inputs)
+{
+	// left
+	auto res = lookInDirection( Point(-1, 0) );
+	inputs[0] = res[0];
+	inputs[1] = res[1];
+	inputs[2] = res[2];
+
+	// left and up
+	res = lookInDirection( Point(-1, -1));
+	inputs[3] = res[0];
+	inputs[4] = res[1];
+	inputs[5] = res[2];
+
+	// up
+	res = lookInDirection( Point(0, -1));
+	inputs[6] = res[0];
+	inputs[7] = res[1];
+	inputs[8] = res[2];
+
+	// up and right
+	res = lookInDirection( Point(1, -1));
+	inputs[9] = res[0];
+	inputs[10] = res[1];
+	inputs[11] = res[2];
+
+	// right
+	res = lookInDirection( Point(1, 0));
+	inputs[12] = res[0];
+	inputs[13] = res[1];
+	inputs[14] = res[2];
+
+	// right and down
+	res = lookInDirection( Point(1, 1));
+	inputs[15] = res[0];
+	inputs[16] = res[1];
+	inputs[17] = res[2];
+
+	// down
+	res = lookInDirection( Point(0, 1));
+	inputs[18] = res[0];
+	inputs[19] = res[1];
+	inputs[20] = res[2];
+
+	// down and left
+	res = lookInDirection( Point(0, 1));
+	inputs[21] = res[0];
+	inputs[22] = res[1];
+	inputs[23] = res[2];
+
+	return;
+}
+
+bool Snake::wallCollide(int x, int y)
+{
+	if (x >= params.width || x < 0 || y >= params.height || y < 0)
+		return true;
+	return false;
+}
+
+vector<float> Snake::lookInDirection(Point direction)
+{
+	vector<float> look;
+	look.resize(3);
+	Point pos = *(this->body.begin());
+	float distance = 0;
+	bool foodFound = false;
+	bool bodyFound = false;
+
+	pos.add(direction);
+	distance+=1;
+
+	while( !wallCollide(pos.x, pos.y) )
+	{
+		if (!foodFound && foodCollide(pos.x, pos.y))
+		{
+			foodFound = true;
+			look[3] = 1;
+		}
+		if (!bodyFound && bodyCollide(pos.x, pos.y) )
+		{
+			bodyFound = true;
+			look[1] = 1;
+		}
+		pos.add(direction);
+		distance += 1;
+	}
+	look[2] = 1.0f / distance;
+	return look;
+}
+
+bool Snake::foodCollide(float x, float y) {  //check if a position collides with the food
+    if(x == food.position.x && y == food.position.y) {
+        return true;
+    }
+    return false;
+}
+
+bool Snake::bodyCollide(float x, float y) 
+{  //check if a position collides with the snakes body
+    for(auto it = body.begin(); it != body.end(); it++) 
+	{
+		if(x == it->x && y == it->y)  
+		{
+			return true;
+		}
+    }
+    return false;
+}

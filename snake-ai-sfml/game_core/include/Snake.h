@@ -75,6 +75,23 @@ class Snake
 		*/
 		void get_ai_inputs(vector<float>& inputs);
 
+		/*!
+		* \brief Replicates exactly SnakeAI project
+		*/
+		void get_ai_inputs_v2(vector<float>& inputs);
+
+		bool wallCollide(int x, int y);
+
+		bool foodCollide(float x, float y);
+
+		bool bodyCollide(float x, float y);
+
+		/*
+			If food is found in a certain directin, sets look[0] = 1
+			If body found in direction, sets look[1] = 1
+		*/
+		vector<float> lookInDirection(Point p);
+
 	private:
 		sf::RenderWindow* window{nullptr};
 

@@ -31,7 +31,7 @@ Matrix Layer::process( MatrixXd input )
 	Matrix in(input);
 	in.addBias();
 
-	Matrix res = *matrix * in; // TODO: think about dims
+	Matrix res = *matrix * in;
 	res.activete();
 	return res;
 }
@@ -48,7 +48,7 @@ void Layer::print()
 	matrix->print();
 	return;
 }
-// FIX
+
 const Matrix& Layer::get_matrix() const
 {
 	return *(this->matrix);

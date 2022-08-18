@@ -11,6 +11,13 @@ void Point::set(int x, int y)
 	return;
 }
 
+void Point::add(const Point& p)
+{
+	this->x += p.x;
+	this->y += p.y;
+	return;
+}
+
 bool Point::operator==(const Point& p)
 {
 	return ( this->x == p.x && this->y == p.y );

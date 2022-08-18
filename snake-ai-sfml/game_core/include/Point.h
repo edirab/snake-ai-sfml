@@ -13,6 +13,7 @@ public:
 	int y{ 0 };
 
 	void set(int x, int y);
+	void add(const Point& p);
 
 	bool operator==(const Point& p);
 };
